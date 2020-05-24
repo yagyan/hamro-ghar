@@ -51,8 +51,8 @@
                                 <div class="header_right d-flex">
                                     <div class="short_contact_list">
                                         <ul>
-                                            <li><a href="#"> <i class="fa fa-envelope"></i> info@docmed.com</a></li>
-                                            <li><a href="#"> <i class="fa fa-phone"></i> 1601-609 6780</a></li>
+                                            <li><a href="#"> <i class="fa fa-envelope"></i> hamroghar@gmail.com</a></li>
+                                            <li><a href="#"> <i class="fa fa-phone"></i> 123-456-789</a></li>
                                         </ul>
                                     </div>
                                     <div class="social_media_links">
@@ -88,41 +88,50 @@
                                         <nav>
                                             <ul id="navigation">
                                                 <li>
-                                                    <router-link to="/" style="color:blanchedalmond">home</router-link>
+                                                    <router-link to="/" style="color:blanchedalmond">Main</router-link>
                                                 </li>
-                                                <li><a href="#" style="color:blanchedalmond">pages <i class="ti-angle-down"></i></a>
+                                                <li><a href="#" style="color:blanchedalmond">Pages <i
+                                                            class="ti-angle-down"></i></a>
                                                     <ul class="submenu">
-                                                    <li>
-                                                    <router-link to="/allproperty">Property</router-link>
-                                                </li>
                                                         <li>
-                                                            <router-link to="/about">about</router-link>
+                                                            <router-link to="/allproperty">Property</router-link>
                                                         </li>
-                                                       
+                                                        <li>
+                                                            <router-link to="/about">About</router-link>
+                                                        </li>
+
                                                     </ul>
                                                 </li>
-                                               
-                                              
-                                                <li><router-link to="/contact" style="color:blanchedalmond">Contact</router-link></li>
+
+
+                                                <li>
+                                                    <router-link to="/contact" style="color:blanchedalmond">Contact
+                                                    </router-link>
+                                                </li>
                                             </ul>
                                         </nav>
                                     </div>
                                 </div>
-                                <div class="col-xl-3 col-lg-3 d-none d-lg-block">
+                                <div class="col-xl-3 col-lg-20 ">
                                     <div class="Appointment">
                                         @if (Route::has('login'))
                                         <div class="top-right links">
                                             @auth
-                                            <div class="boxed-btn3-line">
+                                            <div class="genric-btn primary circle arrow">
                                                 <a href="{{ url('/home') }}" style="color:blanchedalmond">Home</a>
                                             </div>
                                             
+                                            
+                                            <div class="genric-btn primary circle arrow">
+                                                <router-link to="/newpost" style="color:blanchedalmond">Add</router-link>
+                                            </div>
+                                    
                                             @else
-                                            <div class="boxed-btn3-line">
+                                            <div class="genric-btn primary circle arrow">
                                                 <a href="{{ route('login') }}" style="color:blanchedalmond">Login</a>
                                             </div>
                                             @if (Route::has('register'))
-                                            <div class="boxed-btn3-line">
+                                            <div class="genric-btn primary circle arrow">
                                                 <a href="{{ route('register') }}"
                                                     style="color:blanchedalmond">Register</a>
                                             </div>
@@ -133,6 +142,7 @@
 
 
                                     </div>
+                                    
                                 </div>
                                 <div class="col-12">
                                     <div class="mobile_menu d-block d-lg-none"></div>
@@ -155,7 +165,7 @@
 
 
         <!-- contact_action_area  -->
-       <!-- <div class="contact_action_area">
+        <!-- <div class="contact_action_area">
             <div class="container">
                 <div class="row">
                     <div class="col-xl-7">

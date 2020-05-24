@@ -88,23 +88,22 @@
                                         <nav>
                                             <ul id="navigation">
                                                 <li>
-                                                    <router-link to="/">home</router-link>
+                                                    <router-link to="/" style="color:blanchedalmond">home</router-link>
                                                 </li>
-                                                <li><a href="#">pages <i class="ti-angle-down"></i></a>
+                                                <li><a href="#" style="color:blanchedalmond">pages <i class="ti-angle-down"></i></a>
                                                     <ul class="submenu">
-                                                        <li><a href="about.html">about</a></li>
-                                                        <li><a href="property_details.html">property details</a></li>
-                                                        <li><a href="elements.html">elements</a></li>
+                                                    <li>
+                                                    <router-link to="/allproperty">Property</router-link>
+                                                </li>
+                                                        <li>
+                                                            <router-link to="/about">about</router-link>
+                                                        </li>
+                                                       
                                                     </ul>
                                                 </li>
-                                                <li><a href="Property.html">Property</a></li>
-                                                <li><a href="#">blog <i class="ti-angle-down"></i></a>
-                                                    <ul class="submenu">
-                                                        <li><a href="blog.html">blog</a></li>
-                                                        <li><a href="single-blog.html">single-blog</a></li>
-                                                    </ul>
-                                                </li>
-                                                <li><a href="contact.html">Contact</a></li>
+                                               
+                                              
+                                                <li><router-link to="/contact" style="color:blanchedalmond">Contact</router-link></li>
                                             </ul>
                                         </nav>
                                     </div>
@@ -115,22 +114,24 @@
                                         <div class="top-right links">
                                             @auth
                                             <div class="boxed-btn3-line">
-                                            <a href="{{ url('/home') }}" style="color:blanchedalmond">Home</a>
+                                                <a href="{{ url('/home') }}" style="color:blanchedalmond">Home</a>
                                             </div>
+                                            
                                             @else
                                             <div class="boxed-btn3-line">
-                                            <a href="{{ route('login') }}"  style="color:blanchedalmond">Login</a>
+                                                <a href="{{ route('login') }}" style="color:blanchedalmond">Login</a>
                                             </div>
                                             @if (Route::has('register'))
                                             <div class="boxed-btn3-line">
-                                            <a href="{{ route('register') }}" style="color:blanchedalmond">Register</a>
+                                                <a href="{{ route('register') }}"
+                                                    style="color:blanchedalmond">Register</a>
                                             </div>
                                             @endif
                                             @endauth
                                         </div>
                                         @endif
 
-                                       
+
                                     </div>
                                 </div>
                                 <div class="col-12">
@@ -154,7 +155,7 @@
 
 
         <!-- contact_action_area  -->
-        <div class="contact_action_area">
+       <!-- <div class="contact_action_area">
             <div class="container">
                 <div class="row">
                     <div class="col-xl-7">
@@ -170,7 +171,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div>-->
         <!-- /contact_action_area  -->
 
         <!-- footer start -->
@@ -383,7 +384,6 @@
 
         $('.ui-slider-handle:eq(1)').append('<span class="price-range-max value">' + $('#slider').slider('values', 1) +
             'k</span>');
-
     </script>
     <script src="/js/app.js"></script>
 

@@ -54,6 +54,8 @@ let routes=[
 {path:'/post', component:require('./components/post.vue').default},
 { path: '/',component: require('./components/index.vue').default},
 { path: '/allproperty',component: require('./components/allproperty.vue').default},
+{ path: '/about',component: require('./components/about.vue').default},
+{ path: '/contact',component: require('./components/contact.vue').default},
 
 ]
 /*let routes2=[

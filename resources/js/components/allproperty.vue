@@ -1,6 +1,6 @@
 <template>
     <div class="popular_property">
-        <div class="container">
+        <div class="container" style="padding-top:50px">
             <div class="row">
                 <div class="col-xl-12">
                     <div class="section_title mb-40 text-center">

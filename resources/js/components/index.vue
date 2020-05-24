@@ -35,9 +35,14 @@ import {
             mounted() {
             console.log('Component mounted.');
              this.fetchpost();
+             this.scrollToTop();
         },
         methods:{
              ...mapActions(['fetchpost']),
+
+             scrollToTop() {
+                window.scrollTo(0,0);
+           },
 
         }
     }

@@ -2184,8 +2184,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   mounted: function mounted() {
     console.log('Component mounted.');
     this.fetchpost();
+    this.scrollToTop();
   },
-  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(['fetchpost']))
+  methods: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(['fetchpost'])), {}, {
+    scrollToTop: function scrollToTop() {
+      window.scrollTo(0, 0);
+    }
+  })
 });
 
 /***/ }),
@@ -2692,8 +2697,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   mounted: function mounted() {
     console.log('Component mounted.');
     this.fetchpost();
+    this.scrollToTop();
   },
-  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_6__["mapActions"])(['fetchpost']))
+  methods: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_6__["mapActions"])(['fetchpost'])), {}, {
+    scrollToTop: function scrollToTop() {
+      window.scrollTo(0, 0);
+    }
+  })
 });
 
 /***/ }),

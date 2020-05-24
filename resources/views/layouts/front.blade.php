@@ -88,7 +88,7 @@
                                         <nav>
                                             <ul id="navigation">
                                                 <li>
-                                                <a href="home.html">home</a>
+                                                    <router-link to="/">home</router-link>
                                                 </li>
                                                 <li><a href="#">pages <i class="ti-angle-down"></i></a>
                                                     <ul class="submenu">
@@ -111,14 +111,26 @@
                                 </div>
                                 <div class="col-xl-3 col-lg-3 d-none d-lg-block">
                                     <div class="Appointment">
-                                        <div class="search_btn">
-                                            <a href="#">
-                                                <i class="ti-search"></i>
-                                            </a>
+                                        @if (Route::has('login'))
+                                        <div class="top-right links">
+                                            @auth
+                                            <div class="boxed-btn3-line">
+                                            <a href="{{ url('/home') }}" style="color:blanchedalmond">Home</a>
+                                            </div>
+                                            @else
+                                            <div class="boxed-btn3-line">
+                                            <a href="{{ route('login') }}"  style="color:blanchedalmond">Login</a>
+                                            </div>
+                                            @if (Route::has('register'))
+                                            <div class="boxed-btn3-line">
+                                            <a href="{{ route('register') }}" style="color:blanchedalmond">Register</a>
+                                            </div>
+                                            @endif
+                                            @endauth
                                         </div>
-                                        <div class="book_btn d-none d-lg-block">
-                                            <a href="#">Add Property</a>
-                                        </div>
+                                        @endif
+
+                                       
                                     </div>
                                 </div>
                                 <div class="col-12">
@@ -133,13 +145,13 @@
         </header>
         <!-- header-end -->
 
-      
+
         <div class="container-wrapper">
             <router-view></router-view>
         </div>
-      
 
-        
+
+
 
         <!-- contact_action_area  -->
         <div class="contact_action_area">
@@ -237,7 +249,8 @@
                                     <input type="text" placeholder="Enter your mail">
                                     <button type="submit">Subscribe</button>
                                 </form>
-                                <p class="newsletter_text">Esteem spirit temper too say adieus who direct esteem esteems luckily.</p>
+                                <p class="newsletter_text">Esteem spirit temper too say adieus who direct esteem esteems
+                                    luckily.</p>
                             </div>
                         </div>
                     </div>
@@ -250,7 +263,9 @@
                         <div class="col-xl-12">
                             <p class="copy_right text-center">
                                 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                                Copyright &copy; All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                                Copyright &copy; All rights reserved | This template is made with <i
+                                    class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com"
+                                    target="_blank">Colorlib</a>
                                 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                             </p>
                         </div>
@@ -264,7 +279,9 @@
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://static.codepen.io/assets/common/stopExecutionOnTimeout-de7e2ef6bfefd24b79a3f68b414b87b8db5b08439cac3f1012092b2290c719cd.js"></script>
+    <script
+        src="https://static.codepen.io/assets/common/stopExecutionOnTimeout-de7e2ef6bfefd24b79a3f68b414b87b8db5b08439cac3f1012092b2290c719cd.js">
+    </script>
 
     <script src=" https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"> </script>
     <!-- JS here -->
@@ -299,7 +316,7 @@
     <script src="js/main.js"></script>
 
 
-    
+
     <script>
         function collision($div1, $div2) {
             var x1 = $div1.offset().left;
@@ -314,7 +331,7 @@
             return true;
         }
         // Fetch Url value 
-        var getQueryString = function(parameter) {
+        var getQueryString = function (parameter) {
             var href = window.location.href;
             var reg = new RegExp('[?&]' + parameter + '=([^&#]*)', 'i');
             var string = reg.exec(href);
@@ -331,7 +348,7 @@
                 getQueryString('maxval') : 200
             ],
 
-            slide: function(event, ui) {
+            slide: function (event, ui) {
 
                 $('.ui-slider-handle:eq(0) .price-range-min').html(ui.values[0] + 'K');
                 $('.ui-slider-handle:eq(1) .price-range-max').html(ui.values[1] + 'K');
@@ -366,6 +383,7 @@
 
         $('.ui-slider-handle:eq(1)').append('<span class="price-range-max value">' + $('#slider').slider('values', 1) +
             'k</span>');
+
     </script>
     <script src="/js/app.js"></script>
 

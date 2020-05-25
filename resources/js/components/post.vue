@@ -414,7 +414,7 @@
             },
 
             loadpost() {
-                axios.get('api/post')
+                axios.get('api/yourpost/'+this.form.user_id)
                     .then(({
                         data
                     }) => (this.posts = data))

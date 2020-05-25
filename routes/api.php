@@ -31,6 +31,7 @@ Route::get('/getdistrict/{id}','API\districtcontroller@getdistrict');
 Route::get('/getmunicipality/{data}','API\municicontroller@getmunicipality');
 Route::get('/getward/{data}','API\wardcontroller@getward');
 Route::get('/adduser/{id}/','API\UserController@adduser');
+Route::get('/yourpost/{id}/','API\postcontroller@yourpost');
 
 Route::put('/updateprofile/{id}/','API\addresscontroller@updateprofile');
 

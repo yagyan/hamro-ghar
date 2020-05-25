@@ -16,6 +16,14 @@ class postcontroller extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function yourpost($id)
+    {
+        $post=DB::table('posts')
+        ->join('propertytypes','posts.propertytype_id','=','propertytypes.id')
+        ->select('posts.*','propertytypes.name as pname')
+        ->get();
+        return $post->where('user_id',$id);    
+    }
     public function index()
     {
         //

@@ -2167,12 +2167,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   computed: Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(['allpost']),
@@ -46629,26 +46623,7 @@ var render = function() {
             ])
           }),
           0
-        ),
-        _vm._v(" "),
-        _c("div", { staticClass: "row" }, [
-          _c("div", { staticClass: "col-xl-12" }, [
-            _c("div", { staticClass: "more_property_btn text-center" }, [
-              _c(
-                "div",
-                {
-                  staticClass: "boxed-btn3-line",
-                  on: {
-                    click: function($event) {
-                      return _vm.$router.push("allproperty")
-                    }
-                  }
-                },
-                [_vm._v("More Properties")]
-              )
-            ])
-          ])
-        ])
+        )
       ]
     )
   ])
@@ -46661,7 +46636,7 @@ var staticRenderFns = [
     return _c("div", { staticClass: "row" }, [
       _c("div", { staticClass: "col-xl-12" }, [
         _c("div", { staticClass: "section_title mb-40 text-center" }, [
-          _c("h3", [_vm._v("Popular Properties")])
+          _c("h3", [_vm._v("All Properties")])
         ])
       ])
     ])

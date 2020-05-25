@@ -4,7 +4,7 @@
             <div class="row">
                 <div class="col-xl-12">
                     <div class="section_title mb-40 text-center">
-                        <h3>Popular Properties</h3>
+                        <h3>All Properties</h3>
                     </div>
                 </div>
             </div>
@@ -70,13 +70,7 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-xl-12">
-                    <div class="more_property_btn text-center">
-                        <div class="boxed-btn3-line" @click="$router.push('allproperty')">More Properties</div>
-                    </div>
-                </div>
-            </div>
+           
         </div>
     </div>
 </template>

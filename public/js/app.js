@@ -3197,6 +3197,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -47849,62 +47855,74 @@ var render = function() {
               _c("div", { staticClass: "row" }, [
                 _c("div", { staticClass: "col-md-6" }, [
                   _c("div", { staticClass: "form-group" }, [
-                    _c("div", { staticClass: "custom-control custom-switch" }, [
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.form.status,
-                            expression: "form.status"
-                          }
-                        ],
-                        staticClass: "custom-control-input",
-                        attrs: { type: "checkbox", id: "status" },
-                        domProps: {
-                          checked: Array.isArray(_vm.form.status)
-                            ? _vm._i(_vm.form.status, null) > -1
-                            : _vm.form.status
-                        },
-                        on: {
-                          change: function($event) {
-                            var $$a = _vm.form.status,
-                              $$el = $event.target,
-                              $$c = $$el.checked ? true : false
-                            if (Array.isArray($$a)) {
-                              var $$v = null,
-                                $$i = _vm._i($$a, $$v)
-                              if ($$el.checked) {
-                                $$i < 0 &&
-                                  _vm.$set(
-                                    _vm.form,
-                                    "status",
-                                    $$a.concat([$$v])
-                                  )
-                              } else {
-                                $$i > -1 &&
-                                  _vm.$set(
-                                    _vm.form,
-                                    "status",
-                                    $$a.slice(0, $$i).concat($$a.slice($$i + 1))
-                                  )
+                    _c("label", [_vm._v("Status")]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        staticClass:
+                          "switch-wrap d-flex justify-content-between"
+                      },
+                      [
+                        _c("div", { staticClass: "confirm-switch" }, [
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.form.status,
+                                expression: "form.status"
                               }
-                            } else {
-                              _vm.$set(_vm.form, "status", $$c)
+                            ],
+                            attrs: {
+                              type: "checkbox",
+                              id: "Status",
+                              checked: ""
+                            },
+                            domProps: {
+                              checked: Array.isArray(_vm.form.status)
+                                ? _vm._i(_vm.form.status, null) > -1
+                                : _vm.form.status
+                            },
+                            on: {
+                              change: function($event) {
+                                var $$a = _vm.form.status,
+                                  $$el = $event.target,
+                                  $$c = $$el.checked ? true : false
+                                if (Array.isArray($$a)) {
+                                  var $$v = null,
+                                    $$i = _vm._i($$a, $$v)
+                                  if ($$el.checked) {
+                                    $$i < 0 &&
+                                      _vm.$set(
+                                        _vm.form,
+                                        "status",
+                                        $$a.concat([$$v])
+                                      )
+                                  } else {
+                                    $$i > -1 &&
+                                      _vm.$set(
+                                        _vm.form,
+                                        "status",
+                                        $$a
+                                          .slice(0, $$i)
+                                          .concat($$a.slice($$i + 1))
+                                      )
+                                  }
+                                } else {
+                                  _vm.$set(_vm.form, "status", $$c)
+                                }
+                              }
                             }
-                          }
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c(
-                        "label",
-                        {
-                          staticClass: "custom-control-label",
-                          attrs: { for: "status" }
-                        },
-                        [_vm._v("Status")]
-                      )
-                    ])
+                          }),
+                          _vm._v(" "),
+                          _c("label", {
+                            staticClass: "custom-control-label",
+                            attrs: { for: "Status" }
+                          })
+                        ])
+                      ]
+                    )
                   ])
                 ])
               ]),
@@ -47958,7 +47976,7 @@ var render = function() {
                             { key: type.id, domProps: { value: type.id } },
                             [
                               _vm._v(
-                                "\n                                               " +
+                                "\n                                    " +
                                   _vm._s(type.name)
                               )
                             ]
@@ -48034,9 +48052,7 @@ var render = function() {
                           }
                         }
                       }),
-                      _vm._v(
-                        "Buy\n                                           "
-                      ),
+                      _vm._v("Buy\n                                "),
                       _c("br"),
                       _vm._v(" "),
                       _c("input", {
@@ -48058,9 +48074,7 @@ var render = function() {
                           }
                         }
                       }),
-                      _vm._v(
-                        "Sell\n                                           "
-                      ),
+                      _vm._v("Sell\n                                "),
                       _c("br"),
                       _vm._v(" "),
                       _c("input", {
@@ -48082,9 +48096,7 @@ var render = function() {
                           }
                         }
                       }),
-                      _vm._v(
-                        "Rent\n                                           "
-                      ),
+                      _vm._v("Rent\n                                "),
                       _c("br")
                     ])
                   ])
@@ -48128,60 +48140,74 @@ var render = function() {
                   ),
                   _vm._v(" "),
                   _c("div", { staticClass: "form-group" }, [
-                    _c("div", { staticClass: "custom-control custom-switch" }, [
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.form.negotiation,
-                            expression: "form.negotiation"
-                          }
-                        ],
-                        staticClass: "custom-control-input",
-                        attrs: { type: "checkbox", id: "customSwitches" },
-                        domProps: {
-                          checked: Array.isArray(_vm.form.negotiation)
-                            ? _vm._i(_vm.form.negotiation, null) > -1
-                            : _vm.form.negotiation
-                        },
-                        on: {
-                          change: function($event) {
-                            var $$a = _vm.form.negotiation,
-                              $$el = $event.target,
-                              $$c = $$el.checked ? true : false
-                            if (Array.isArray($$a)) {
-                              var $$v = null,
-                                $$i = _vm._i($$a, $$v)
-                              if ($$el.checked) {
-                                $$i < 0 &&
-                                  _vm.$set(
-                                    _vm.form,
-                                    "negotiation",
-                                    $$a.concat([$$v])
-                                  )
-                              } else {
-                                $$i > -1 &&
-                                  _vm.$set(
-                                    _vm.form,
-                                    "negotiation",
-                                    $$a.slice(0, $$i).concat($$a.slice($$i + 1))
-                                  )
-                              }
-                            } else {
-                              _vm.$set(_vm.form, "negotiation", $$c)
-                            }
-                          }
-                        }
-                      }),
+                    _c("div", { staticClass: "form-group" }, [
+                      _c("label", [_vm._v("Negotiation")]),
                       _vm._v(" "),
                       _c(
-                        "label",
+                        "div",
                         {
-                          staticClass: "custom-control-label",
-                          attrs: { for: "customSwitches" }
+                          staticClass:
+                            "switch-wrap d-flex justify-content-between"
                         },
-                        [_vm._v("Negotiation")]
+                        [
+                          _c("div", { staticClass: "confirm-switch" }, [
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.form.negotiation,
+                                  expression: "form.negotiation"
+                                }
+                              ],
+                              attrs: {
+                                type: "checkbox",
+                                id: "neogtiation",
+                                checked: ""
+                              },
+                              domProps: {
+                                checked: Array.isArray(_vm.form.negotiation)
+                                  ? _vm._i(_vm.form.negotiation, null) > -1
+                                  : _vm.form.negotiation
+                              },
+                              on: {
+                                change: function($event) {
+                                  var $$a = _vm.form.negotiation,
+                                    $$el = $event.target,
+                                    $$c = $$el.checked ? true : false
+                                  if (Array.isArray($$a)) {
+                                    var $$v = null,
+                                      $$i = _vm._i($$a, $$v)
+                                    if ($$el.checked) {
+                                      $$i < 0 &&
+                                        _vm.$set(
+                                          _vm.form,
+                                          "negotiation",
+                                          $$a.concat([$$v])
+                                        )
+                                    } else {
+                                      $$i > -1 &&
+                                        _vm.$set(
+                                          _vm.form,
+                                          "negotiation",
+                                          $$a
+                                            .slice(0, $$i)
+                                            .concat($$a.slice($$i + 1))
+                                        )
+                                    }
+                                  } else {
+                                    _vm.$set(_vm.form, "negotiation", $$c)
+                                  }
+                                }
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c("label", {
+                              staticClass: "custom-control-label",
+                              attrs: { for: "neogtiation" }
+                            })
+                          ])
+                        ]
                       )
                     ])
                   ])
@@ -48481,58 +48507,74 @@ var render = function() {
               _c("div", { staticClass: "row" }, [
                 _c("div", { staticClass: "col-md-4" }, [
                   _c("div", { staticClass: "form-group" }, [
-                    _c("div", { staticClass: "custom-control custom-switch" }, [
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.form.sold,
-                            expression: "form.sold"
-                          }
-                        ],
-                        staticClass: "custom-control-input",
-                        attrs: { type: "checkbox", id: "sold" },
-                        domProps: {
-                          checked: Array.isArray(_vm.form.sold)
-                            ? _vm._i(_vm.form.sold, null) > -1
-                            : _vm.form.sold
-                        },
-                        on: {
-                          change: function($event) {
-                            var $$a = _vm.form.sold,
-                              $$el = $event.target,
-                              $$c = $$el.checked ? true : false
-                            if (Array.isArray($$a)) {
-                              var $$v = null,
-                                $$i = _vm._i($$a, $$v)
-                              if ($$el.checked) {
-                                $$i < 0 &&
-                                  _vm.$set(_vm.form, "sold", $$a.concat([$$v]))
-                              } else {
-                                $$i > -1 &&
-                                  _vm.$set(
-                                    _vm.form,
-                                    "sold",
-                                    $$a.slice(0, $$i).concat($$a.slice($$i + 1))
-                                  )
+                    _c("label", [_vm._v("Sold")]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        staticClass:
+                          "switch-wrap d-flex justify-content-between"
+                      },
+                      [
+                        _c("div", { staticClass: "confirm-switch" }, [
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.form.sold,
+                                expression: "form.sold"
                               }
-                            } else {
-                              _vm.$set(_vm.form, "sold", $$c)
+                            ],
+                            attrs: {
+                              type: "checkbox",
+                              id: "sold",
+                              checked: ""
+                            },
+                            domProps: {
+                              checked: Array.isArray(_vm.form.sold)
+                                ? _vm._i(_vm.form.sold, null) > -1
+                                : _vm.form.sold
+                            },
+                            on: {
+                              change: function($event) {
+                                var $$a = _vm.form.sold,
+                                  $$el = $event.target,
+                                  $$c = $$el.checked ? true : false
+                                if (Array.isArray($$a)) {
+                                  var $$v = null,
+                                    $$i = _vm._i($$a, $$v)
+                                  if ($$el.checked) {
+                                    $$i < 0 &&
+                                      _vm.$set(
+                                        _vm.form,
+                                        "sold",
+                                        $$a.concat([$$v])
+                                      )
+                                  } else {
+                                    $$i > -1 &&
+                                      _vm.$set(
+                                        _vm.form,
+                                        "sold",
+                                        $$a
+                                          .slice(0, $$i)
+                                          .concat($$a.slice($$i + 1))
+                                      )
+                                  }
+                                } else {
+                                  _vm.$set(_vm.form, "sold", $$c)
+                                }
+                              }
                             }
-                          }
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c(
-                        "label",
-                        {
-                          staticClass: "custom-control-label",
-                          attrs: { for: "sold" }
-                        },
-                        [_vm._v("Sold")]
-                      )
-                    ])
+                          }),
+                          _vm._v(" "),
+                          _c("label", {
+                            staticClass: "custom-control-label",
+                            attrs: { for: "sold" }
+                          })
+                        ])
+                      ]
+                    )
                   ])
                 ])
               ]),

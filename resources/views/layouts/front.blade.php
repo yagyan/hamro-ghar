@@ -104,7 +104,9 @@
                                                             <router-link to="/allproperty">Property</router-link>
                                                         </li>
                                                         <li>
+                                                        @auth
                                                             <router-link to="/yourpost">Your Post</router-link>
+                                                            @endauth
                                                         </li>
                                                         <li>
                                                             <router-link to="/about">About</router-link>

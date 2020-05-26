@@ -2593,17 +2593,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-
-/* import {
-     mapGetters,
-     mapActions
- } from 'vuex'; */
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['post'],
-  //computed: mapGetters(['allpost']),
   data: function data() {
     return {
-      load: false,
+      componentKey: 0,
+      posts: [],
       properties: [{
         "title": "chundevi",
         "area": "500 sqft",
@@ -2649,20 +2645,24 @@ __webpack_require__.r(__webpack_exports__);
       }]
     };
   },
-  created: function created() {
-    console.log('Component mounted.'); //this.fetchpost();
+  mounted: function mounted() {
+    console.log('Component mounted.');
+    this.fetchpost();
   },
-  methods: {//...mapActions(['fetchpost']),
+  methods: {
+    forceRerender: function forceRerender() {
+      this.componentKey += 1;
+    },
+    fetchpost: function fetchpost() {
+      var _this = this;
 
-    /*loadproperty() {
-        axios.get('api/post')
-            .then(({
-                data
-            }) => {
-                this.post = data;
-                this.load= true;
-             })
-    },*/
+      axios.get('api/post').then(function (_ref) {
+        var data = _ref.data;
+        _this.posts = data;
+
+        _this.forceRerender();
+      });
+    }
   }
 });
 
@@ -47609,7 +47609,7 @@ var render = function() {
           _c(
             "div",
             { staticClass: "home_details_active owl-carousel" },
-            _vm._l(_vm.post, function(prop) {
+            _vm._l(_vm.posts, function(prop) {
               return _c("div", { key: prop.id }, [
                 _c("div", { staticClass: "single_details" }, [
                   _c("div", { staticClass: "row" }, [
@@ -47618,7 +47618,7 @@ var render = function() {
                         _c("div", { staticClass: "modern_home_info_inner" }, [
                           _c("span", { staticClass: "for_sale" }, [
                             _vm._v(
-                              "\n                                                For Sale\n                                            "
+                              "\n                                                     For Sale\n                                                 "
                             )
                           ]),
                           _vm._v(" "),
@@ -47740,7 +47740,7 @@ var render = function() {
       _vm._v(" "),
       _c("popularity"),
       _vm._v(" "),
-      _c("home-details", { attrs: { post: _vm.allpost } }),
+      _c("home-details"),
       _vm._v(" "),
       _c("counter"),
       _vm._v(" "),

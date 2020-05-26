@@ -2,7 +2,7 @@
 <div>
 <slider></slider>
 <popularity></popularity>
-<home-details v-bind:post='allpost'></home-details>
+<home-details></home-details>
 <counter></counter>
 <testimonial></testimonial>
 <agents></agents>

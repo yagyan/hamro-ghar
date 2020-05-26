@@ -48866,7 +48866,7 @@ var render = function() {
                           _vm._l(_vm.states, function(state) {
                             return _c(
                               "option",
-                              { domProps: { value: state.id } },
+                              { key: state.id, domProps: { value: state.id } },
                               [_vm._v(_vm._s(state.name))]
                             )
                           })
@@ -48922,7 +48922,10 @@ var render = function() {
                           _vm._l(_vm.districts, function(district) {
                             return _c(
                               "option",
-                              { domProps: { value: district.id } },
+                              {
+                                key: district.id,
+                                domProps: { value: district.id }
+                              },
                               [_vm._v(_vm._s(district.name))]
                             )
                           })
@@ -48978,7 +48981,10 @@ var render = function() {
                           _vm._l(_vm.municipalities, function(municipality) {
                             return _c(
                               "option",
-                              { domProps: { value: municipality.id } },
+                              {
+                                key: municipality.id,
+                                domProps: { value: municipality.id }
+                              },
                               [_vm._v(_vm._s(municipality.name))]
                             )
                           })
@@ -49031,7 +49037,7 @@ var render = function() {
                           _vm._l(_vm.wards, function(ward) {
                             return _c(
                               "option",
-                              { domProps: { value: ward.id } },
+                              { key: ward.id, domProps: { value: ward.id } },
                               [_vm._v(_vm._s(ward.name))]
                             )
                           })
@@ -52908,7 +52914,7 @@ var render = function() {
                           _vm._l(_vm.states, function(state) {
                             return _c(
                               "option",
-                              { domProps: { value: state.id } },
+                              { key: state.id, domProps: { value: state.id } },
                               [_vm._v(_vm._s(state.name))]
                             )
                           })
@@ -52964,7 +52970,10 @@ var render = function() {
                           _vm._l(_vm.districts, function(district) {
                             return _c(
                               "option",
-                              { domProps: { value: district.id } },
+                              {
+                                key: district.id,
+                                domProps: { value: district.id }
+                              },
                               [_vm._v(_vm._s(district.name))]
                             )
                           })
@@ -53017,7 +53026,10 @@ var render = function() {
                           _vm._l(_vm.municipalities, function(municipality) {
                             return _c(
                               "option",
-                              { domProps: { value: municipality.id } },
+                              {
+                                key: municipality.id,
+                                domProps: { value: municipality.id }
+                              },
                               [_vm._v(_vm._s(municipality.name))]
                             )
                           })

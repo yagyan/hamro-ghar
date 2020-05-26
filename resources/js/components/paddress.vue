@@ -6,7 +6,7 @@
                 <div class="card-header">
                   <h3 class="card-title">Ward</h3>
                       <div class="card-tools">
-                          <button class="btn btn-primary"@click="openmodal">Add New <i class="fas fa-ward-plus fa-fw"></i></button>
+                          <button class="btn btn-primary" @click="openmodal">Add New <i class="fas fa-ward-plus fa-fw"></i></button>
                       </div>
                     </div>
                 <!-- /.card-header -->
@@ -68,28 +68,28 @@
           <label>State</label>
           <select class="form-control input-lg" style="width: 100%;" v-model="form.state_id" @change="fetchdistrict" >
             <option value="">Select State</option>
-            <option v-for="state in states" :value="state.id">{{ state.name }}</option>
+            <option v-for="state in states" :key="state.id" :value="state.id">{{ state.name }}</option>
           </select>
         </div>
         <div class="form-group">
           <label>District</label>
           <select class="form-control input-lg" style="width: 100%;" v-model="form.district_id" @change="fetchmunicipality" >
             <option value="" >Select District</option>
-            <option v-for="district in districts" :value="district.id">{{ district.name }}</option>
+            <option v-for="district in districts" :key="district.id" :value="district.id">{{ district.name }}</option>
           </select>
         </div>
          <div class="form-group">
           <label>Municipality</label>
           <select class="form-control input-lg" style="width: 100%;" v-model="form.municipality_id" @change="fetchward" >
             <option value="" >Select Municipality</option>
-            <option v-for="municipality in municipalities" :value="municipality.id">{{ municipality.name }}</option>
+            <option v-for="municipality in municipalities" :key="municipality.id" :value="municipality.id">{{ municipality.name }}</option>
           </select>
         </div>
         <div class="form-group">
          <label>Ward</label>
          <select class="form-control input-lg" style="width: 100%;" v-model="form.ward_id">
            <option value="" >Select Ward</option>
-           <option v-for="ward in wards" :value="ward.id">{{ ward.name }}</option>
+           <option v-for="ward in wards" :key="ward.id" :value="ward.id">{{ ward.name }}</option>
          </select>
        </div>
   </div>

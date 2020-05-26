@@ -6,7 +6,7 @@
                 <div class="card-header">
                   <h3 class="card-title">State</h3>
                       <div class="card-tools">
-                          <button class="btn btn-primary"@click="openmodal">Add New <i class="fas fa-user-plus fa-fw"></i></button>
+                          <button class="btn btn-primary" @click="openmodal">Add New <i class="fas fa-user-plus fa-fw"></i></button>
                       </div>
                     </div>
                 <!-- /.card-header -->
@@ -22,7 +22,7 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr v-for="state in states":key="state.id">
+                      <tr v-for="state in states" :key="state.id">
                         <td>{{state.id}}</td>
                         <td>{{state.name}}</td>
 

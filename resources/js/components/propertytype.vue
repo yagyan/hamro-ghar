@@ -6,7 +6,7 @@
                 <div class="card-header">
                   <h3 class="card-title">Property Type</h3>
                       <div class="card-tools">
-                          <button class="btn btn-primary"@click="openmodal">Add New <i class="fas fa-user-plus fa-fw"></i></button>
+                          <button class="btn btn-primary" @click="openmodal">Add New <i class="fas fa-user-plus fa-fw"></i></button>
                       </div>
                     </div>
                 <!-- /.card-header -->
@@ -22,7 +22,7 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr v-for="type in types":key="type.id">
+                      <tr v-for="type in types" :key="type.id">
                         <td>{{type.id}}</td>
                         <td>{{type.name}}</td>
 

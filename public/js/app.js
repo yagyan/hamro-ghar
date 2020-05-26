@@ -5818,11 +5818,11 @@ __webpack_require__.r(__webpack_exports__);
   },
   created: function created() {
     console.log('Component mounted.');
-    this.fetchpost();
+    this.fetchyourpost();
     this.scrollToTop();
   },
   methods: {
-    fetchpost: function fetchpost() {
+    fetchyourpost: function fetchyourpost() {
       var _this = this;
 
       axios.get('api/yourpost/' + this.userid).then(function (_ref) {

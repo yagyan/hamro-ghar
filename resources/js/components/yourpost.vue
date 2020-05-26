@@ -82,12 +82,9 @@
 </template>
 
 <script>
-    import {
-        mapGetters,
-        mapActions
-    } from 'vuex';
+    
     export default {
-        computed: mapGetters(['allpost']),
+       
         
         data() {
             return {
@@ -100,7 +97,7 @@
             console.log('Component mounted.')
             this.fetchyourpost();
             this.scrollToTop();
-            this.fetchpost();
+            
         },
         methods: {
             fetchyourpost(){

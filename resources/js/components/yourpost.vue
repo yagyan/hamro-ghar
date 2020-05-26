@@ -73,7 +73,7 @@
             <div class="row">
                 <div class="col-xl-12">
                     <div class="more_property_btn text-center">
-                        <div class="boxed-btn3-line" @click="$router.push('allproperty')">More Properties</div>
+                        <div class="boxed-btn3-line" @click="$router.push('allproperty')">All Properties</div>
                     </div>
                 </div>
             </div>

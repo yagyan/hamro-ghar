@@ -53475,7 +53475,7 @@ var render = function() {
                     }
                   }
                 },
-                [_vm._v("More Properties")]
+                [_vm._v("All Properties")]
               )
             ])
           ])

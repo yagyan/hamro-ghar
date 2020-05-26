@@ -58,7 +58,35 @@
                                                 <strong><i class=""></i> Permanent Address</strong>
                                                 <a href="#" @click.prevent="openaddress"> <i
                                                         class="fa fa-edit blue"></i></a>
-                                                <p class="text-muted">sdasda</p>
+                                                <table class="table table-hover text-nowrap">
+                                                    <thead>
+                                                        <tr>
+                                                            
+                                                            <th>
+                                                                State Name
+                                                            </th>
+                                                            <th>
+                                                                District Name
+                                                            </th>
+                                                            <th>
+                                                                Municipality Name
+                                                            </th>
+                                                            <th>
+                                                                Ward Name
+                                                            </th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr v-for="add in address" :key="add.id">
+                                                            
+                                                            <td>{{add.sname}}</td>
+                                                            <td>{{add.disname}}</td>
+                                                            <td>{{add.municname}}</td>
+                                                            <td>{{add.wname}}</td>
+                                                            
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
                                                 <hr>
                                                 <strong><i class=""></i> Temporary Address</strong>
                                                 <p class="text-muted">sdasda</p>
@@ -159,7 +187,8 @@
                                                         <select class="form-control input-lg" style="width: 100%;"
                                                             v-model="form.state_id" @change="fetchdistrict">
                                                             <option value="">Select State</option>
-                                                            <option v-for="state in states" :key="state.id" :value="state.id">{{ state.name }}</option>
+                                                            <option v-for="state in states" :key="state.id"
+                                                                :value="state.id">{{ state.name }}</option>
                                                         </select>
                                                     </div>
                                                     <div class="form-group">
@@ -167,7 +196,8 @@
                                                         <select class="form-control input-lg" style="width: 100%;"
                                                             v-model="form.district_id" @change="fetchmunicipality">
                                                             <option value="">Select District</option>
-                                                            <option v-for="district in districts"  :key="district.id" :value="district.id">  {{ district.name }}</option>
+                                                            <option v-for="district in districts" :key="district.id"
+                                                                :value="district.id"> {{ district.name }}</option>
                                                         </select>
                                                     </div>
                                                     <div class="form-group">
@@ -175,7 +205,9 @@
                                                         <select class="form-control input-lg" style="width: 100%;"
                                                             v-model="form.municipality_id" @change="fetchward">
                                                             <option value="">Select Municipality</option>
-                                                            <option v-for="municipality in municipalities" :key="municipality.id" :value="municipality.id">{{ municipality.name }}
+                                                            <option v-for="municipality in municipalities"
+                                                                :key="municipality.id" :value="municipality.id">
+                                                                {{ municipality.name }}
                                                             </option>
                                                         </select>
                                                     </div>
@@ -184,7 +216,8 @@
                                                         <select class="form-control input-lg" style="width: 100%;"
                                                             v-model="form.ward_id">
                                                             <option value="">Select Ward</option>
-                                                            <option v-for="ward in wards" :key="ward.id" :value="ward.id"> {{ ward.name }}</option>
+                                                            <option v-for="ward in wards" :key="ward.id"
+                                                                :value="ward.id"> {{ ward.name }}</option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -222,6 +255,7 @@
                 districts: [],
                 municipalities: [],
                 wards: [],
+                address: [],
                 form: new Form({
                     username: '',
                     useremail: '',
@@ -245,6 +279,7 @@
             this.add();
             this.loaduser();
             this.fetchstate();
+            this.loadaddress();
         },
         methods: {
             loaduser() {
@@ -252,6 +287,12 @@
                     .then(({
                         data
                     }) => (this.userinfo = data))
+            },
+            loadaddress() {
+                this.form.get('api/address/' + this.userid)
+                    .then(({
+                        data
+                    }) => (this.address = data))
             },
             add() {
                 this.form.get("api/adduser/" + this.userid)
@@ -328,5 +369,4 @@
             },
         }
     }
-
 </script>

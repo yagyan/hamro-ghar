@@ -5069,6 +5069,39 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -5078,6 +5111,7 @@ __webpack_require__.r(__webpack_exports__);
       districts: [],
       municipalities: [],
       wards: [],
+      address: [],
       form: new Form({
         username: '',
         useremail: '',
@@ -5101,6 +5135,7 @@ __webpack_require__.r(__webpack_exports__);
     this.add();
     this.loaduser();
     this.fetchstate();
+    this.loadaddress();
   },
   methods: {
     loaduser: function loaduser() {
@@ -5111,6 +5146,14 @@ __webpack_require__.r(__webpack_exports__);
         return _this.userinfo = data;
       });
     },
+    loadaddress: function loadaddress() {
+      var _this2 = this;
+
+      this.form.get('api/address/' + this.userid).then(function (_ref2) {
+        var data = _ref2.data;
+        return _this2.address = data;
+      });
+    },
     add: function add() {
       this.form.get("api/adduser/" + this.userid);
     },
@@ -5119,10 +5162,10 @@ __webpack_require__.r(__webpack_exports__);
       this.form.fill(userinfo);
     },
     editdetail: function editdetail() {
-      var _this2 = this;
+      var _this3 = this;
 
       this.form.put('/api/userinfo/' + this.form.id).then(function () {
-        _this2.$Progress.start();
+        _this3.$Progress.start();
 
         $('#modal').modal('hide');
         Swal.fire({
@@ -5132,7 +5175,7 @@ __webpack_require__.r(__webpack_exports__);
           timer: 3000
         });
 
-        _this2.$Progress.finish();
+        _this3.$Progress.finish();
       });
     },
     //Address functions
@@ -5142,13 +5185,13 @@ __webpack_require__.r(__webpack_exports__);
       $('#address').modal('show');
     },
     addaddress: function addaddress(user) {
-      var _this3 = this;
+      var _this4 = this;
 
-      this.form.put('api/updateprofile/' + user).then(function (_ref2) {
-        var data = _ref2.data;
+      this.form.put('api/updateprofile/' + user).then(function (_ref3) {
+        var data = _ref3.data;
         $('#Modal').modal('hide');
 
-        _this3.$Progress.start();
+        _this4.$Progress.start();
 
         Swal.fire({
           icon: 'success',
@@ -5157,41 +5200,41 @@ __webpack_require__.r(__webpack_exports__);
           timer: 3000
         });
 
-        _this3.loadaddress();
+        _this4.loadaddress();
 
-        _this3.$Progress.finish();
+        _this4.$Progress.finish();
       });
     },
     fetchstate: function fetchstate() {
-      var _this4 = this;
+      var _this5 = this;
 
-      axios.get('api/state').then(function (_ref3) {
-        var data = _ref3.data;
-        return _this4.states = data;
+      axios.get('api/state').then(function (_ref4) {
+        var data = _ref4.data;
+        return _this5.states = data;
       });
     },
     fetchdistrict: function fetchdistrict() {
-      var _this5 = this;
+      var _this6 = this;
 
-      axios.get('api/getdistrict/' + this.form.state_id).then(function (_ref4) {
-        var data = _ref4.data;
-        return _this5.districts = data;
+      axios.get('api/getdistrict/' + this.form.state_id).then(function (_ref5) {
+        var data = _ref5.data;
+        return _this6.districts = data;
       });
     },
     fetchmunicipality: function fetchmunicipality() {
-      var _this6 = this;
+      var _this7 = this;
 
-      axios.get('api/getmunicipality/' + this.form.district_id).then(function (_ref5) {
-        var data = _ref5.data;
-        return _this6.municipalities = data;
+      axios.get('api/getmunicipality/' + this.form.district_id).then(function (_ref6) {
+        var data = _ref6.data;
+        return _this7.municipalities = data;
       });
     },
     fetchward: function fetchward() {
-      var _this7 = this;
+      var _this8 = this;
 
-      axios.get('api/getward/' + this.form.municipality_id).then(function (_ref6) {
-        var data = _ref6.data;
-        return _this7.wards = data;
+      axios.get('api/getward/' + this.form.municipality_id).then(function (_ref7) {
+        var data = _ref7.data;
+        return _this8.wards = data;
       });
     }
   }
@@ -51443,24 +51486,36 @@ var render = function() {
                               [_c("i", { staticClass: "fa fa-edit blue" })]
                             ),
                             _vm._v(" "),
-                            _c("p", { staticClass: "text-muted" }, [
-                              _vm._v("sdasda")
-                            ]),
-                            _vm._v(" "),
-                            _c("hr"),
-                            _vm._v(" "),
-                            _vm._m(7, true),
-                            _vm._v(" "),
-                            _c("p", { staticClass: "text-muted" }, [
-                              _vm._v("sdasda")
-                            ]),
+                            _c(
+                              "table",
+                              { staticClass: "table table-hover text-nowrap" },
+                              [
+                                _vm._m(7, true),
+                                _vm._v(" "),
+                                _c(
+                                  "tbody",
+                                  _vm._l(_vm.address, function(add) {
+                                    return _c("tr", { key: add.id }, [
+                                      _c("td", [_vm._v(_vm._s(add.sname))]),
+                                      _vm._v(" "),
+                                      _c("td", [_vm._v(_vm._s(add.disname))]),
+                                      _vm._v(" "),
+                                      _c("td", [_vm._v(_vm._s(add.municname))]),
+                                      _vm._v(" "),
+                                      _c("td", [_vm._v(_vm._s(add.wname))])
+                                    ])
+                                  }),
+                                  0
+                                )
+                              ]
+                            ),
                             _vm._v(" "),
                             _c("hr"),
                             _vm._v(" "),
                             _vm._m(8, true),
                             _vm._v(" "),
                             _c("p", { staticClass: "text-muted" }, [
-                              _vm._v(_vm._s(user.phone))
+                              _vm._v("sdasda")
                             ]),
                             _vm._v(" "),
                             _c("hr"),
@@ -51468,12 +51523,20 @@ var render = function() {
                             _vm._m(9, true),
                             _vm._v(" "),
                             _c("p", { staticClass: "text-muted" }, [
-                              _vm._v(_vm._s(user.mobile))
+                              _vm._v(_vm._s(user.phone))
                             ]),
                             _vm._v(" "),
                             _c("hr"),
                             _vm._v(" "),
                             _vm._m(10, true),
+                            _vm._v(" "),
+                            _c("p", { staticClass: "text-muted" }, [
+                              _vm._v(_vm._s(user.mobile))
+                            ]),
+                            _vm._v(" "),
+                            _c("hr"),
+                            _vm._v(" "),
+                            _vm._m(11, true),
                             _vm._v(" "),
                             _c("p", { staticClass: "text-muted" }, [
                               _vm._v(_vm._s(user.citizen_no))
@@ -51521,7 +51584,7 @@ var render = function() {
                         },
                         [
                           _c("div", { staticClass: "modal-content" }, [
-                            _vm._m(11, true),
+                            _vm._m(12, true),
                             _vm._v(" "),
                             _c(
                               "form",
@@ -51726,7 +51789,7 @@ var render = function() {
                                   )
                                 ]),
                                 _vm._v(" "),
-                                _vm._m(12, true)
+                                _vm._m(13, true)
                               ]
                             )
                           ])
@@ -51795,7 +51858,7 @@ var render = function() {
                                 ]
                               ),
                               _vm._v(" "),
-                              _vm._m(13, true)
+                              _vm._m(14, true)
                             ]),
                             _vm._v(" "),
                             _c(
@@ -51936,7 +51999,7 @@ var render = function() {
                                             },
                                             [
                                               _vm._v(
-                                                "  " + _vm._s(district.name)
+                                                " " + _vm._s(district.name)
                                               )
                                             ]
                                           )
@@ -52009,7 +52072,8 @@ var render = function() {
                                             },
                                             [
                                               _vm._v(
-                                                _vm._s(municipality.name) +
+                                                "\n                                                            " +
+                                                  _vm._s(municipality.name) +
                                                   "\n                                                        "
                                               )
                                             ]
@@ -52215,6 +52279,38 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("strong", [_c("i", {}), _vm._v(" Permanent Address")])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", [
+          _vm._v(
+            "\n                                                            State Name\n                                                        "
+          )
+        ]),
+        _vm._v(" "),
+        _c("th", [
+          _vm._v(
+            "\n                                                            District Name\n                                                        "
+          )
+        ]),
+        _vm._v(" "),
+        _c("th", [
+          _vm._v(
+            "\n                                                            Municipality Name\n                                                        "
+          )
+        ]),
+        _vm._v(" "),
+        _c("th", [
+          _vm._v(
+            "\n                                                            Ward Name\n                                                        "
+          )
+        ])
+      ])
+    ])
   },
   function() {
     var _vm = this

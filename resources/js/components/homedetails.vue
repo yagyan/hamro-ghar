@@ -63,7 +63,7 @@
 
         data() {
             return {
-                componentKey: 0,
+                //componentKey: 0,
                 posts: [],
                 properties: [{
                         "title": "chundevi",

@@ -2598,7 +2598,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      componentKey: 0,
+      //componentKey: 0,
       posts: [],
       properties: [{
         "title": "chundevi",

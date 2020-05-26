@@ -1,44 +1,63 @@
 <template>
-  <div class="footer_widget">
-                                <div class="footer_logo">
-                                    <a href="#">
-                                        <img src="img/footer_logo.png" alt="">
-                                    </a>
-                                </div>
-                                <p>
-                                    <a href="#">conbusi@support.com</a> <br>
-                                    +10 873 672 6782 <br>
-                                    600/D, Green road, NewYork
-                                </p>
-                                <div class="socail_links">
-                                    <ul>
-                                        <li>
-                                            <a href="#">
-                                                <i class="ti-facebook"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="ti-twitter-alt"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-instagram"></i>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-
-                            </div>
+    <div class="container-fluid" style="padding-top:150px">
+        <div class="row">
+            <div class="col-12">
+                <h2 class="contact-title">Get in Touch</h2>
+            </div>
+            <div class="col-lg-8">
+                <form class="form-contact contact_form" action="contact_process.php" method="post" id="contactForm"
+                    novalidate="novalidate">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="form-group"><textarea class="form-control w-100" name="message" id="message"
+                                    cols="30" rows="9" onfocus="this.placeholder = ''"
+                                    onblur="this.placeholder = 'Enter Message'" placeholder=" Name"></textarea></div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group"><input class="form-control valid" name="name" id="name" type="text"
+                                    onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter your name'"
+                                    placeholder="Enter your name"></div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group"><input class="form-control valid" name="email" id="email"
+                                    type="email" onfocus="this.placeholder = ''"
+                                    onblur="this.placeholder = 'Enter email address'" placeholder="Email"></div>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-group"><input class="form-control" name="subject" id="subject" type="text"
+                                    onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Subject'"
+                                    placeholder="Enter Subject"></div>
+                        </div>
+                    </div>
+                    <div class="form-group mt-3"><button type="submit"
+                            class="button button-contactForm boxed-btn">Send</button></div>
+                </form>
+            </div>
+            <div class="col-lg-3 offset-lg-1">
+                <div class="media contact-info"><span class="contact-info__icon"><i class="ti-home"></i></span>
+                    <div class="media-body">
+                        <h3>Sadobato,
+                           Lalitpur</h3>
+                        
+                    </div>
+                </div>
+                <div class="media contact-info"><span class="contact-info__icon"><i class="ti-tablet"></i></span>
+                    <div class="media-body">
+                        <h3>+977 1234567</h3>
+                        <p>Mon to Fri 9am to 6pm</p>
+                    </div>
+                </div>
+                <div class="media contact-info"><span class="contact-info__icon"><i class="ti-email"></i></span>
+                    <div class="media-body">
+                        <h3>Hamroghar@gmail.com</h3>
+                        <p>Send us your query anytime !</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </template>
-
 <script>
-export default {
-
-}
+    export default {}
 </script>
-
-<style>
-
-</style>
+<style></style>

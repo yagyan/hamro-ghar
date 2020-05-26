@@ -1970,6 +1970,8 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _components_testimonial_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/testimonial.vue */ "./resources/js/components/testimonial.vue");
+/* harmony import */ var _components_agents_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/agents.vue */ "./resources/js/components/agents.vue");
 //
 //
 //
@@ -1984,9 +1986,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
+
+
 /* harmony default export */ __webpack_exports__["default"] = ({
+  components: {
+    'testimonial': _components_testimonial_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
+    'agents': _components_agents_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
+  },
   mounted: function mounted() {
     console.log('Component mounted.');
   }
@@ -2198,6 +2204,30 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -46389,28 +46419,23 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c(
+    "div",
+    { staticStyle: { "padding-top": "150px" } },
+    [_vm._m(0), _vm._v(" "), _c("agents"), _vm._v(" "), _c("testimonial")],
+    1
+  )
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "container" }, [
-      _c("div", { staticClass: "row justify-content-center" }, [
-        _c("div", { staticClass: "col-md-8" }, [
-          _c("div", { staticClass: "card" }, [
-            _c("div", { staticClass: "card-header" }, [
-              _vm._v("Example Component")
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "card-body" }, [
-              _vm._v(
-                "\n                    I'm an example component.\n                "
-              )
-            ])
-          ])
-        ])
+    return _c("div", { staticClass: "section_title mb-40 text-center" }, [
+      _c("h3", [
+        _vm._v(
+          "\n                          About Our Team\n                        "
+        )
       ])
     ])
   }
@@ -46721,46 +46746,150 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "footer_widget" }, [
-      _c("div", { staticClass: "footer_logo" }, [
-        _c("a", { attrs: { href: "#" } }, [
-          _c("img", { attrs: { src: "img/footer_logo.png", alt: "" } })
-        ])
-      ]),
-      _vm._v(" "),
-      _c("p", [
-        _c("a", { attrs: { href: "#" } }, [_vm._v("conbusi@support.com")]),
-        _vm._v(" "),
-        _c("br"),
-        _vm._v("\n                                  +10 873 672 6782 "),
-        _c("br"),
-        _vm._v(
-          "\n                                  600/D, Green road, NewYork\n                              "
-        )
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "socail_links" }, [
-        _c("ul", [
-          _c("li", [
-            _c("a", { attrs: { href: "#" } }, [
-              _c("i", { staticClass: "ti-facebook" })
-            ])
+    return _c(
+      "div",
+      {
+        staticClass: "container-fluid",
+        staticStyle: { "padding-top": "150px" }
+      },
+      [
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-12" }, [
+            _c("h2", { staticClass: "contact-title" }, [_vm._v("Get in Touch")])
           ]),
           _vm._v(" "),
-          _c("li", [
-            _c("a", { attrs: { href: "#" } }, [
-              _c("i", { staticClass: "ti-twitter-alt" })
-            ])
+          _c("div", { staticClass: "col-lg-8" }, [
+            _c(
+              "form",
+              {
+                staticClass: "form-contact contact_form",
+                attrs: {
+                  action: "contact_process.php",
+                  method: "post",
+                  id: "contactForm",
+                  novalidate: "novalidate"
+                }
+              },
+              [
+                _c("div", { staticClass: "row" }, [
+                  _c("div", { staticClass: "col-12" }, [
+                    _c("div", { staticClass: "form-group" }, [
+                      _c("textarea", {
+                        staticClass: "form-control w-100",
+                        attrs: {
+                          name: "message",
+                          id: "message",
+                          cols: "30",
+                          rows: "9",
+                          onfocus: "this.placeholder = ''",
+                          onblur: "this.placeholder = 'Enter Message'",
+                          placeholder: " Name"
+                        }
+                      })
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-sm-6" }, [
+                    _c("div", { staticClass: "form-group" }, [
+                      _c("input", {
+                        staticClass: "form-control valid",
+                        attrs: {
+                          name: "name",
+                          id: "name",
+                          type: "text",
+                          onfocus: "this.placeholder = ''",
+                          onblur: "this.placeholder = 'Enter your name'",
+                          placeholder: "Enter your name"
+                        }
+                      })
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-sm-6" }, [
+                    _c("div", { staticClass: "form-group" }, [
+                      _c("input", {
+                        staticClass: "form-control valid",
+                        attrs: {
+                          name: "email",
+                          id: "email",
+                          type: "email",
+                          onfocus: "this.placeholder = ''",
+                          onblur: "this.placeholder = 'Enter email address'",
+                          placeholder: "Email"
+                        }
+                      })
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-12" }, [
+                    _c("div", { staticClass: "form-group" }, [
+                      _c("input", {
+                        staticClass: "form-control",
+                        attrs: {
+                          name: "subject",
+                          id: "subject",
+                          type: "text",
+                          onfocus: "this.placeholder = ''",
+                          onblur: "this.placeholder = 'Enter Subject'",
+                          placeholder: "Enter Subject"
+                        }
+                      })
+                    ])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group mt-3" }, [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "button button-contactForm boxed-btn",
+                      attrs: { type: "submit" }
+                    },
+                    [_vm._v("Send")]
+                  )
+                ])
+              ]
+            )
           ]),
           _vm._v(" "),
-          _c("li", [
-            _c("a", { attrs: { href: "#" } }, [
-              _c("i", { staticClass: "fa fa-instagram" })
+          _c("div", { staticClass: "col-lg-3 offset-lg-1" }, [
+            _c("div", { staticClass: "media contact-info" }, [
+              _c("span", { staticClass: "contact-info__icon" }, [
+                _c("i", { staticClass: "ti-home" })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "media-body" }, [
+                _c("h3", [_vm._v("Sadobato,\n                       Lalitpur")])
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "media contact-info" }, [
+              _c("span", { staticClass: "contact-info__icon" }, [
+                _c("i", { staticClass: "ti-tablet" })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "media-body" }, [
+                _c("h3", [_vm._v("+977 1234567")]),
+                _vm._v(" "),
+                _c("p", [_vm._v("Mon to Fri 9am to 6pm")])
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "media contact-info" }, [
+              _c("span", { staticClass: "contact-info__icon" }, [
+                _c("i", { staticClass: "ti-email" })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "media-body" }, [
+                _c("h3", [_vm._v("Hamroghar@gmail.com")]),
+                _vm._v(" "),
+                _c("p", [_vm._v("Send us your query anytime !")])
+              ])
             ])
           ])
         ])
-      ])
-    ])
+      ]
+    )
   }
 ]
 render._withStripped = true

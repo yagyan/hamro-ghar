@@ -1,21 +1,25 @@
 <template>
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">Example Component</div>
-
-                    <div class="card-body">
-                        I'm an example component.
-                    </div>
-                </div>
-            </div>
-        </div>
+    <div style="padding-top:150px">
+         
+                        <div class="section_title mb-40 text-center">
+                            <h3>
+                              About Our Team
+                            </h3>
+                        </div>
+                   
+        <agents></agents>
+        <testimonial></testimonial>
     </div>
 </template>
 
 <script>
+import test from "../components/testimonial.vue"
+import agents from "../components/agents.vue"
     export default {
+        components:{   
+            'testimonial': test,            
+            'agents': agents,
+        },
         mounted() {
             console.log('Component mounted.')
         }

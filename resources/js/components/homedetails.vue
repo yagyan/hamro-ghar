@@ -1,6 +1,6 @@
 <template>
     <!-- home_details  -->
-    <component-to-re-render :key="componentKey">
+   <!-- <component-to-re-render :key="componentKey"> -->
     <div class="home_details">
         <div class="container">
             <div class="row">
@@ -50,7 +50,7 @@
             </div>
         </div>
     </div>
-    </component-to-re-render> 
+    <!--</component-to-re-render> -->
     <!-- /home_details  -->
 </template>
 

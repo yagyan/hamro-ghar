@@ -47589,126 +47589,116 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("component-to-re-render", { key: _vm.componentKey }, [
-    _c("div", { staticClass: "home_details" }, [
-      _c("div", { staticClass: "container" }, [
-        _c("div", { staticClass: "row" }, [
-          _c(
-            "div",
-            { staticClass: "col-xl-12" },
-            [
-              _c(
-                "carousel",
-                { attrs: { items: 1, autoplay: true, loop: true, nav: false } },
-                _vm._l(_vm.posts.slice(0, 4), function(prop) {
-                  return _c("div", { key: prop.id }, [
-                    _c("div", { staticClass: "single_details" }, [
-                      _c("div", { staticClass: "row" }, [
-                        _c("div", { staticClass: "col-xl-6 col-md-6" }, [
-                          _c("div", { staticClass: "modern_home_info" }, [
-                            _c(
-                              "div",
-                              { staticClass: "modern_home_info_inner" },
-                              [
-                                _c("span", { staticClass: "for_sale" }, [
-                                  _vm._v(
-                                    "\n                                                For Sale\n                                            "
-                                  )
-                                ]),
+  return _c("div", { staticClass: "home_details" }, [
+    _c("div", { staticClass: "container" }, [
+      _c("div", { staticClass: "row" }, [
+        _c(
+          "div",
+          { staticClass: "col-xl-12" },
+          [
+            _c(
+              "carousel",
+              { attrs: { items: 1, autoplay: true, loop: true, nav: false } },
+              _vm._l(_vm.posts.slice(0, 4), function(prop) {
+                return _c("div", { key: prop.id }, [
+                  _c("div", { staticClass: "single_details" }, [
+                    _c("div", { staticClass: "row" }, [
+                      _c("div", { staticClass: "col-xl-6 col-md-6" }, [
+                        _c("div", { staticClass: "modern_home_info" }, [
+                          _c("div", { staticClass: "modern_home_info_inner" }, [
+                            _c("span", { staticClass: "for_sale" }, [
+                              _vm._v(
+                                "\n                                                 For Sale\n                                             "
+                              )
+                            ]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "info_header" }, [
+                              _c("h3", [_vm._v(_vm._s(prop.title))]),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "popular_pro d-flex" }, [
+                                _c("img", {
+                                  attrs: {
+                                    src: "img/svg_icon/location.svg",
+                                    alt: ""
+                                  }
+                                }),
                                 _vm._v(" "),
-                                _c("div", { staticClass: "info_header" }, [
-                                  _c("h3", [_vm._v(_vm._s(prop.title))]),
+                                _c("span", [_vm._v("Popular Properties")])
+                              ])
+                            ]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "info_content" }, [
+                              _c("ul", [
+                                _c("li", [
+                                  _c("img", {
+                                    attrs: {
+                                      src: "img/svg_icon/square.svg",
+                                      alt: ""
+                                    }
+                                  }),
                                   _vm._v(" "),
-                                  _c(
-                                    "div",
-                                    { staticClass: "popular_pro d-flex" },
-                                    [
-                                      _c("img", {
-                                        attrs: {
-                                          src: "img/svg_icon/location.svg",
-                                          alt: ""
-                                        }
-                                      }),
-                                      _vm._v(" "),
-                                      _c("span", [_vm._v("Popular Properties")])
-                                    ]
-                                  )
+                                  _c("span", [_vm._v(_vm._s(prop.area))])
                                 ]),
                                 _vm._v(" "),
-                                _c("div", { staticClass: "info_content" }, [
-                                  _c("ul", [
-                                    _c("li", [
-                                      _c("img", {
-                                        attrs: {
-                                          src: "img/svg_icon/square.svg",
-                                          alt: ""
-                                        }
-                                      }),
-                                      _vm._v(" "),
-                                      _c("span", [_vm._v(_vm._s(prop.area))])
-                                    ]),
-                                    _vm._v(" "),
-                                    _c("li", [
-                                      _c("img", {
-                                        attrs: {
-                                          src: "img/svg_icon/bed.svg",
-                                          alt: ""
-                                        }
-                                      }),
-                                      _vm._v(" "),
-                                      _c("span", [_vm._v(_vm._s(prop.bed))])
-                                    ]),
-                                    _vm._v(" "),
-                                    _c("li", [
-                                      _c("img", {
-                                        attrs: {
-                                          src: "img/svg_icon/bath.svg",
-                                          alt: ""
-                                        }
-                                      }),
-                                      _vm._v(" "),
-                                      _c("span", [_vm._v(_vm._s(prop.bath))])
-                                    ])
+                                _c("li", [
+                                  _c("img", {
+                                    attrs: {
+                                      src: "img/svg_icon/bed.svg",
+                                      alt: ""
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("span", [_vm._v(_vm._s(prop.bed))])
+                                ]),
+                                _vm._v(" "),
+                                _c("li", [
+                                  _c("img", {
+                                    attrs: {
+                                      src: "img/svg_icon/bath.svg",
+                                      alt: ""
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("span", [_vm._v(_vm._s(prop.bath))])
+                                ])
+                              ]),
+                              _vm._v(" "),
+                              _c("p", [_vm._v(_vm._s(prop.description))]),
+                              _vm._v(" "),
+                              _c(
+                                "div",
+                                {
+                                  staticClass:
+                                    "prise_view_details d-flex justify-content-between align-items-center"
+                                },
+                                [
+                                  _c("span", [
+                                    _vm._v("$:" + _vm._s(prop.price))
                                   ]),
                                   _vm._v(" "),
-                                  _c("p", [_vm._v(_vm._s(prop.description))]),
-                                  _vm._v(" "),
                                   _c(
-                                    "div",
+                                    "a",
                                     {
-                                      staticClass:
-                                        "prise_view_details d-flex justify-content-between align-items-center"
+                                      staticClass: "boxed-btn3-line",
+                                      attrs: { href: "#" }
                                     },
-                                    [
-                                      _c("span", [
-                                        _vm._v("$:" + _vm._s(prop.price))
-                                      ]),
-                                      _vm._v(" "),
-                                      _c(
-                                        "a",
-                                        {
-                                          staticClass: "boxed-btn3-line",
-                                          attrs: { href: "#" }
-                                        },
-                                        [_vm._v("View Details")]
-                                      )
-                                    ]
+                                    [_vm._v("View Details")]
                                   )
-                                ])
-                              ]
-                            )
+                                ]
+                              )
+                            ])
                           ])
                         ])
                       ])
                     ])
                   ])
-                }),
-                0
-              )
-            ],
-            1
-          )
-        ])
+                ])
+              }),
+              0
+            )
+          ],
+          1
+        )
       ])
     ])
   ])

@@ -1,12 +1,6 @@
 <template>
     <div style="padding-top:150px">
          
-                        <div class="section_title mb-40 text-center">
-                            <h3>
-                              About Our Team
-                            </h3>
-                        </div>
-                   
         <agents></agents>
         <testimonial></testimonial>
     </div>

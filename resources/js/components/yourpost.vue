@@ -82,8 +82,12 @@
 </template>
 
 <script>
-    
+    import {
+        mapGetters,
+        mapActions
+    } from 'vuex';
     export default {
+        computed: mapGetters(['allpost']),
         
         data() {
             return {
@@ -94,11 +98,12 @@
         },
         created() {
             console.log('Component mounted.')
-            this.fetchpost();
+            this.fetchyourpost();
             this.scrollToTop();
+            this.fetchpost();
         },
         methods: {
-            fetchpost(){
+            fetchyourpost(){
                 axios.get('api/yourpost/'+this.userid)
                     .then(({
                         data

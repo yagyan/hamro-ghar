@@ -3291,6 +3291,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -4769,6 +4770,33 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -4777,31 +4805,67 @@ __webpack_require__.r(__webpack_exports__);
       districts: [],
       municipalities: [],
       wards: [],
+      types: [],
       editmodal: false,
       form: new Form({
         id: '',
-        name: '',
+        bed: '',
+        bath: '',
         state_id: '',
         district_id: '',
-        municipality_id: ''
+        municipality_id: '',
+        ward_id: ''
       })
     };
   },
   mounted: function mounted() {
+    this.loadtypes();
     this.fetchstate();
   },
   methods: {
     forceRerender: function forceRerender() {
       this.componentKey += 1;
     },
-    fetchstate: function fetchstate() {
+    loadtypes: function loadtypes() {
       var _this = this;
 
-      axios.get('api/state').then(function (_ref) {
+      axios.get('api/propertytype').then(function (_ref) {
         var data = _ref.data;
-        _this.states = data;
+        return _this.types = data;
+      });
+    },
+    fetchstate: function fetchstate() {
+      var _this2 = this;
 
-        _this.forceRerender();
+      axios.get('api/state').then(function (_ref2) {
+        var data = _ref2.data;
+        _this2.states = data;
+
+        _this2.forceRerender();
+      });
+    },
+    fetchdistrict: function fetchdistrict() {
+      var _this3 = this;
+
+      axios.get('api/getdistrict/' + this.form.state_id).then(function (_ref3) {
+        var data = _ref3.data;
+        return _this3.districts = data;
+      });
+    },
+    fetchmunicipality: function fetchmunicipality() {
+      var _this4 = this;
+
+      axios.get('api/getmunicipality/' + this.form.district_id).then(function (_ref4) {
+        var data = _ref4.data;
+        return _this4.municipalities = data;
+      });
+    },
+    fetchward: function fetchward() {
+      var _this5 = this;
+
+      axios.get('api/getward/' + this.form.municipality_id).then(function (_ref5) {
+        var data = _ref5.data;
+        return _this5.wards = data;
       });
     }
   }
@@ -51832,7 +51896,7 @@ var render = function() {
                             { staticClass: "single-field max_width " },
                             [
                               _c("label", { attrs: { for: "#" } }, [
-                                _vm._v("Location")
+                                _vm._v("Property Type")
                               ]),
                               _vm._v(" "),
                               _c(
@@ -51842,8 +51906,8 @@ var render = function() {
                                     {
                                       name: "model",
                                       rawName: "v-model",
-                                      value: _vm.form.state_id,
-                                      expression: "form.state_id"
+                                      value: _vm.form.propertytype_id,
+                                      expression: "form.propertytype_id"
                                     }
                                   ],
                                   staticClass: "form-control input-lg",
@@ -51863,7 +51927,7 @@ var render = function() {
                                         })
                                       _vm.$set(
                                         _vm.form,
-                                        "state_id",
+                                        "propertytype_id",
                                         $event.target.multiple
                                           ? $$selectedVal
                                           : $$selectedVal[0]
@@ -51871,22 +51935,154 @@ var render = function() {
                                     }
                                   }
                                 },
+                                _vm._l(_vm.types, function(type) {
+                                  return _c(
+                                    "option",
+                                    {
+                                      key: type.id,
+                                      domProps: { value: type.id }
+                                    },
+                                    [
+                                      _vm._v(
+                                        "\n                                                        " +
+                                          _vm._s(type.name)
+                                      )
+                                    ]
+                                  )
+                                }),
+                                0
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            { staticClass: "single-field max_width " },
+                            [
+                              _c("label", { attrs: { for: "#" } }, [
+                                _vm._v("State")
+                              ]),
+                              _vm._v(" "),
+                              _c(
+                                "select",
+                                {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.form.state_id,
+                                      expression: "form.state_id"
+                                    }
+                                  ],
+                                  staticClass: "form-control input-lg",
+                                  staticStyle: { width: "90%" },
+                                  on: {
+                                    change: [
+                                      function($event) {
+                                        var $$selectedVal = Array.prototype.filter
+                                          .call($event.target.options, function(
+                                            o
+                                          ) {
+                                            return o.selected
+                                          })
+                                          .map(function(o) {
+                                            var val =
+                                              "_value" in o ? o._value : o.value
+                                            return val
+                                          })
+                                        _vm.$set(
+                                          _vm.form,
+                                          "state_id",
+                                          $event.target.multiple
+                                            ? $$selectedVal
+                                            : $$selectedVal[0]
+                                        )
+                                      },
+                                      _vm.fetchdistrict
+                                    ]
+                                  }
+                                },
+                                _vm._l(_vm.states, function(state) {
+                                  return _c(
+                                    "option",
+                                    {
+                                      key: state.id,
+                                      domProps: { value: state.id }
+                                    },
+                                    [
+                                      _vm._v(
+                                        "\n                                                        " +
+                                          _vm._s(state.name)
+                                      )
+                                    ]
+                                  )
+                                }),
+                                0
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            { staticClass: "single-field max_width " },
+                            [
+                              _c("label", { attrs: { for: "#" } }, [
+                                _vm._v("disrict")
+                              ]),
+                              _vm._v(" "),
+                              _c(
+                                "select",
+                                {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.form.district_id,
+                                      expression: "form.district_id"
+                                    }
+                                  ],
+                                  staticClass: "form-control input-lg",
+                                  staticStyle: { width: "90%" },
+                                  on: {
+                                    change: [
+                                      function($event) {
+                                        var $$selectedVal = Array.prototype.filter
+                                          .call($event.target.options, function(
+                                            o
+                                          ) {
+                                            return o.selected
+                                          })
+                                          .map(function(o) {
+                                            var val =
+                                              "_value" in o ? o._value : o.value
+                                            return val
+                                          })
+                                        _vm.$set(
+                                          _vm.form,
+                                          "district_id",
+                                          $event.target.multiple
+                                            ? $$selectedVal
+                                            : $$selectedVal[0]
+                                        )
+                                      },
+                                      _vm.fetchmunicipality
+                                    ]
+                                  }
+                                },
                                 [
-                                  _c("option", { attrs: { value: "" } }, [
-                                    _vm._v("Select State")
-                                  ]),
+                                  _c("option", [_vm._v("select district")]),
                                   _vm._v(" "),
-                                  _vm._l(_vm.states, function(state) {
+                                  _vm._l(_vm.districts, function(district) {
                                     return _c(
                                       "option",
                                       {
-                                        key: state.id,
-                                        domProps: { value: state.id }
+                                        key: district.id,
+                                        domProps: { value: district.id }
                                       },
                                       [
                                         _vm._v(
                                           "\n                                                        " +
-                                            _vm._s(state.name)
+                                            _vm._s(district.name)
                                         )
                                       ]
                                     )
@@ -51899,65 +52095,78 @@ var render = function() {
                           _vm._v(" "),
                           _c(
                             "div",
-                            { staticClass: "single-field max_width " },
-                            [
-                              _c("label", { attrs: { for: "#" } }, [
-                                _vm._v("Property type")
-                              ]),
-                              _vm._v(" "),
-                              _c("select", { staticClass: "wide" }, [
-                                _c(
-                                  "option",
-                                  { attrs: { "data-display": "Apartment" } },
-                                  [_vm._v("Apartment")]
-                                ),
-                                _vm._v(" "),
-                                _c("option", { attrs: { value: "1" } }, [
-                                  _vm._v("Apartment")
-                                ]),
-                                _vm._v(" "),
-                                _c("option", { attrs: { value: "2" } }, [
-                                  _vm._v("Apartment")
-                                ])
-                              ])
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "div",
-                            { staticClass: "single_field range_slider" },
-                            [
-                              _c("label", { attrs: { for: "#" } }, [
-                                _vm._v("Price ($)")
-                              ]),
-                              _vm._v(" "),
-                              _c("div", { attrs: { id: "slider" } })
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "div",
                             { staticClass: "single-field min_width " },
                             [
                               _c("label", { attrs: { for: "#" } }, [
                                 _vm._v("Bed Room")
                               ]),
                               _vm._v(" "),
-                              _c("select", { staticClass: "wide" }, [
-                                _c(
-                                  "option",
-                                  { attrs: { "data-display": "01" } },
-                                  [_vm._v("01")]
-                                ),
-                                _vm._v(" "),
-                                _c("option", { attrs: { value: "1" } }, [
-                                  _vm._v("02")
-                                ]),
-                                _vm._v(" "),
-                                _c("option", { attrs: { value: "2" } }, [
-                                  _vm._v("03")
-                                ])
-                              ])
+                              _c(
+                                "select",
+                                {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.form.bed,
+                                      expression: "form.bed"
+                                    }
+                                  ],
+                                  staticClass: "form-control input-lg",
+                                  staticStyle: { width: "100%" },
+                                  on: {
+                                    change: function($event) {
+                                      var $$selectedVal = Array.prototype.filter
+                                        .call($event.target.options, function(
+                                          o
+                                        ) {
+                                          return o.selected
+                                        })
+                                        .map(function(o) {
+                                          var val =
+                                            "_value" in o ? o._value : o.value
+                                          return val
+                                        })
+                                      _vm.$set(
+                                        _vm.form,
+                                        "bed",
+                                        $event.target.multiple
+                                          ? $$selectedVal
+                                          : $$selectedVal[0]
+                                      )
+                                    }
+                                  }
+                                },
+                                [
+                                  _c("option", { attrs: { value: "1" } }, [
+                                    _vm._v("01")
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("option", { attrs: { value: "2" } }, [
+                                    _vm._v("02")
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("option", { attrs: { value: "3" } }, [
+                                    _vm._v("03")
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("option", { attrs: { value: "4" } }, [
+                                    _vm._v("04")
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("option", { attrs: { value: "5" } }, [
+                                    _vm._v("05")
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("option", { attrs: { value: "6" } }, [
+                                    _vm._v("06")
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("option", { attrs: { value: "7" } }, [
+                                    _vm._v("07")
+                                  ])
+                                ]
+                              )
                             ]
                           ),
                           _vm._v(" "),
@@ -51969,21 +52178,72 @@ var render = function() {
                                 _vm._v("Bath Room")
                               ]),
                               _vm._v(" "),
-                              _c("select", { staticClass: "wide" }, [
-                                _c(
-                                  "option",
-                                  { attrs: { "data-display": "01" } },
-                                  [_vm._v("01")]
-                                ),
-                                _vm._v(" "),
-                                _c("option", { attrs: { value: "1" } }, [
-                                  _vm._v("02")
-                                ]),
-                                _vm._v(" "),
-                                _c("option", { attrs: { value: "2" } }, [
-                                  _vm._v("03")
-                                ])
-                              ])
+                              _c(
+                                "select",
+                                {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.form.bath,
+                                      expression: "form.bath"
+                                    }
+                                  ],
+                                  staticClass: "form-control input-lg",
+                                  staticStyle: { width: "100%" },
+                                  on: {
+                                    change: function($event) {
+                                      var $$selectedVal = Array.prototype.filter
+                                        .call($event.target.options, function(
+                                          o
+                                        ) {
+                                          return o.selected
+                                        })
+                                        .map(function(o) {
+                                          var val =
+                                            "_value" in o ? o._value : o.value
+                                          return val
+                                        })
+                                      _vm.$set(
+                                        _vm.form,
+                                        "bath",
+                                        $event.target.multiple
+                                          ? $$selectedVal
+                                          : $$selectedVal[0]
+                                      )
+                                    }
+                                  }
+                                },
+                                [
+                                  _c("option", { attrs: { value: "1" } }, [
+                                    _vm._v("01")
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("option", { attrs: { value: "2" } }, [
+                                    _vm._v("02")
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("option", { attrs: { value: "3" } }, [
+                                    _vm._v("03")
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("option", { attrs: { value: "4" } }, [
+                                    _vm._v("04")
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("option", { attrs: { value: "5" } }, [
+                                    _vm._v("05")
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("option", { attrs: { value: "6" } }, [
+                                    _vm._v("06")
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("option", { attrs: { value: "7" } }, [
+                                    _vm._v("07")
+                                  ])
+                                ]
+                              )
                             ]
                           ),
                           _vm._v(" "),

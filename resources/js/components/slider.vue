@@ -15,44 +15,71 @@
                                         <div class="col-xl-12">
                                             <div class="form_wrap d-flex">
                                                 <div class="single-field max_width ">
-                                                    <label for="#">Location</label>
+                                                    <label for="#">Property Type</label>
+
                                                     <select class="form-control input-lg" style="width: 100%;"
-                                                        v-model="form.state_id">
-                                                        <option value="">Select State</option>
+                                                        v-model="form.propertytype_id">
+
+                                                        <option v-for="type in types" :key="type.id" :value="type.id">
+                                                            {{ type.name }}</option>
+
+                                                    </select>
+                                                </div>
+                                                <div class="single-field max_width ">
+                                                    <label for="#">State</label>
+                                                    <select class="form-control input-lg" style="width:90%;"
+                                                        v-model="form.state_id" @change="fetchdistrict">
+
                                                         <option v-for="state in states" :key="state.id"
                                                             :value="state.id">
                                                             {{ state.name }}</option>
 
                                                     </select>
                                                 </div>
+
                                                 <div class="single-field max_width ">
-                                                    <label for="#">Property type</label>
-                                                    <select class="wide">
-                                                        <option data-display="Apartment">Apartment</option>
-                                                        <option value="1">Apartment</option>
-                                                        <option value="2">Apartment</option>
+                                                    <label for="#">disrict</label>
+                                                    <select class="form-control input-lg" style="width: 90%;"
+                                                        v-model="form.district_id" @change="fetchmunicipality">
+                                                        <option>select district</option>
+                                                        <option v-for="district in districts" :key="district.id"
+                                                            :value="district.id">
+                                                            {{ district.name }}</option>
+
                                                     </select>
                                                 </div>
-                                                <div class="single_field range_slider">
-                                                    <label for="#">Price ($)</label>
-                                                    <div id="slider"></div>
-                                                </div>
+
+
+
                                                 <div class="single-field min_width ">
                                                     <label for="#">Bed Room</label>
-                                                    <select class="wide">
-                                                        <option data-display="01">01</option>
-                                                        <option value="1">02</option>
-                                                        <option value="2">03</option>
+                                                    <select class="form-control input-lg" style="width: 100%;"
+                                                        v-model="form.bed">
+                                                        <option value="1">01</option>
+                                                        <option value="2">02</option>
+                                                        <option value="3">03</option>
+                                                        <option value="4">04</option>
+                                                        <option value="5">05</option>
+                                                        <option value="6">06</option>
+                                                        <option value="7">07</option>
+
                                                     </select>
                                                 </div>
                                                 <div class="single-field min_width ">
                                                     <label for="#">Bath Room</label>
-                                                    <select class="wide">
-                                                        <option data-display="01">01</option>
-                                                        <option value="1">02</option>
-                                                        <option value="2">03</option>
+                                                    <select class="form-control input-lg" style="width: 100%;"
+                                                        v-model="form.bath">
+                                                        <option value="1">01</option>
+                                                        <option value="2">02</option>
+                                                        <option value="3">03</option>
+                                                        <option value="4">04</option>
+                                                        <option value="5">05</option>
+                                                        <option value="6">06</option>
+                                                        <option value="7">07</option>
+
                                                     </select>
                                                 </div>
+
                                                 <div class="serach_icon">
                                                     <a href="#">
                                                         <i class="ti-search"></i>
@@ -74,9 +101,8 @@
 </template>
 
 <script>
-   
     export default {
-        
+
         data() {
             return {
                 componentKey: 0,
@@ -84,31 +110,64 @@
                 districts: [],
                 municipalities: [],
                 wards: [],
+                types: [],
                 editmodal: false,
                 form: new Form({
                     id: '',
-                    name: '',
+                    bed: '',
+                    bath: '',
                     state_id: '',
                     district_id: '',
                     municipality_id: '',
+                    ward_id: '',
                 })
             }
         },
         mounted() {
+            this.loadtypes();
             this.fetchstate();
-            
+
         },
         methods: {
             forceRerender() {
                 this.componentKey += 1;
             },
-        fetchstate(){
-          axios.get('api/state')
-          .then(({data})=>{
-              this.states=data;
-              this.forceRerender();
-              })
-      },
+            loadtypes() {
+                axios.get('api/propertytype')
+                    .then(({
+                        data
+                    }) => (this.types = data))
+            },
+            fetchstate() {
+                axios.get('api/state')
+                    .then(({
+                        data
+                    }) => {
+                        this.states = data;
+                        this.forceRerender();
+                    })
+            },
+
+
+            fetchdistrict() {
+                axios.get('api/getdistrict/' + this.form.state_id)
+                    .then(({
+                        data
+                    }) => (this.districts = data))
+            },
+
+            fetchmunicipality() {
+                axios.get('api/getmunicipality/' + this.form.district_id)
+                    .then(({
+                        data
+                    }) => (this.municipalities = data))
+            },
+            fetchward() {
+                axios.get('api/getward/' + this.form.municipality_id)
+                    .then(({
+                        data
+                    }) => (this.wards = data))
+            },
 
         }
     }

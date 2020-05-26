@@ -236,6 +236,65 @@
                 </div>
           </div>
         </div>-->
+                            <form2>
+                                <div class="container-fluid">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>State</label>
+                                                <select class="form-control input-lg" style="width: 100%;"
+                                                    v-model="form2.state_id" @change="fetchdistrict">
+                                                    <option value="">Select State</option>
+                                                    <option v-for="state in states" :key="state.id" :value="state.id">
+                                                        {{ state.name }}
+                                                    </option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>District</label>
+                                                <select class="form-control input-lg" style="width: 100%;"
+                                                    v-model="form2.district_id" @change="fetchmunicipality">
+                                                    <option value="">Select District</option>
+                                                    <option v-for="district in districts" :key="district.id"
+                                                        :value="district.id">
+                                                        {{ district.name }}</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Municipality</label>
+                                                <select class="form-control input-lg" style="width: 100%;"
+                                                    v-model="form2.municipality_id" @change="fetchward">
+                                                    <option value="">Select Municipality</option>
+                                                    <option v-for="municipality in municipalities"
+                                                        :key="municipality.id" :value="municipality.id">
+                                                        {{ municipality.name }}</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Ward</label>
+                                                <select class="form-control input-lg" style="width: 100%;"
+                                                    v-model="form2.ward_id">
+                                                    <option value="">Select Ward</option>
+                                                    <option v-for="ward in wards" :key="ward.id" :value="ward.id">
+                                                        {{ ward.name }}
+                                                    </option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <button class="btn btn-primary" @click.prevent="addaddress()">Save Address</button>
+                                </div>
+                            </form2>
 
                             <div class="row">
 
@@ -319,6 +378,11 @@
                 editmodal: false,
                 types: [],
                 files: [],
+                 states: [],
+                districts: [],
+                municipalities: [],
+                wards: [],
+
 
 
 
@@ -344,12 +408,21 @@
                     description: '',
                     bed: '',
                     bathroom: '',
+                    address_id:'',
+                }),
+                form2: new Form({
+                    
+                    state_id: '',
+                    district_id: '',
+                    municipality_id: '',
+                    ward_id: ''
                 })
             }
         },
         created() {
             this.loadpost();
             this.loadtypes();
+            this.fetchstate();
 
         },
         methods: {
@@ -414,7 +487,7 @@
             },
 
             loadpost() {
-                axios.get('api/yourpost/'+this.form.user_id)
+                axios.get('api/yourpost/' + this.form.user_id)
                     .then(({
                         data
                     }) => (this.posts = data))
@@ -494,8 +567,38 @@
                         }
 
                     )
-            }
+            },
+             addaddress() {
+                this.form2.post('api/address')
+                .then(({data})=>{
+                    (this.form.address_id=data.id)
+                })
+            },
+            fetchstate() {
+                axios.get('api/state')
+                    .then(({
+                        data
+                    }) => (this.states = data))
+            },
+            fetchdistrict() {
+                axios.get('api/getdistrict/' + this.form2.state_id)
+                    .then(({
+                        data
+                    }) => (this.districts = data))
+            },
+
+            fetchmunicipality() {
+                axios.get('api/getmunicipality/' + this.form2.district_id)
+                    .then(({
+                        data
+                    }) => (this.municipalities = data))
+            },
+            fetchward() {
+                axios.get('api/getward/' + this.form2.municipality_id)
+                    .then(({
+                        data
+                    }) => (this.wards = data))
+            },
         }
     }
-
 </script>

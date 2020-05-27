@@ -65,6 +65,12 @@
                                             <span>{{post.pname}}</span>
                                         </div>
                                     </li>
+                                     <li>
+                                        <div class="single_info_doc">
+                                            <a href="#" @click="deletepost(post)"> <i
+                                                class="fa fa-trash text-red"></i></a>
+                                        </div>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
@@ -116,11 +122,34 @@
             },
 
         
-
-
             scrollToTop() {
                 window.scrollTo(0,0);
            },
+           deletepost(post) {
+
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: "You won't be able to revert this!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, delete it!'
+                }).then((result) => {
+                    if (result.value) {
+                        axios.delete('api/post/' + post.id)
+                            .then(() => {
+                                Swal.fire(
+                                    'Deleted!',
+                                    'Your file has been deleted.',
+                                    'success'
+                                )
+                                this.fetchyourpost();
+                              
+                            })
+                    }
+                })
+            },
         }
 
     }

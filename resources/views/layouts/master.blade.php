@@ -58,9 +58,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
 
-    <a href="/" class="brand-link">
+    <a href="/" class="brand-link" >
       <img src="img/logo.png" alt="AdminLTE Logo" 
-           style="opacity: .8"> 
+           style="opacity: .8; height:55px; width:130px"> 
       
     </a>
 
@@ -68,11 +68,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <div class="sidebar">
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-        <!--<div class="image">
-          <img src="{{asset(Auth::user()->avatar)}}" class="img-circle elevation-2" alt="User Image">
-        </div> -->
+        <div class="image">
+          <img src="img/icon.png" class="img-responsive" alt="User Image">
+        </div>
         <div class="info">
-          <a href="#" class="d-block"> {{Auth::user()->name}}</a>
+          <a href="#/userprofile" class="d-block"> {{Auth::user()->name}}</a>
         </div>
       </div>
 

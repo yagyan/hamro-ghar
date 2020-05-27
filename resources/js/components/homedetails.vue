@@ -13,13 +13,19 @@
                                         <div class="modern_home_info">
                                             <div class="modern_home_info_inner">
                                                 <span class="for_sale">
-                                                    For Sale
+                                                    For {{prop.characteristics}}
                                                 </span>
                                                 <div class="info_header">
                                                     <h3>{{prop.title}}</h3>
                                                     <div class="popular_pro d-flex">
                                                         <img src="img/svg_icon/location.svg" alt="">
-                                                        <span>Popular Properties</span>
+                                                        <span>Longitide: {{prop.longitude}}°</span>
+                                                        
+                                                    </div>
+                                                    <div class="popular_pro d-flex">
+                                                        <img src="img/svg_icon/location.svg" alt="">
+                                                        <span>Latitude: {{prop.latitude}}°</span>
+                                                        
                                                     </div>
                                                 </div>
                                                 <div class="info_content">

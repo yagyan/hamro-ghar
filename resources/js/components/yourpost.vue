@@ -15,7 +15,7 @@
                         <div class="single_property">
                             <div class="property_thumb" style="height:240px; width:362px ">
                                 <div class="property_tag">
-                                    For Sale
+                                    For {{post.characteristics}}
                                 </div>
                                 <img class="img-fluid" v-bind:src="post.front_view"
                                     onerror="if (this.src != 'error.jpg') this.src = 'img/property/6.png';">

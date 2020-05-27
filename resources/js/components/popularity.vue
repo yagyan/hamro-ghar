@@ -15,7 +15,7 @@
                         <div class="single_property">
                             <div class="property_thumb" style="height:240px; width:362px ">
                                 <div class="property_tag">
-                                    For Sale
+                                    For {{post.characteristics}}
                                 </div>
                                 <img class="img-fluid" v-bind:src="post.front_view"
                                     onerror="if (this.src != 'error.jpg') this.src = 'img/property/6.png';">
@@ -28,11 +28,11 @@
                                     </div>
                                     <div class="mark_pro">
                                         <img src="img/svg_icon/location.svg" alt="">
-                                        <span>Latitude:{{post.latitude}}°</span>
+                                        <span>Latitude: {{post.latitude}}°</span>
                                     </div>
                                     <div class="mark_pro">
                                         <img src="img/svg_icon/location.svg" alt="">
-                                        <span>Longitude:{{post.longitude}}°</span>
+                                        <span>Longitude: {{post.longitude}}°</span>
                                     </div>
                                     <span class="amount">$:{{post.price}}</span>
                                 </div>

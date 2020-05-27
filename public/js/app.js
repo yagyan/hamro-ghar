@@ -2591,6 +2591,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -46844,7 +46850,9 @@ var render = function() {
                       [
                         _c("div", { staticClass: "property_tag" }, [
                           _vm._v(
-                            "\n                                For Sale\n                            "
+                            "\n                                For " +
+                              _vm._s(post.characteristics) +
+                              "\n                            "
                           )
                         ]),
                         _vm._v(" "),
@@ -47608,7 +47616,9 @@ var render = function() {
                           _c("div", { staticClass: "modern_home_info_inner" }, [
                             _c("span", { staticClass: "for_sale" }, [
                               _vm._v(
-                                "\n                                                 For Sale\n                                             "
+                                "\n                                                 For " +
+                                  _vm._s(prop.characteristics) +
+                                  "\n                                             "
                               )
                             ]),
                             _vm._v(" "),
@@ -47623,7 +47633,26 @@ var render = function() {
                                   }
                                 }),
                                 _vm._v(" "),
-                                _c("span", [_vm._v("Popular Properties")])
+                                _c("span", [
+                                  _vm._v(
+                                    "Longitide: " + _vm._s(prop.longitude) + "°"
+                                  )
+                                ])
+                              ]),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "popular_pro d-flex" }, [
+                                _c("img", {
+                                  attrs: {
+                                    src: "img/svg_icon/location.svg",
+                                    alt: ""
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c("span", [
+                                  _vm._v(
+                                    "Latitude: " + _vm._s(prop.latitude) + "°"
+                                  )
+                                ])
                               ])
                             ]),
                             _vm._v(" "),
@@ -49899,7 +49928,9 @@ var render = function() {
                     [
                       _c("div", { staticClass: "property_tag" }, [
                         _vm._v(
-                          "\n                                For Sale\n                            "
+                          "\n                                For " +
+                            _vm._s(post.characteristics) +
+                            "\n                            "
                         )
                       ]),
                       _vm._v(" "),
@@ -49930,7 +49961,7 @@ var render = function() {
                         }),
                         _vm._v(" "),
                         _c("span", [
-                          _vm._v("Latitude:" + _vm._s(post.latitude) + "°")
+                          _vm._v("Latitude: " + _vm._s(post.latitude) + "°")
                         ])
                       ]),
                       _vm._v(" "),
@@ -49940,7 +49971,7 @@ var render = function() {
                         }),
                         _vm._v(" "),
                         _c("span", [
-                          _vm._v("Longitude:" + _vm._s(post.longitude) + "°")
+                          _vm._v("Longitude: " + _vm._s(post.longitude) + "°")
                         ])
                       ]),
                       _vm._v(" "),
@@ -54472,7 +54503,9 @@ var render = function() {
                       [
                         _c("div", { staticClass: "property_tag" }, [
                           _vm._v(
-                            "\n                                For Sale\n                            "
+                            "\n                                For " +
+                              _vm._s(post.characteristics) +
+                              "\n                            "
                           )
                         ]),
                         _vm._v(" "),

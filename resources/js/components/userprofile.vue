@@ -1,4 +1,5 @@
 <template>
+
     <div class="container">
         <div v-for="user in userinfo" :key="user.userid">
             <div class="row justify-content-center">
@@ -109,8 +110,13 @@
                                         <!-- /.card -->
                                     </div>
                                 </div>
+                                <!-- /.tab-pane -->
                                 <!-- Modal -->
-                                <div class="modal fade" id="modal" tabindex="-1" role="dialog"
+                                
+                                
+                            </div>
+                          
+                            <div class="modal fade" id="modal" tabindex="-1" role="dialog"
                                     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered" role="document">
                                         <div class="modal-content">
@@ -233,8 +239,6 @@
                                         </div>
                                     </div>
                                 </div>
-                                <!-- /.tab-pane -->
-                            </div>
                             <!-- /.tab-content -->
                         </div><!-- /.card-body -->
                     </div>
@@ -249,6 +253,7 @@
     export default {
         data() {
             return {
+               
                 userid: window.user.user.id,
                 userinfo: [],
                 states: [],
@@ -314,7 +319,7 @@
                             showConfirmButton: false,
                             timer: 3000
                         })
-                        this.$Progress.finish()
+                        this.$Progress.finish();
 
                     })
             },
@@ -330,7 +335,7 @@
                     .then(({
                         data
                     }) => {
-                        $('#Modal').modal('hide');
+                        $('#address').modal('hide');
                         this.$Progress.start()
                         Swal.fire({
                             icon: 'success',

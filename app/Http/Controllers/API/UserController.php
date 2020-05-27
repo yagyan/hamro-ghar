@@ -69,8 +69,8 @@ class UserController extends Controller
           $u=userinfo::findOrFail($id);
           $this->validate($request,[
           'name'=>'required|min:6|string|max:256',
-          'phone'=>'sometimes|min:7|string|max:256|unique',
-          'mobile'=>'required|min:10|string|max:256|unique',
+          'phone'=>'sometimes|min:7|string|max:256',
+          'mobile'=>'required|min:10|string|max:256',
           'citizen_no'=>'required|min:6|string|max:256',
         ]);
 

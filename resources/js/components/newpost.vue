@@ -343,7 +343,7 @@
                 })
             }
         },
-        beforeMount() {
+        mounted() {
 
             this.loadtypes();
             this.fetchstate();
@@ -420,11 +420,7 @@
                         data
                     }) => (this.types = data))
             },
-            openmodal() {
-                this.editmodal = false;
-                $('#Modal').modal('show');
-                this.form.reset();
-            },
+            
             addpost() {
                 this.$Progress.start();
                 this.form.post('api/post')
@@ -440,7 +436,7 @@
                             timer: 3000
                         })
                         this.$Progress.finish();
-                        this.loadpost();
+                        
 
                     })
                     .catch(({
@@ -454,7 +450,14 @@
                     .then(({
                         data
                     }) => {
-                        (this.form.address_id = data.id)
+                        this.form.address_id = data.id;
+                         Swal.fire({
+                            position: 'center',
+                            icon: 'success',
+                            title: 'Address has been Successfully Added',
+                            showConfirmButton: false,
+                            timer: 3000
+                        })
                     })
             },
             fetchstate() {

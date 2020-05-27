@@ -353,6 +353,10 @@
             forceRerender() {
                 this.componentKey += 1;
             },
+            route(){
+                console.log('asd');
+                this.$router.push('yourpost')
+            },
 
             updateTview(e) {
                 let file = e.target.files[0];
@@ -436,7 +440,7 @@
                             timer: 3000
                         })
                         this.$Progress.finish();
-                        
+                        this.route();
 
                     })
                     .catch(({

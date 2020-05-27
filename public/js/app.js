@@ -3347,6 +3347,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     forceRerender: function forceRerender() {
       this.componentKey += 1;
     },
+    route: function route() {
+      console.log('asd');
+      this.$router.push('yourpost');
+    },
     updateTview: function updateTview(e) {
       var _this = this;
 
@@ -3437,6 +3441,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         });
 
         _this5.$Progress.finish();
+
+        _this5.route();
       })["catch"](function (_ref3) {
         var result = _ref3.result;
 

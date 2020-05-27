@@ -220,13 +220,13 @@
                             <div class="footer_widget">
                                 <div class="footer_logo">
                                     <a href="#">
-                                        <img src="img/footer_logo.png" alt="">
+                                        <img src="img/logo.png" alt="">
                                     </a>
                                 </div>
                                 <p>
-                                    <a href="#">conbusi@support.com</a> <br>
-                                    +10 873 672 6782 <br>
-                                    600/D, Green road, NewYork
+                                    <a href="#">hamroghar@gmail.com</a> <br>
+                                    +123-456-789 <br>
+                                    Sadobato,Laltipur
                                 </p>
                                 <div class="socail_links">
                                     <ul>

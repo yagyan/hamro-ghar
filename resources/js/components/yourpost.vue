@@ -1,4 +1,5 @@
 <template>
+<component-to-re-render :key="componentKey">
     <div class="popular_property">
         <div class="container" style="padding-top:50px">
             <div class="row">
@@ -79,6 +80,7 @@
             </div>
         </div>
     </div>
+</component-to-re-render>
 </template>
 
 <script>
@@ -88,23 +90,29 @@
         
         data() {
             return {
+                componentKey:0,
                 posts: [],
                 userid:window.user.user.id,
 
             }
         },
-        created() {
+        mounted() {
             console.log('Component mounted.')
             this.fetchyourpost();
             this.scrollToTop();
             
         },
         methods: {
+            forceRerender() {
+                this.componentKey += 1;
+            },
             fetchyourpost(){
                 axios.get('api/yourpost/'+this.userid)
                     .then(({
                         data
-                    }) => (this.posts = data))
+                    }) =>{ this.posts = data;
+                    this.forceRerender();
+                    })
             },
 
         

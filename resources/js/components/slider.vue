@@ -12,14 +12,14 @@
                             <div class="property_form">
                                 <form action="#">
                                     <div class="row">
-                                        <div class="col-xl-12">
+                                        <div class="container-fluid">
                                             <div class="form_wrap d-flex">
                                                 <div class="single-field max_width ">
                                                     <label for="#">Property Type</label>
 
                                                     <select class="form-control input-lg" style="width: 100%;"
                                                         v-model="form.propertytype_id">
-
+                                                        <option value="">Select Type</option>
                                                         <option v-for="type in types" :key="type.id" :value="type.id">
                                                             {{ type.name }}</option>
 

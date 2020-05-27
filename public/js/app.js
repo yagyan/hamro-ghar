@@ -3339,7 +3339,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       })
     };
   },
-  beforeMount: function beforeMount() {
+  mounted: function mounted() {
     this.loadtypes();
     this.fetchstate();
   },
@@ -3421,11 +3421,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         return _this4.types = data;
       });
     },
-    openmodal: function openmodal() {
-      this.editmodal = false;
-      $('#Modal').modal('show');
-      this.form.reset();
-    },
     addpost: function addpost() {
       var _this5 = this;
 
@@ -3442,8 +3437,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         });
 
         _this5.$Progress.finish();
-
-        _this5.loadpost();
       })["catch"](function (_ref3) {
         var result = _ref3.result;
 
@@ -3456,6 +3449,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.form2.post('api/address').then(function (_ref4) {
         var data = _ref4.data;
         _this6.form.address_id = data.id;
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'Address has been Successfully Added',
+          showConfirmButton: false,
+          timer: 3000
+        });
       });
     },
     fetchstate: function fetchstate() {
@@ -6085,25 +6085,33 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
+      componentKey: 0,
       posts: [],
       userid: window.user.user.id
     };
   },
-  created: function created() {
+  mounted: function mounted() {
     console.log('Component mounted.');
     this.fetchyourpost();
     this.scrollToTop();
   },
   methods: {
+    forceRerender: function forceRerender() {
+      this.componentKey += 1;
+    },
     fetchyourpost: function fetchyourpost() {
       var _this = this;
 
       axios.get('api/yourpost/' + this.userid).then(function (_ref) {
         var data = _ref.data;
-        return _this.posts = data;
+        _this.posts = data;
+
+        _this.forceRerender();
       });
     },
     scrollToTop: function scrollToTop() {
@@ -51900,7 +51908,7 @@ var render = function() {
                 _c("div", { staticClass: "property_form" }, [
                   _c("form", { attrs: { action: "#" } }, [
                     _c("div", { staticClass: "row" }, [
-                      _c("div", { staticClass: "col-xl-12" }, [
+                      _c("div", { staticClass: "container-fluid" }, [
                         _c("div", { staticClass: "form_wrap d-flex" }, [
                           _c(
                             "div",
@@ -51946,22 +51954,28 @@ var render = function() {
                                     }
                                   }
                                 },
-                                _vm._l(_vm.types, function(type) {
-                                  return _c(
-                                    "option",
-                                    {
-                                      key: type.id,
-                                      domProps: { value: type.id }
-                                    },
-                                    [
-                                      _vm._v(
-                                        "\n                                                        " +
-                                          _vm._s(type.name)
-                                      )
-                                    ]
-                                  )
-                                }),
-                                0
+                                [
+                                  _c("option", { attrs: { value: "" } }, [
+                                    _vm._v("Select Type")
+                                  ]),
+                                  _vm._v(" "),
+                                  _vm._l(_vm.types, function(type) {
+                                    return _c(
+                                      "option",
+                                      {
+                                        key: type.id,
+                                        domProps: { value: type.id }
+                                      },
+                                      [
+                                        _vm._v(
+                                          "\n                                                        " +
+                                            _vm._s(type.name)
+                                        )
+                                      ]
+                                    )
+                                  })
+                                ],
+                                2
                               )
                             ]
                           ),
@@ -54446,183 +54460,183 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "popular_property" }, [
-    _c(
-      "div",
-      { staticClass: "container", staticStyle: { "padding-top": "50px" } },
-      [
-        _vm._m(0),
-        _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "row" },
-          _vm._l(_vm.posts, function(post) {
-            return _c("div", { key: post.id }, [
-              _c(
-                "div",
-                {
-                  staticClass: "col-xl-14 col-md-16 col-lg-14",
-                  staticStyle: { padding: "5px" }
-                },
-                [
-                  _c("div", { staticClass: "single_property" }, [
-                    _c(
-                      "div",
-                      {
-                        staticClass: "property_thumb",
-                        staticStyle: { height: "240px", width: "362px" }
-                      },
-                      [
-                        _c("div", { staticClass: "property_tag" }, [
-                          _vm._v(
-                            "\n                                For " +
-                              _vm._s(post.characteristics) +
-                              "\n                            "
-                          )
-                        ]),
-                        _vm._v(" "),
-                        _c("img", {
-                          staticClass: "img-fluid",
-                          attrs: {
-                            src: post.front_view,
-                            onerror:
-                              "if (this.src != 'error.jpg') this.src = 'img/property/6.png';"
-                          }
-                        })
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "property_content" }, [
-                      _c("div", { staticClass: "main_pro" }, [
-                        _c("h3", [
-                          _c("a", { attrs: { href: "#" } }, [
-                            _vm._v(_vm._s(post.title))
-                          ])
-                        ]),
-                        _vm._v(" "),
-                        _vm._m(1, true),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "mark_pro" }, [
-                          _c("img", {
-                            attrs: { src: "img/svg_icon/location.svg", alt: "" }
-                          }),
+  return _c("component-to-re-render", { key: _vm.componentKey }, [
+    _c("div", { staticClass: "popular_property" }, [
+      _c(
+        "div",
+        { staticClass: "container", staticStyle: { "padding-top": "50px" } },
+        [
+          _c("div", { staticClass: "row" }, [
+            _c("div", { staticClass: "col-xl-12" }, [
+              _c("div", { staticClass: "section_title mb-40 text-center" }, [
+                _c("h3", [_vm._v("Your Post")])
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "row" },
+            _vm._l(_vm.posts, function(post) {
+              return _c("div", { key: post.id }, [
+                _c(
+                  "div",
+                  {
+                    staticClass: "col-xl-14 col-md-16 col-lg-14",
+                    staticStyle: { padding: "5px" }
+                  },
+                  [
+                    _c("div", { staticClass: "single_property" }, [
+                      _c(
+                        "div",
+                        {
+                          staticClass: "property_thumb",
+                          staticStyle: { height: "240px", width: "362px" }
+                        },
+                        [
+                          _c("div", { staticClass: "property_tag" }, [
+                            _vm._v(
+                              "\r\n                                    For " +
+                                _vm._s(post.characteristics) +
+                                "\r\n                                "
+                            )
+                          ]),
                           _vm._v(" "),
-                          _c("span", [
-                            _vm._v("Latitude:" + _vm._s(post.latitude) + "°")
-                          ])
-                        ]),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "mark_pro" }, [
                           _c("img", {
-                            attrs: { src: "img/svg_icon/location.svg", alt: "" }
-                          }),
+                            staticClass: "img-fluid",
+                            attrs: {
+                              src: post.front_view,
+                              onerror:
+                                "if (this.src != 'error.jpg') this.src = 'img/property/6.png';"
+                            }
+                          })
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "property_content" }, [
+                        _c("div", { staticClass: "main_pro" }, [
+                          _c("h3", [
+                            _c("a", { attrs: { href: "#" } }, [
+                              _vm._v(_vm._s(post.title))
+                            ])
+                          ]),
                           _vm._v(" "),
-                          _c("span", [
-                            _vm._v("Longitude:" + _vm._s(post.longitude) + "°")
+                          _c("div", { staticClass: "mark_pro" }, [
+                            _c("span", [_vm._v("Popular Property")])
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "mark_pro" }, [
+                            _c("img", {
+                              attrs: {
+                                src: "img/svg_icon/location.svg",
+                                alt: ""
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c("span", [
+                              _vm._v("Latitude:" + _vm._s(post.latitude) + "°")
+                            ])
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "mark_pro" }, [
+                            _c("img", {
+                              attrs: {
+                                src: "img/svg_icon/location.svg",
+                                alt: ""
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c("span", [
+                              _vm._v(
+                                "Longitude:" + _vm._s(post.longitude) + "°"
+                              )
+                            ])
+                          ]),
+                          _vm._v(" "),
+                          _c("span", { staticClass: "amount" }, [
+                            _vm._v("$:" + _vm._s(post.price))
                           ])
-                        ]),
-                        _vm._v(" "),
-                        _c("span", { staticClass: "amount" }, [
-                          _vm._v("$:" + _vm._s(post.price))
                         ])
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "footer_pro" }, [
-                      _c("ul", [
-                        _c("li", [
-                          _c("div", { staticClass: "single_info_doc" }, [
-                            _c("img", {
-                              attrs: { src: "img/svg_icon/square.svg", alt: "" }
-                            }),
-                            _vm._v(" "),
-                            _c("span", [_vm._v(_vm._s(post.area))])
-                          ])
-                        ]),
-                        _vm._v(" "),
-                        _c("li", [
-                          _c("div", { staticClass: "single_info_doc" }, [
-                            _c("img", {
-                              attrs: { src: "img/svg_icon/bed.svg", alt: "" }
-                            }),
-                            _vm._v(" "),
-                            _c("span", [_vm._v(_vm._s(post.bed))])
-                          ])
-                        ]),
-                        _vm._v(" "),
-                        _c("li", [
-                          _c("div", { staticClass: "single_info_doc" }, [
-                            _c("img", {
-                              attrs: { src: "img/svg_icon/bath.svg", alt: "" }
-                            }),
-                            _vm._v(" "),
-                            _c("span", [_vm._v(_vm._s(post.bathroom))])
-                          ])
-                        ]),
-                        _vm._v(" "),
-                        _c("li", [
-                          _c("div", { staticClass: "single_info_doc" }, [
-                            _c("img", {
-                              attrs: { src: "img/svg_icon/type.png", alt: "" }
-                            }),
-                            _vm._v(" "),
-                            _c("span", [_vm._v(_vm._s(post.pname))])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "footer_pro" }, [
+                        _c("ul", [
+                          _c("li", [
+                            _c("div", { staticClass: "single_info_doc" }, [
+                              _c("img", {
+                                attrs: {
+                                  src: "img/svg_icon/square.svg",
+                                  alt: ""
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("span", [_vm._v(_vm._s(post.area))])
+                            ])
+                          ]),
+                          _vm._v(" "),
+                          _c("li", [
+                            _c("div", { staticClass: "single_info_doc" }, [
+                              _c("img", {
+                                attrs: { src: "img/svg_icon/bed.svg", alt: "" }
+                              }),
+                              _vm._v(" "),
+                              _c("span", [_vm._v(_vm._s(post.bed))])
+                            ])
+                          ]),
+                          _vm._v(" "),
+                          _c("li", [
+                            _c("div", { staticClass: "single_info_doc" }, [
+                              _c("img", {
+                                attrs: { src: "img/svg_icon/bath.svg", alt: "" }
+                              }),
+                              _vm._v(" "),
+                              _c("span", [_vm._v(_vm._s(post.bathroom))])
+                            ])
+                          ]),
+                          _vm._v(" "),
+                          _c("li", [
+                            _c("div", { staticClass: "single_info_doc" }, [
+                              _c("img", {
+                                attrs: { src: "img/svg_icon/type.png", alt: "" }
+                              }),
+                              _vm._v(" "),
+                              _c("span", [_vm._v(_vm._s(post.pname))])
+                            ])
                           ])
                         ])
                       ])
                     ])
-                  ])
-                ]
-              )
-            ])
-          }),
-          0
-        ),
-        _vm._v(" "),
-        _c("div", { staticClass: "row" }, [
-          _c("div", { staticClass: "col-xl-12" }, [
-            _c("div", { staticClass: "more_property_btn text-center" }, [
-              _c(
-                "div",
-                {
-                  staticClass: "boxed-btn3-line",
-                  on: {
-                    click: function($event) {
-                      return _vm.$router.push("allproperty")
+                  ]
+                )
+              ])
+            }),
+            0
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "row" }, [
+            _c("div", { staticClass: "col-xl-12" }, [
+              _c("div", { staticClass: "more_property_btn text-center" }, [
+                _c(
+                  "div",
+                  {
+                    staticClass: "boxed-btn3-line",
+                    on: {
+                      click: function($event) {
+                        return _vm.$router.push("allproperty")
+                      }
                     }
-                  }
-                },
-                [_vm._v("All Properties")]
-              )
+                  },
+                  [_vm._v("All Properties")]
+                )
+              ])
             ])
           ])
-        ])
-      ]
-    )
+        ]
+      )
+    ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-xl-12" }, [
-        _c("div", { staticClass: "section_title mb-40 text-center" }, [
-          _c("h3", [_vm._v("Your Post")])
-        ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "mark_pro" }, [
-      _c("span", [_vm._v("Popular Property")])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 

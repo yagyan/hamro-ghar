@@ -161,17 +161,17 @@ scratch. This page gets rid of all links and provides the needed markup only.
            <p>Property Type</p>
          </router-link>
        </li>
-
-           <a class="nav-item" href="{{ route('logout') }}"style="padding-left:20px"
+       <li class="nav-item" >
+           <a class="nav-link" href="{{ route('logout') }}"style="padding-left:20px"
    onclick="event.preventDefault();document.getElementById('logout-form').submit();">
    <i class="fas fa-sign-out-alt"></i>
-    Logout
+    <p>Logout</p>
 </a>
 
 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: one;">
     {{ csrf_field() }}
 </form>
-
+       </li>
 
         </ul>
       </nav>

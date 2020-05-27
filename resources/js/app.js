@@ -9,11 +9,7 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 import store from './store';
 
-import VueCarousel from 'vue-carousel';
 
-Vue.use(VueCarousel);
-
-window.Vue = require('vue');
 
 
 Vue.use(VueRouter);

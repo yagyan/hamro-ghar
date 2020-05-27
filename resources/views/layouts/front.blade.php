@@ -80,7 +80,7 @@
                     </div>
                 </div>
                 <div id="sticky-header" class="main-header-area">
-                    <div class="container">
+                    <div class="col-xl-11">
                         <div class="header_bottom_border">
                             <div class="row align-items-center">
                                 <div class="col-xl-3 col-lg-2">
@@ -129,14 +129,29 @@
                                         @if (Route::has('login'))
                                         <div class="top-right links">
                                             @auth
+
+                                            <div class="genric-btn primary circle arrow">
+                                                <router-link to="/newpost" style="color:blanchedalmond">Add</router-link>
+                                            </div>
+
                                             <div class="genric-btn primary circle arrow">
                                                 <a href="{{ url('/home') }}" style="color:blanchedalmond">Home</a>
                                             </div>
                                             
-                                            
                                             <div class="genric-btn primary circle arrow">
-                                                <router-link to="/newpost" style="color:blanchedalmond">Add</router-link>
+                                            <a class="nav-item" href="{{ route('logout') }}"style="color:blanchedalmond"
+                                                onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+                                                <i class="fas fa-sign-out-alt"></i>
+                                                Logout
+                                            </a>
+
+                                            <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                                style="display: one;">
+                                                {{ csrf_field() }}
+                                            </form>
                                             </div>
+
+                                            
                                     
                                             @else
                                             <div class="genric-btn primary circle arrow">

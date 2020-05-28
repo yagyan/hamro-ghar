@@ -24,6 +24,14 @@ class postcontroller extends Controller
         ->get();
         return $post->where('user_id',$id);    
     }
+    public function singlepost($id)
+    {
+        $post=DB::table('posts')
+        ->join('propertytypes','posts.propertytype_id','=','propertytypes.id')
+        ->select('posts.*','propertytypes.name as pname')
+        ->get();
+        return $post->where('id',$id);    
+    }
     public function index()
     {
         //

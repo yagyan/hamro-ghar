@@ -18,8 +18,10 @@
                                 <div class="property_tag">
                                     For {{post.characteristics}}
                                 </div>
+                                <router-link v-bind:to="'/singlepost/'+ post.id">
                                 <img class="img-fluid" v-bind:src="post.front_view"
                                     onerror="if (this.src != 'error.jpg') this.src = 'img/property/6.png';">
+                                   </router-link> 
                             </div>
                             <div class="property_content">
                                 <div class="main_pro">

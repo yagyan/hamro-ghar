@@ -8,6 +8,7 @@ require('./bootstrap');
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import store from './store';
+import carousel from 'vue-owl-carousel';
 
 
 
@@ -54,6 +55,7 @@ let routes=[
 { path: '/contact',component: require('./components/contact.vue').default},
 { path: '/newpost',component: require('./components/newpost.vue').default},
 { path: '/yourpost',component: require('./components/yourpost.vue').default},
+{ path: '/singlepost/:id',component: require('./components/singlepost.vue').default, name:'yourpost'},
 
 ]
 /*let routes2=[

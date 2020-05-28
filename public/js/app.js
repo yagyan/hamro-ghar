@@ -2599,6 +2599,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -47794,8 +47797,8 @@ var render = function() {
             _c(
               "carousel",
               { attrs: { items: 1, autoplay: true, loop: true, nav: false } },
-              _vm._l(_vm.posts.slice(0, 4), function(prop) {
-                return _c("div", { key: prop.id }, [
+              _vm._l(_vm.posts.slice(0, 4), function(post) {
+                return _c("div", { key: post.id }, [
                   _c("div", { staticClass: "single_details" }, [
                     _c("div", { staticClass: "row" }, [
                       _c("div", { staticClass: "col-xl-6 col-md-6" }, [
@@ -47804,44 +47807,65 @@ var render = function() {
                             _c("span", { staticClass: "for_sale" }, [
                               _vm._v(
                                 "\n                                                 For " +
-                                  _vm._s(prop.characteristics) +
+                                  _vm._s(post.characteristics) +
                                   "\n                                             "
                               )
                             ]),
                             _vm._v(" "),
-                            _c("div", { staticClass: "info_header" }, [
-                              _c("h3", [_vm._v(_vm._s(prop.title))]),
-                              _vm._v(" "),
-                              _c("div", { staticClass: "popular_pro d-flex" }, [
-                                _c("img", {
-                                  attrs: {
-                                    src: "img/svg_icon/location.svg",
-                                    alt: ""
-                                  }
-                                }),
+                            _c(
+                              "div",
+                              { staticClass: "info_header" },
+                              [
+                                _c(
+                                  "router-link",
+                                  { attrs: { to: "/singlepost/" + post.id } },
+                                  [_c("h3", [_vm._v(_vm._s(post.title))])]
+                                ),
                                 _vm._v(" "),
-                                _c("span", [
-                                  _vm._v(
-                                    "Longitide: " + _vm._s(prop.longitude) + "°"
-                                  )
-                                ])
-                              ]),
-                              _vm._v(" "),
-                              _c("div", { staticClass: "popular_pro d-flex" }, [
-                                _c("img", {
-                                  attrs: {
-                                    src: "img/svg_icon/location.svg",
-                                    alt: ""
-                                  }
-                                }),
+                                _c(
+                                  "div",
+                                  { staticClass: "popular_pro d-flex" },
+                                  [
+                                    _c("img", {
+                                      attrs: {
+                                        src: "img/svg_icon/location.svg",
+                                        alt: ""
+                                      }
+                                    }),
+                                    _vm._v(" "),
+                                    _c("span", [
+                                      _vm._v(
+                                        "Longitide: " +
+                                          _vm._s(post.longitude) +
+                                          "°"
+                                      )
+                                    ])
+                                  ]
+                                ),
                                 _vm._v(" "),
-                                _c("span", [
-                                  _vm._v(
-                                    "Latitude: " + _vm._s(prop.latitude) + "°"
-                                  )
-                                ])
-                              ])
-                            ]),
+                                _c(
+                                  "div",
+                                  { staticClass: "popular_pro d-flex" },
+                                  [
+                                    _c("img", {
+                                      attrs: {
+                                        src: "img/svg_icon/location.svg",
+                                        alt: ""
+                                      }
+                                    }),
+                                    _vm._v(" "),
+                                    _c("span", [
+                                      _vm._v(
+                                        "Latitude: " +
+                                          _vm._s(post.latitude) +
+                                          "°"
+                                      )
+                                    ])
+                                  ]
+                                )
+                              ],
+                              1
+                            ),
                             _vm._v(" "),
                             _c("div", { staticClass: "info_content" }, [
                               _c("ul", [
@@ -47853,7 +47877,7 @@ var render = function() {
                                     }
                                   }),
                                   _vm._v(" "),
-                                  _c("span", [_vm._v(_vm._s(prop.area))])
+                                  _c("span", [_vm._v(_vm._s(post.area))])
                                 ]),
                                 _vm._v(" "),
                                 _c("li", [
@@ -47864,7 +47888,7 @@ var render = function() {
                                     }
                                   }),
                                   _vm._v(" "),
-                                  _c("span", [_vm._v(_vm._s(prop.bed))])
+                                  _c("span", [_vm._v(_vm._s(post.bed))])
                                 ]),
                                 _vm._v(" "),
                                 _c("li", [
@@ -47875,11 +47899,11 @@ var render = function() {
                                     }
                                   }),
                                   _vm._v(" "),
-                                  _c("span", [_vm._v(_vm._s(prop.bath))])
+                                  _c("span", [_vm._v(_vm._s(post.bath))])
                                 ])
                               ]),
                               _vm._v(" "),
-                              _c("p", [_vm._v(_vm._s(prop.description))]),
+                              _c("p", [_vm._v(_vm._s(post.description))]),
                               _vm._v(" "),
                               _c(
                                 "div",
@@ -47889,7 +47913,7 @@ var render = function() {
                                 },
                                 [
                                   _c("span", [
-                                    _vm._v("$:" + _vm._s(prop.price))
+                                    _vm._v("$:" + _vm._s(post.price))
                                   ]),
                                   _vm._v(" "),
                                   _c(

@@ -6,42 +6,45 @@
             <div class="row">
                 <div class="col-xl-12">
                     <carousel :items='1' :autoplay='true' :loop='true' :nav="false" >
-                        <div v-for="prop in posts.slice(0,4)" :key="prop.id">
+                        <div v-for="post in posts.slice(0,4)" :key="post.id">
                             <div class="single_details">
                                 <div class="row">
                                     <div class="col-xl-6 col-md-6">
                                         <div class="modern_home_info">
                                             <div class="modern_home_info_inner">
                                                 <span class="for_sale">
-                                                    For {{prop.characteristics}}
+                                                    For {{post.characteristics}}
                                                 </span>
+                                                
                                                 <div class="info_header">
-                                                    <h3>{{prop.title}}</h3>
+                                                    <router-link v-bind:to="'/singlepost/'+ post.id">
+                                                    <h3>{{post.title}}</h3>
+                                                    </router-link>
                                                     <div class="popular_pro d-flex">
                                                         <img src="img/svg_icon/location.svg" alt="">
-                                                        <span>Longitide: {{prop.longitude}}°</span>
+                                                        <span>Longitide: {{post.longitude}}°</span>
                                                         
                                                     </div>
                                                     <div class="popular_pro d-flex">
                                                         <img src="img/svg_icon/location.svg" alt="">
-                                                        <span>Latitude: {{prop.latitude}}°</span>
+                                                        <span>Latitude: {{post.latitude}}°</span>
                                                         
                                                     </div>
                                                 </div>
                                                 <div class="info_content">
                                                     <ul>
                                                         <li> <img src="img/svg_icon/square.svg" alt="">
-                                                            <span>{{prop.area}}</span> </li>
+                                                            <span>{{post.area}}</span> </li>
                                                         <li> <img src="img/svg_icon/bed.svg" alt="">
-                                                            <span>{{prop.bed}}</span>
+                                                            <span>{{post.bed}}</span>
                                                         </li>
                                                         <li> <img src="img/svg_icon/bath.svg" alt="">
-                                                            <span>{{prop.bath}}</span> </li>
+                                                            <span>{{post.bath}}</span> </li>
                                                     </ul>
-                                                    <p>{{prop.description}}</p>
+                                                    <p>{{post.description}}</p>
                                                     <div
                                                         class="prise_view_details d-flex justify-content-between align-items-center">
-                                                        <span>$:{{prop.price}}</span>
+                                                        <span>$:{{post.price}}</span>
                                                         <a class="boxed-btn3-line" href="#">View Details</a>
                                                     </div>
                                                 </div>

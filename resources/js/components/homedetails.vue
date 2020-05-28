@@ -6,7 +6,7 @@
             <div class="row">
                 <div class="col-xl-12">
                     <carousel :items='1' :autoplay='true' :loop='true' :nav="false" >
-                        <div v-for="post in posts.slice(0,4)" :key="post.id">
+                        <div v-for="post in posts.slice(0,4)" :key="post.id" v-show="!post.sold">
                             <div class="single_details">
                                 <div class="row">
                                     <div class="col-xl-6 col-md-6">

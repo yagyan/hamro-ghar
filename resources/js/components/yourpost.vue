@@ -102,7 +102,7 @@
 
             }
         },
-        mounted() {
+        created() {
             console.log('Component mounted.')
             this.fetchyourpost();
             this.scrollToTop();

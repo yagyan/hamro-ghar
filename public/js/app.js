@@ -6100,7 +6100,7 @@ __webpack_require__.r(__webpack_exports__);
       userid: window.user.user.id
     };
   },
-  mounted: function mounted() {
+  created: function created() {
     console.log('Component mounted.');
     this.fetchyourpost();
     this.scrollToTop();

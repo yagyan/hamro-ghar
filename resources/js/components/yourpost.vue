@@ -71,6 +71,8 @@
                                         <div class="single_info_doc">
                                             <a href="#" @click="deletepost(post)"> <i
                                                 class="fa fa-trash text-red"></i></a>
+                                                <router-link v-bind:to="'/editpost/'+ post.id">
+                                                <i class="fa fa-edit text-red"></i></router-link>
                                         </div>
                                     </li>
                                 </ul>

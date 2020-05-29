@@ -16,29 +16,35 @@ class postcontroller extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    private $s;
+    private $status;
+
     public function yourpost($id)
     {
         $post=DB::table('posts')
         ->join('propertytypes','posts.propertytype_id','=','propertytypes.id')
         ->select('posts.*','propertytypes.name as pname')
-        ->get();
-        return $post->where('user_id',$id);    
+        ->where('user_id',$id)->orderBy('created_at','asc')->get();
+        return $post;    
     }
     public function singlepost($id)
-    {
+    {   
         $post=DB::table('posts')
         ->join('propertytypes','posts.propertytype_id','=','propertytypes.id')
         ->select('posts.*','propertytypes.name as pname')
-        ->get();
-        return $post->where('id',$id);    
+        ->where('posts.id',$id)->get();
+        return $post;    
     }
     public function index()
     {
         //
+        $s=0;
+        $status=1;
         $post=DB::table('posts')
         ->join('propertytypes','posts.propertytype_id','=','propertytypes.id')
         ->select('posts.*','propertytypes.name as pname')
-        ->get();
+        ->where('sold',$s)->where('status',$status)->get();
         return $post;
     }
 

@@ -7,7 +7,7 @@
                         <div class="col-xl-10 offset-xl-1">
                             <div class="slider_text text-center justify-content-center">
                                 <h3>Find your best Property</h3>
-                                <p>Esteem spirit temper too say adieus who direct esteem.</p>
+                                <p>Find A Home That Is Desgined For You</p>
                             </div>
                             <div class="property_form">
                                 <form action="#">

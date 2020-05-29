@@ -53,8 +53,8 @@ class UserController extends Controller
       ->join('users', 'userinfos.user_id', '=', 'users.id')
       
       ->select('userinfos.*','users.name as username','users.email as useremail')
-      ->get();
-      return $u->where('user_id',$id);
+      ->where('user_id',$id)->get();
+      return $u;
     }
     /**
      * Update the specified resource in storage.

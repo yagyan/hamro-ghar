@@ -79,8 +79,8 @@
                         </div>
                     </div>
                 </div>
-                <div id="sticky-header" class="main-header-area">
-                    <div class="col-xl-11">
+                <div id="sticky-header" class="main-header-area"  style="background-color: #55657E">
+                    <div class="col-xl-12" >
                         <div class="header_bottom_border">
                             <div class="row align-items-center">
                                 <div class="col-xl-3 col-lg-2">

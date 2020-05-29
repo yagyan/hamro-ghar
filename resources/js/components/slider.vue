@@ -81,9 +81,9 @@
                                                 </div>
 
                                                 <div class="serach_icon">
-                                                    <a href="#">
+                                                    <router-link :to="'/search/' + this.form.propertytype_id + '/' + this.form.bed + '/' +this.form.bath ">
                                                         <i class="ti-search"></i>
-                                                    </a>
+                                                    </router-link>
                                                 </div>
                                             </div>
                                         </div>
@@ -120,6 +120,7 @@
                     district_id: '',
                     municipality_id: '',
                     ward_id: '',
+                    porpertytype_id:'',
                 })
             }
         },
@@ -129,6 +130,7 @@
 
         },
         methods: {
+            
             forceRerender() {
                 this.componentKey += 1;
             },

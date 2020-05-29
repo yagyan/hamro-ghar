@@ -1,6 +1,6 @@
 <template>
     <component-to-re-render :key="componentKey">
-        <div class="container" style="padding-top:150px">
+        <div class="container" style="padding-top:200px">
 
             <div class="card">
                 <div class="card-header">

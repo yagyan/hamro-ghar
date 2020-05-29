@@ -56,6 +56,9 @@ let routes=[
 { path: '/newpost',component: require('./components/newpost.vue').default},
 { path: '/yourpost',component: require('./components/yourpost.vue').default},
 { path: '/singlepost/:id',component: require('./components/singlepost.vue').default, name:'singlepost',props: true},
+{ path: '/editpost/:id',component: require('./components/editpost.vue').default, name:'singlepost',props: true},
+{path: '/search/:type/:bed/:bathroom',component: require('./components/search.vue').default, name:'search',props: true}
+
 
 ]
 /*let routes2=[

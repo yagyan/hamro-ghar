@@ -50311,7 +50311,7 @@ var render = function() {
   return _c("component-to-re-render", { key: _vm.componentKey }, [
     _c(
       "div",
-      { staticClass: "container", staticStyle: { "padding-top": "150px" } },
+      { staticClass: "container", staticStyle: { "padding-top": "200px" } },
       [
         _c("div", { staticClass: "card" }, [
           _c("div", { staticClass: "card-header" }, [

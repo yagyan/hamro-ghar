@@ -84,7 +84,7 @@
                         <div class="header_bottom_border">
                             <div class="row align-items-center">
                                 <div class="col-xl-3 col-lg-2">
-                                    <div class="logo">
+                                    <div class="logo" style="padding-left:50px;">
                                         <a href="">
                                             <img src="img/logo.png" alt="">
                                         </a>

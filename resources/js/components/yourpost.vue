@@ -18,11 +18,13 @@
                                 <div class="property_tag">
                                     For {{post.characteristics}}
                                 </div>
+                               
                                 <router-link v-bind:to="'/singlepost/'+ post.id">
                                 <img class="img-fluid" v-bind:src="post.front_view"
                                     onerror="if (this.src != 'error.jpg') this.src = 'img/property/6.png';">
                                    </router-link> 
                             </div>
+                             
                             <div class="property_content">
                                 <div class="main_pro">
                                     <h3><a href="#">{{post.title}}</a></h3>
@@ -38,6 +40,7 @@
                                         <span>Longitude:{{post.longitude}}°</span>
                                     </div>
                                     <span class="amount">$:{{post.price}}</span>
+                                     <span class="amount" v-show="post.sold">sold</span>
                                 </div>
                             </div>
                             <div class="footer_pro">

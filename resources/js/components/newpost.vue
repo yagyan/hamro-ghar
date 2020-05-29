@@ -354,7 +354,7 @@
                 this.componentKey += 1;
             },
             route(){
-                console.log('asd');
+               
                 this.$router.push('yourpost')
             },
 
@@ -437,7 +437,7 @@
                             icon: 'success',
                             title: 'Post has been Successfully Added',
                             showConfirmButton: false,
-                            timer: 3000
+                            timer: 1000
                         })
                         this.$Progress.finish();
                         this.route();

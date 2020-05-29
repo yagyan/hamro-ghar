@@ -6,7 +6,7 @@
             <div class="row">
                 <div class="col-xl-12">
                     <carousel :items='1' :autoplay='true' :loop='true' :nav="false" >
-                        <div v-for="post in posts.slice(0,4)" :key="post.id" v-show="!post.sold">
+                        <div v-for="post in posts.slice(0,4)" :key="post.id" >
                             <div class="single_details">
                                 <div class="row">
                                     <div class="col-xl-6 col-md-6">
@@ -17,9 +17,9 @@
                                                 </span>
                                                 
                                                 <div class="info_header">
-                                                    <router-link v-bind:to="'/singlepost/'+ post.id">
+                                                    
                                                     <h3>{{post.title}}</h3>
-                                                    </router-link>
+                                                   
                                                     <div class="popular_pro d-flex">
                                                         <img src="img/svg_icon/location.svg" alt="">
                                                         <span>Longitide: {{post.longitude}}°</span>
@@ -45,7 +45,7 @@
                                                     <div
                                                         class="prise_view_details d-flex justify-content-between align-items-center">
                                                         <span>$:{{post.price}}</span>
-                                                        <a class="boxed-btn3-line" href="#">View Details</a>
+                                                        <router-link v-bind:to="'/singlepost/'+ post.id" class="boxed-btn3-line">View Details</router-link>
                                                     </div>
                                                 </div>
                                             </div>

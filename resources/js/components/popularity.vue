@@ -10,7 +10,7 @@
             </div>
             <div class="row">
 
-                <div v-for="post in allpost.slice(0,6)" :key="post.id" v-show="!post.sold">
+                <div v-for="post in allpost.slice(0,6)" :key="post.id">
                     <div class="col-xl-14 col-md-16 col-lg-14" style="padding: 5px">
                         <div class="single_property">
                             <div class="property_thumb" style="height:240px; width:362px ">

@@ -58,10 +58,8 @@ let routes=[
 { path: '/singlepost/:id',component: require('./components/singlepost.vue').default, name:'singlepost',props: true},
 { path: '/editpost/:id',component: require('./components/editpost.vue').default, name:'singlepost',props: true},
 {path: '/search/:type/:bed/:bathroom',component: require('./components/search.vue').default, name:'search',props: true}
-<<<<<<< HEAD
-=======
 
->>>>>>> 6001b6890bb9641b46b8006fde166c481a106eee
+
 
 ]
 /*let routes2=[

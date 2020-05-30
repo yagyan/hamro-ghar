@@ -1,5 +1,6 @@
 <template>
     <!-- testimonial_area  -->
+     <component-to-re-render :key="componentKey">
     <div class="testimonial_area overlay ">
         <div class="container">
             <div class="row">
@@ -28,6 +29,7 @@
             </div>
         </div>
     </div>
+     </component-to-re-render>
     <!-- /testimonial_area  -->
 </template>
 
@@ -35,6 +37,7 @@
     export default {
         data() {
             return {
+                componentKey:0,
                 testimonials: [{
                     "description":"Donec imperdiet congue orci consequat mattis. Donec rutrum porttitor sollicitudin. Pellentesque id dolor tempor sapien feugiat ultrices nec sed neque. Fusce ac mattis nulla. Morbi eget ornare dui."
                 }, 
@@ -47,17 +50,15 @@
                 post:[],
             }
         },
-        mounted() {
+        created() {
             console.log('Component mounted.')
-            this.loadproperty();
+            this.forceRerender();
         },
         methods: {
-            loadproperty() {
-                axios.get('api/post')
-                    .then(({
-                        data
-                    }) => (this.post = data))
+             forceRerender() {
+                this.componentKey += 1;
             },
+            
         }
     }
 

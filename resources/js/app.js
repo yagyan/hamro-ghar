@@ -8,7 +8,7 @@ require('./bootstrap');
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import store from './store';
-import carousel from 'vue-owl-carousel';
+
 
 
 
@@ -57,7 +57,7 @@ let routes=[
 { path: '/yourpost',component: require('./components/yourpost.vue').default},
 { path: '/singlepost/:id',component: require('./components/singlepost.vue').default, name:'singlepost',props: true},
 { path: '/editpost/:id',component: require('./components/editpost.vue').default, name:'singlepost',props: true},
-{path: '/search/:type/:bed/:bathroom',component: require('./components/search.vue').default, name:'search',props: true}
+{path: '/search/:type/:bed/:bath/:price',component: require('./components/search.vue').default, name:'search',props: true}
 
 
 
@@ -103,5 +103,8 @@ Vue.component('slider.vue', require('./components/ExampleComponent.vue').default
 const app = new Vue({
     store, 
     el: '#app',
-   router
+    router,
+    
+
+   
 });

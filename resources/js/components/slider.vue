@@ -12,6 +12,7 @@
                             <div class="property_form">
                                 <form action="#">
                                     <div class="row">
+
                                         <div class="container-fluid">
                                             <div class="form_wrap d-flex">
                                                 <div class="single-field max_width ">
@@ -27,7 +28,7 @@
                                                 </div>
                                                 <div class="single-field max_width ">
                                                     <label for="#">State</label>
-                                                    <select class="form-control input-lg" style="width:90%;"
+                                                    <select class="form-control input-lg" style="width:100%;"
                                                         v-model="form.state_id" @change="fetchdistrict">
 
                                                         <option v-for="state in states" :key="state.id"
@@ -37,7 +38,7 @@
                                                     </select>
                                                 </div>
 
-                                                <div class="single-field max_width ">
+                                                <!--<div class="single-field max_width ">
                                                     <label for="#">disrict</label>
                                                     <select class="form-control input-lg" style="width: 90%;"
                                                         v-model="form.district_id" @change="fetchmunicipality">
@@ -47,12 +48,20 @@
                                                             {{ district.name }}</option>
 
                                                     </select>
+                                                </div> -->
+                                                <div class="single-field min_width ">
+                                                    <div class="form-group">
+                                                        <label>Price</label>
+                                                        <input v-model="form.price" type="text" name="price"
+                                                            class="form-control" style="width: 100%;"
+                                                            :class="{ 'is-invalid': form.errors.has('price') }">
+                                                        <has-error :form="form" field="price"></has-error>
+                                                    </div>
                                                 </div>
 
 
-
-                                                <div class="single-field min_width ">
-                                                    <label for="#">Bed Room</label>
+                                                <div class="single-field max_width ">
+                                                    <label for="#">Bed</label>
                                                     <select class="form-control input-lg" style="width: 100%;"
                                                         v-model="form.bed">
                                                         <option value="1">01</option>
@@ -65,8 +74,8 @@
 
                                                     </select>
                                                 </div>
-                                                <div class="single-field min_width ">
-                                                    <label for="#">Bath Room</label>
+                                                <div class="single-field max_width ">
+                                                    <label for="#">Bath </label>
                                                     <select class="form-control input-lg" style="width: 100%;"
                                                         v-model="form.bath">
                                                         <option value="1">01</option>
@@ -81,9 +90,11 @@
                                                 </div>
 
                                                 <div class="serach_icon">
-                                                    <router-link :to="'/search/' + this.form.propertytype_id + '/' + this.form.bed + '/' +this.form.bath ">
-                                                        <i class="ti-search"></i>
-                                                    </router-link>
+                                                    
+                                                  <!--  <router-link
+                                                        :to="'/search/'+this.form.propertytype_id+'/'+this.form.bed+'/'+this.form.bath+'/'+this.form.price"> -->
+                                                       <a @click='search'><i class="ti-search" ></i></a>
+                                                   <!-- </router-link>-->
                                                 </div>
                                             </div>
                                         </div>
@@ -120,7 +131,8 @@
                     district_id: '',
                     municipality_id: '',
                     ward_id: '',
-                    porpertytype_id:'',
+                    porpertytype_id: '',
+                    price:'',
                 })
             }
         },
@@ -130,7 +142,10 @@
 
         },
         methods: {
-            
+            search(){
+                this.$router.push({ name: 'search', query: { type:this.form.propertytype_id, bed:this.form.bed, bath:this.form.bath, price:this.form.price} })
+                
+            },
             forceRerender() {
                 this.componentKey += 1;
             },

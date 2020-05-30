@@ -33,7 +33,7 @@ Route::get('/getward/{data}','API\wardcontroller@getward');
 Route::get('/adduser/{id}/','API\UserController@adduser');
 Route::get('/yourpost/{id}/','API\postcontroller@yourpost');
 Route::get('/singlepost/{id}/','API\postcontroller@singlepost');
-Route::get('/search/{type}/{bed}/{bathroom}','API\postcontroller@searchpost');
+Route::get('/search/{type}/{bed}/{bath}/{price}','API\postcontroller@searchpost');
 
 Route::put('/updateprofile/{id}/','API\addresscontroller@updateprofile');
 

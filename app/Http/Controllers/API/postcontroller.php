@@ -37,12 +37,12 @@ class postcontroller extends Controller
         return $post;    
     }
 
-    public function searchpost($type, $bed, $bath)
+    public function searchpost($type, $bed, $bath, $price)
     {   
         $post=DB::table('posts')
         ->join('propertytypes','posts.propertytype_id','=','propertytypes.id')
         ->select('posts.*','propertytypes.name as pname')
-        ->where('propertytypes.id',$type)->where('posts.bed',$bed)->where('posts.bathroom',$bath)->get();
+        ->where('posts.price',$price)->where('propertytypes.id',$type)->where('posts.bed',$bed)->where('posts.bathroom',$bath)->get();
         return $post;    
     }
 

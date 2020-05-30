@@ -1,18 +1,19 @@
 <template>
     <component-to-re-render :key="componentKey">
         <div class="container" style="padding-top:200px">
-
+        <div v-for="post in posts" :key="post.id"  >
+            
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">New Post</h3>
+                    <h3 class="card-title">Edit Post</h3>
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
-                    <form @submit.prevent="addpost()" enctype="multipart/form-data">
+                    <form @submit.prevent="editpost()" enctype="multipart/form-data">
                         <div class="form-group">
                             <label>Title</label>
                             <input v-model="form.title" type="text" name="title" class="form-control"
-                                :class="{ 'is-invalid': form.errors.has('title') }">
+                                :class="{ 'is-invalid': form.errors.has('title') }" :placeholder="post.title">
                             <has-error :form="form" field="title"></has-error>
                         </div>
                         <div class="row">
@@ -53,7 +54,7 @@
                                 <div class="form-group">
                                     <label>Area</label>
                                     <input v-model="form.area" type="text" name="area" class="form-control"
-                                        :class="{ 'is-invalid': form.errors.has('area') }">
+                                        :class="{ 'is-invalid': form.errors.has('area') }" :placeholder="post.area">
                                     <has-error :form="form" field="area"></has-error>
                                 </div>
                             </div>
@@ -77,7 +78,7 @@
                                 <div class="form-group">
                                     <label>Price</label>
                                     <input v-model="form.price" type="text" name="price" class="form-control"
-                                        :class="{ 'is-invalid': form.errors.has('price') }">
+                                        :class="{ 'is-invalid': form.errors.has('price') }" :placeholder="post.price">
                                     <has-error :form="form" field="price"></has-error>
                                 </div>
                                 <div class="form-group">
@@ -101,7 +102,7 @@
                                 <div class="form-group">
                                     <label>No of bed</label>
                                     <input v-model="form.bed" type="text" name="bed" class="form-control"
-                                        :class="{ 'is-invalid': form.errors.has('bed') }">
+                                        :class="{ 'is-invalid': form.errors.has('bed') }" :placeholder="post.bed">
                                     <has-error :form="form" field="bed"></has-error>
                                 </div>
                             </div>
@@ -109,7 +110,7 @@
                                 <div class="form-group">
                                     <label>No of bathroom</label>
                                     <input v-model="form.bathroom" type="text" name="bathroom" class="form-control"
-                                        :class="{ 'is-invalid': form.errors.has('bathroom') }">
+                                        :class="{ 'is-invalid': form.errors.has('bathroom') }" :placeholder="post.bathroom" >
                                     <has-error :form="form" field="bathroom"></has-error>
                                 </div>
                             </div>
@@ -120,7 +121,7 @@
                                 <div class="form-group">
                                     <label>Longitude</label>
                                     <input v-model="form.longitude" type="text" name="longitude" class="form-control"
-                                        :class="{ 'is-invalid': form.errors.has('longitude') }">
+                                        :class="{ 'is-invalid': form.errors.has('longitude') }" :placeholder="post.longitude">
                                     <has-error :form="form" field="longitude"></has-error>
                                 </div>
                             </div>
@@ -128,7 +129,7 @@
                                 <div class="form-group">
                                     <label>Latitude</label>
                                     <input v-model="form.latitude" type="text" name="latitude" class="form-control"
-                                        :class="{ 'is-invalid': form.errors.has('latitude') }">
+                                        :class="{ 'is-invalid': form.errors.has('latitude') }" :placeholder="post.latitude">
                                     <has-error :form="form" field="latitude"></has-error>
                                 </div>
                             </div>
@@ -278,7 +279,7 @@
                                 <div class="form-group">
                                     <label>Description</label>
                                     <textarea v-model="form.description" class="form-control" rows="3"
-                                        placeholder="Description"></textarea>
+                                        :placeholder="post.description"></textarea>
                                 </div>
 
                             </div>
@@ -291,21 +292,24 @@
                 </div>
                 <!-- /.card-body -->
             </div>
+            </div>
         </div>
     </component-to-re-render>
 </template>
 
 <script>
     export default {
+        props:['id'],
         data() {
             return {
                 componentKey: 0,
                 types: [],
+                files: [],
                 states: [],
                 districts: [],
                 municipalities: [],
                 wards: [],
-
+                posts:[],
 
 
                 form: new Form({
@@ -346,14 +350,25 @@
 
             this.loadtypes();
             this.fetchstate();
-
+            this.fetchpost();
+            
         },
         methods: {
             forceRerender() {
                 this.componentKey += 1;
             },
+           
+            fetchpost() {
+                axios.get('api/singlepost/'+this.id)
+                    .then(({
+                        data
+                    }) => {
+                        this.posts = data;
+                        this.loaded = true;
+                    })
+            },
             route(){
-               
+                console.log('asd');
                 this.$router.push('yourpost')
             },
 
@@ -424,29 +439,9 @@
                     }) => (this.types = data))
             },
             
-            addpost() {
-                this.$Progress.start();
-                this.form.post('api/post')
-                    .then(({
-                        data
-                    }) => {
-                        $('#Modal').modal('hide');
-                        Swal.fire({
-                            position: 'center',
-                            icon: 'success',
-                            title: 'Post has been Successfully Added',
-                            showConfirmButton: false,
-                            timer: 1000
-                        })
-                        this.$Progress.finish();
-                        this.route();
-
-                    })
-                    .catch(({
-                        result
-                    }) => {
-                        this.$Progress.fail();
-                    })
+            editpost() {
+                this.form.put('api/post/' + this.id)
+                   
             },
             addaddress() {
                 this.form2.post('api/address')

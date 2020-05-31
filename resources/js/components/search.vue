@@ -10,7 +10,7 @@
             </div>
             <div class="row">
 
-                <div v-for="post in posts" :key="post.id" v-show="!post.sold">
+                <div v-for="post in filteredpost" :key="post.id" v-show="!post.sold">
                     <div class="col-xl-14 col-md-16 col-lg-14" style="padding: 5px">
                         <div class="single_property">
                             <div class="property_thumb" style="height:240px; width:362px ">
@@ -82,10 +82,11 @@
 export default {
     data(){
         return{
-            type_id:this.$route.query.type,
-            bed:this.$route.query.bed,
-            bath:this.$route.query.bath,
-            price:this.$route.query.price,
+            yagyan:2,
+            type_id:this.$route.params.type,
+            bed:this.$route.params.bed,
+            bath:this.$route.params.bath,
+            price:this.$route.params.price,
             posts:[],
         }
     },
@@ -95,9 +96,23 @@ export default {
             
             
         },
+        computed:
+{
+    filteredposts:function()
+    {
+        return this.posts
+            .filter(function(posts,yagyan)
+            {
+                return posts.propertytype_id ==yagyan;
+            })
+            
+            
+    }
+},
+
         methods:{
             fetchsearch(){
-                axios.get('api/search/'+this.type_id +'/' + this.bed +'/'+this.bath+'/'+this.price)
+                axios.get('api/post')
                     .then(({
                         data
                     }) =>{ this.posts = data;

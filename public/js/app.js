@@ -5301,10 +5301,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      type_id: this.$route.query.type,
-      bed: this.$route.query.bed,
-      bath: this.$route.query.bath,
-      price: this.$route.query.price,
+      yagyan: 2,
+      type_id: this.$route.params.type,
+      bed: this.$route.params.bed,
+      bath: this.$route.params.bath,
+      price: this.$route.params.price,
       posts: []
     };
   },
@@ -5312,11 +5313,18 @@ __webpack_require__.r(__webpack_exports__);
     console.log('Component mounted.');
     this.fetchsearch();
   },
+  computed: {
+    filteredposts: function filteredposts() {
+      return this.posts.filter(function (posts, yagyan) {
+        return posts.propertytype_id == yagyan;
+      });
+    }
+  },
   methods: {
     fetchsearch: function fetchsearch() {
       var _this = this;
 
-      axios.get('api/search/' + this.type_id + '/' + this.bed + '/' + this.bath + '/' + this.price).then(function (_ref) {
+      axios.get('api/post').then(function (_ref) {
         var data = _ref.data;
         _this.posts = data;
       });
@@ -5570,14 +5578,14 @@ __webpack_require__.r(__webpack_exports__);
       editmodal: false,
       form: new Form({
         id: '',
-        bed: '',
-        bath: '',
+        bed: 0,
+        bath: 0,
         state_id: '',
         district_id: '',
         municipality_id: '',
         ward_id: '',
-        porpertytype_id: '',
-        price: ''
+        porpertytype_id: 0,
+        price: 0
       })
     };
   },
@@ -5588,8 +5596,8 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     search: function search() {
       this.$router.push({
-        name: 'search',
-        query: {
+        path: '/search',
+        params: {
           type: this.form.propertytype_id,
           bed: this.form.bed,
           bath: this.form.bath,
@@ -53969,7 +53977,7 @@ var render = function() {
         _c(
           "div",
           { staticClass: "row" },
-          _vm._l(_vm.posts, function(post) {
+          _vm._l(_vm.filteredpost, function(post) {
             return _c(
               "div",
               {
@@ -54708,11 +54716,30 @@ var render = function() {
                             ]
                           ),
                           _vm._v(" "),
-                          _c("div", { staticClass: "serach_icon" }, [
-                            _c("a", { on: { click: _vm.search } }, [
-                              _c("i", { staticClass: "ti-search" })
-                            ])
-                          ])
+                          _c(
+                            "div",
+                            { staticClass: "serach_icon" },
+                            [
+                              _c(
+                                "router-link",
+                                {
+                                  attrs: {
+                                    to:
+                                      "/search/" +
+                                      this.form.propertytype_id +
+                                      "/" +
+                                      this.form.bed +
+                                      "/" +
+                                      this.form.bath +
+                                      "/" +
+                                      this.form.price
+                                  }
+                                },
+                                [_c("i", { staticClass: "ti-search" })]
+                              )
+                            ],
+                            1
+                          )
                         ])
                       ])
                     ])
@@ -73490,6 +73517,7 @@ var routes = [{
 //Vue Router Register
 
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
+  mode: 'history',
   routes: routes
 }); //v form
 

@@ -91,10 +91,10 @@
 
                                                 <div class="serach_icon">
                                                     
-                                                  <!--  <router-link
-                                                        :to="'/search/'+this.form.propertytype_id+'/'+this.form.bed+'/'+this.form.bath+'/'+this.form.price"> -->
-                                                       <a @click='search'><i class="ti-search" ></i></a>
-                                                   <!-- </router-link>-->
+                                                   <router-link
+                                                        :to="'/search/'+this.form.propertytype_id+'/'+this.form.bed+'/'+this.form.bath+'/'+this.form.price"> 
+                                                      <i class="ti-search" ></i>
+                                                   </router-link>
                                                 </div>
                                             </div>
                                         </div>
@@ -125,14 +125,14 @@
                 editmodal: false,
                 form: new Form({
                     id: '',
-                    bed: '',
-                    bath: '',
+                    bed: 0,
+                    bath: 0,
                     state_id: '',
                     district_id: '',
                     municipality_id: '',
                     ward_id: '',
-                    porpertytype_id: '',
-                    price:'',
+                    porpertytype_id: 0,
+                    price:0,
                 })
             }
         },
@@ -143,7 +143,7 @@
         },
         methods: {
             search(){
-                this.$router.push({ name: 'search', query: { type:this.form.propertytype_id, bed:this.form.bed, bath:this.form.bath, price:this.form.price} })
+                this.$router.push({ path: '/search', params: { type:this.form.propertytype_id, bed:this.form.bed, bath:this.form.bath, price:this.form.price} })
                 
             },
             forceRerender() {

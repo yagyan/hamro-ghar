@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <div class="row justify-content-center mt-5">
+        <div class="row justify-content-center mt-5" v-if='$gate.isAgent()'>
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
@@ -378,7 +378,7 @@
                 editmodal: false,
                 types: [],
                 files: [],
-                 states: [],
+                states: [],
                 districts: [],
                 municipalities: [],
                 wards: [],
@@ -389,7 +389,7 @@
                 form: new Form({
                     id: '',
                     title: '',
-                    user_id: window.user.user.id,
+                    user_id: window.userinfo.user.id,
                     status: true,
                     propertytype_id: '',
                     area: '',
@@ -408,10 +408,10 @@
                     description: '',
                     bed: '',
                     bathroom: '',
-                    address_id:'',
+                    address_id: '',
                 }),
                 form2: new Form({
-                    
+
                     state_id: '',
                     district_id: '',
                     municipality_id: '',
@@ -487,16 +487,21 @@
             },
 
             loadpost() {
+
+                if(this.$gate.isAgent()){
                 axios.get('api/yourpost/' + this.form.user_id)
                     .then(({
                         data
                     }) => (this.posts = data))
+                }
             },
             loadtypes() {
+                  if(this.$gate.isAgent()){
                 axios.get('api/propertytype')
                     .then(({
                         data
                     }) => (this.types = data))
+                  }
             },
             openmodal() {
                 this.editmodal = false;
@@ -548,6 +553,14 @@
                                 )
                                 this.loadpost();
                             })
+                            .catch(() => {
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Oops...',
+                                    text: 'Something went wrong!',
+                                    footer: '<a href>Why do I have this issue?</a>'
+                                })
+                            })
                     }
                 })
             },
@@ -568,17 +581,21 @@
 
                     )
             },
-             addaddress() {
+            addaddress() {
                 this.form2.post('api/address')
-                .then(({data})=>{
-                    (this.form.address_id=data.id)
-                })
+                    .then(({
+                        data
+                    }) => {
+                        (this.form.address_id = data.id)
+                    })
             },
             fetchstate() {
+                  if(this.$gate.isAgent()){
                 axios.get('api/state')
                     .then(({
                         data
                     }) => (this.states = data))
+                  }
             },
             fetchdistrict() {
                 axios.get('api/getdistrict/' + this.form2.state_id)

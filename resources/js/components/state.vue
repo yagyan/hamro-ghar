@@ -103,8 +103,10 @@
         },
       methods:{
       loadstate(){
+          if(this.$gate.isAdmin()){
         axios.get('api/state')
         .then(({data})=>(this.states=data))
+          }
 
       },
 

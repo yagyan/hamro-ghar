@@ -15,6 +15,11 @@ class wardcontroller extends Controller
      * @return \Illuminate\Http\Response
      */
 
+    public function __construct()
+    {
+       $this->middleware('auth:api');
+       
+    }
      public function getward($id)
      {
        $data = ward::where('municipality_id', $id)->get();
@@ -84,7 +89,7 @@ class wardcontroller extends Controller
     public function update(Request $request, $id)
     {
         //
-        $m=municipality::findOrFail($id);
+        $m=ward::findOrFail($id);
         $this->validate($request,[
         'name'=>'required|min:6|string|max:256',
         'state_id'=>'required',

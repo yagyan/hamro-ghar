@@ -9,6 +9,10 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 import store from './store';
 
+import Gate from './Gate';
+
+Vue.prototype.$gate = new Gate(window.user);
+
 
 
 
@@ -16,12 +20,12 @@ import store from './store';
 Vue.use(VueRouter);
 
 //sweet alert 2
-import Swal from 'sweetalert2'
+import Swal from 'sweetalert2';
 window.Swal=Swal;
 
 //vue progressbar
 
-import VueProgressBar from 'vue-progressbar'
+import VueProgressBar from 'vue-progressbar';
 const options = {
   color: '#228B22',
   failedColor: '#874b4b',
@@ -34,9 +38,9 @@ const options = {
   autoRevert: true,
   location: 'top',
   inverse: false
-}
+};
 
-Vue.use(VueProgressBar, options)
+Vue.use(VueProgressBar, options);
 
 
 let routes=[
@@ -47,6 +51,7 @@ let routes=[
 {path:'/propertytype', component:require('./components/propertytype.vue').default},
 {path:'/userprofile', component:require('./components/userprofile.vue').default},
 {path:'/usertype', component:require('./components/usertype.vue').default},
+{path:'/usermanagement', component:require('./components/usermanagement.vue').default},
 {path:'/paddress', component:require('./components/paddress.vue').default},
 {path:'/post', component:require('./components/post.vue').default},
 { path: '/',component: require('./components/index.vue').default},
@@ -61,7 +66,7 @@ let routes=[
 
 
 
-]
+];
 /*let routes2=[
 
 ]*/
@@ -69,14 +74,15 @@ let routes=[
 const router= new VueRouter({
   mode:'history',
 	routes
-})
+});
 
 
 //v form
-import { Form, HasError, AlertError } from 'vform'
+import { Form, HasError, AlertError } from 'vform';
 window.Form=Form;
-Vue.component(HasError.name, HasError)
-Vue.component(AlertError.name, AlertError)
+Vue.component(HasError.name, HasError);
+Vue.component(AlertError.name, AlertError);
+
 
 
 

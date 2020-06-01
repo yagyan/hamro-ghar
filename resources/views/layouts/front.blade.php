@@ -29,7 +29,7 @@
     <link rel="stylesheet" href="css/style.css">
     <!-- <link rel="stylesheet" href="css/responsive.css"> -->
     <script>
-        window.user = {!! json_encode([
+        window.userinfo = {!! json_encode([
             'csrfToken' => csrf_token(),
             'user' => Auth::user(),
             'api_token' => (Auth::user()) ? Auth::user()->api_token : null

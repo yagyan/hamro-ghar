@@ -315,7 +315,7 @@
                 form: new Form({
                     id: '',
                     title: '',
-                    user_id: window.user.user.id,
+                    user_id: window.userinfo.user.id,
                     status: true,
                     propertytype_id: '',
                     area: '',

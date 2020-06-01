@@ -4,14 +4,10 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\municipality;
-use App\district;
-use App\state;
-use Illuminate\Support\Facades\DB;
+use App\User;
 use Illuminate\Support\Facades\Hash;
 
-
-class municicontroller extends Controller
+class usermanagementcontroller extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -20,25 +16,17 @@ class municicontroller extends Controller
      */
     public function __construct()
     {
-      $this->middleware('auth:api');
+       $this->middleware('auth:api');
+       
     }
 
-     public function getmunicipality($id)
-     {
-       $data = municipality::where('district_id', $id)->get();
-
-        return $data;
-     }
-
     public function index()
-    {
-        //
-        $munic =DB::table('municipalities')
-        ->join('states', 'municipalities.state_id', '=', 'states.id')
-        ->join('districts','municipalities.district_id','=','districts.id')
-        ->select('municipalities.*','states.name as sname','districts.name as disname')
-        ->get();
-         return $munic;
+    {  
+          
+      $users = User::orderBy('id','asc')->get();
+
+          return $users;
+
     }
 
     /**
@@ -52,21 +40,20 @@ class municicontroller extends Controller
         //
         $this->validate($request,[
         'name'=>'required|min:6|string|max:256',
-        'state_id'=>'required',
-        'district_id'=>'required',
-
-
+        'email'=>'required|email|string|unique:users',
+        'password'=>'required|string|min:8',
+        'confirmpassword'=>'required|string|min:8|same:password',
+        'usertype'=>'required|string',
       ]);
 
-      $u=new municipality();
-
+      $u=new User();
       $u->name=$request->input('name');
-      $u->state_id=$request->input('state_id');
-      $u->district_id=$request->input('district_id');
-
-
+      $u->email=$request->input('email');
+      $u->password=Hash::make($request->input('password'));
+      $u->usertype=$request->input('usertype');
       $u->save();
       return $u;
+
     }
 
     /**
@@ -78,6 +65,8 @@ class municicontroller extends Controller
     public function show($id)
     {
         //
+          $u=User::where('id',$id)->paginate(2);
+          return $u;
     }
 
     /**
@@ -90,15 +79,16 @@ class municicontroller extends Controller
     public function update(Request $request, $id)
     {
         //
-        $m=municipality::findOrFail($id);
-        $this->validate($request,[
-        'name'=>'required|min:6|string|max:256',
-        'state_id'=>'required',
-        'district_id'=>'required',
+          $u=User::findOrFail($id);
+          $this->validate($request,[
+          'name'=>'required|min:6|string|max:256',
+          'email'=>'required|email|string|unique:users,email,'.$u->id,
+          'usertype'=>'required|string',
 
+        ]);
+           
+        $u->update($request->all());
 
-      ]);
-      $m->update($request->all());
     }
 
     /**
@@ -110,7 +100,11 @@ class municicontroller extends Controller
     public function destroy($id)
     {
         //
-        $m=municipality::findorFail($id);
-        $m->delete();
+        $this->authorize('isAdmin');
+        $u=User::findOrFail($id);
+        $u->delete();
     }
+
+
+   
 }

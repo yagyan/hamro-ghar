@@ -247,7 +247,7 @@
         data() {
             return {
                
-                userid: window.user.user.id,
+                userid: window.userinfo.user.id,
                 userinfo: [],
                 states: [],
                 districts: [],

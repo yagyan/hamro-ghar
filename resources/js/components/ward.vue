@@ -1,6 +1,6 @@
 <template>
       <div class="container">
-        <div class="row justify-content-center mt-5">
+        <div class="row justify-content-center mt-5" v-if="$gate.isAdmin()">
             <div class="col-md-12">
               <div class="card">
                 <div class="card-header">
@@ -127,8 +127,10 @@
       },
       methods:{
       loadward(){
+        if(this.$gate.isAdmin()){
         axios.get('api/ward')
         .then(({data})=>(this.wards=data))
+        }
       },
       openmodal(){
         this.editmodal=false;
@@ -151,8 +153,10 @@
         })
       },
       fetchstate(){
+        if(this.$gate.isAdmin()){
           axios.get('api/state')
           .then(({data})=>(this.states=data))
+        }
       },
       fetchdistrict(){
           axios.get('api/getdistrict/'+this.form.state_id)

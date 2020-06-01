@@ -1,6 +1,6 @@
 <template>
       <div class="container">
-        <div class="row justify-content-center mt-5">
+        <div class="row justify-content-center mt-5" v-if="$gate.isAdmin()">
             <div class="col-md-12">
               <div class="card">
                 <div class="card-header">
@@ -113,8 +113,10 @@
       },
       methods:{
       loaddistrict(){
+          if(this.$gate.isAdmin()){
         axios.get('api/district')
         .then(({data})=>(this.districts=data))
+          }
 
       },
       openmodal(){
@@ -142,8 +144,10 @@
       },
 
       fetchstate(){
+          if(this.$gate.isAgent()){
           axios.get('api/state')
           .then(({data})=>(this.states=data))
+          }
       },
 
       deletedistrict(id){

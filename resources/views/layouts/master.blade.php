@@ -15,7 +15,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <link rel="icon" href="img/icon.png"
   type="image/icon type">
   <script>
-        window.user = {!! json_encode([
+        window.userinfo = {!! json_encode([
             'csrfToken' => csrf_token(),
             'user' => Auth::user(),
             'api_token' => (Auth::user()) ? Auth::user()->api_token : null
@@ -159,12 +159,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
        </li>
        @endcan
           
+       @can('isAgent')
        <li class="nav-item" >
          <router-link to="/post" class="nav-link">
           <i class="fas fa-landmark"></i>
            <p>Post</p>
          </router-link>
        </li>
+       @endcan
+       
           @can('isAdmin')
        <li class="nav-item" >
          <router-link to="/propertytype" class="nav-link">

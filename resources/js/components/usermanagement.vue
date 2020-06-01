@@ -69,15 +69,15 @@
             </div>
 
              <div class="form-group">
-              <label>User type</label>
-              <select class="form-control input-lg" style="width: 100%;" v-model="form.usertype" >
-                <option value="">Select User Type</option>
-                <option>Admin</option>
-                <option>Agent</option>
-                <option>Customer</option>
-                
-              </select>
-            </div>
+                        <label>User type</label>
+                        <select class="form-control input-lg" style="width: 100%;" v-model="form.usertype">
+                            <option value="">Select User Type</option>
+                            <option v-for="type in types" :key="type.id" :value="type.name">
+                                {{ type.name }}</option>
+
+
+                        </select>
+                    </div>
             
             <div class="form-group" v-show="!editmodal">
                 <label>Password</label>

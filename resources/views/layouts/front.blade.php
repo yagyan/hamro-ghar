@@ -159,12 +159,15 @@
                                             <div class="genric-btn primary circle arrow">
                                                 <a href="{{ route('login') }}" style="color:blanchedalmond">Login</a>
                                             </div>
-                                            @if (Route::has('register'))
+                                           <!-- @if (Route::has('register'))
                                             <div class="genric-btn primary circle arrow">
                                                 <a href="{{ route('register') }}"
                                                     style="color:blanchedalmond">Register</a>
                                             </div>
-                                            @endif
+                                            @endif -->
+                                            <div class="genric-btn primary circle arrow" style="color:blanchedalmond">
+                                                <router-link to='/registerform'>Register</router-link>
+                                            </div>
                                             @endauth
                                         </div>
                                         @endif

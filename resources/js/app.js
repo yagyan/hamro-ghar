@@ -55,6 +55,7 @@ let routes=[
 {path:'/paddress', component:require('./components/paddress.vue').default},
 {path:'/post', component:require('./components/post.vue').default},
 { path: '/',component: require('./components/index.vue').default},
+{ path: '/registerform',component: require('./components/register.vue').default},
 { path: '/allproperty',component: require('./components/allproperty.vue').default,name:'allproperty'},
 { path: '/about',component: require('./components/about.vue').default},
 { path: '/contact',component: require('./components/contact.vue').default},

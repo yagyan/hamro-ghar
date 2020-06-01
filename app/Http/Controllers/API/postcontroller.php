@@ -36,6 +36,10 @@ class postcontroller extends Controller
         ->where('posts.id',$id)->get();
         return $post;    
     }
+    public function single($id)
+    {
+        return ['message'];
+    }
 
     public function searchpost($type, $bed, $bath, $price)
     {   

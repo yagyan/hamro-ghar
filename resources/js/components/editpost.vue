@@ -299,9 +299,10 @@
 
 <script>
     export default {
-        props:['id'],
+        
         data() {
             return {
+                id:this.$route.query.id,
                 componentKey: 0,
                 types: [],
                 files: [],
@@ -310,7 +311,7 @@
                 municipalities: [],
                 wards: [],
                 posts:[],
-
+                
 
                 form: new Form({
                     id: '',

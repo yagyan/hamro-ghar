@@ -55,14 +55,15 @@ let routes=[
 {path:'/paddress', component:require('./components/paddress.vue').default},
 {path:'/post', component:require('./components/post.vue').default},
 { path: '/',component: require('./components/index.vue').default},
-{ path: '/allproperty',component: require('./components/allproperty.vue').default},
+{ path: '/allproperty',component: require('./components/allproperty.vue').default,name:'allproperty'},
 { path: '/about',component: require('./components/about.vue').default},
 { path: '/contact',component: require('./components/contact.vue').default},
 { path: '/newpost',component: require('./components/newpost.vue').default},
 { path: '/yourpost',component: require('./components/yourpost.vue').default},
 { path: '/singlepost/:id',component: require('./components/singlepost.vue').default, name:'singlepost',props: true},
-{ path: '/editpost/:id',component: require('./components/editpost.vue').default, name:'singlepost',props: true},
-{path: '/search/:type/:bed/:bath/:price',component: require('./components/search.vue').default, name:'search',props: true}
+{ path: '/editpost/:id',component: require('./components/editpost.vue').default, name:'',props: true},
+{path: '/search/:type/:bed/:bath/:price',component: require('./components/search.vue').default, name:'search',props: true},
+
 
 
 
@@ -73,7 +74,7 @@ let routes=[
 //Vue Router Register
 const router= new VueRouter({
   mode:'history',
-	routes
+	routes:routes,
 });
 
 

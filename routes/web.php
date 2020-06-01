@@ -18,6 +18,12 @@ Route::get('/', function () {
 });
 
 Auth::routes();
+//Route::redirect('/', '/index');
+//Route::redirect('/home', '/Dashboard/home');
+Route::get('/home/{path}', 'HomeController@index')->where('path','([A-z]+)?');
+//Route::get('/index/{path}', 'HomeController@front')->where('path','([A-z]+)?');
 
-Route::get('{path}', 'HomeController@index')->where('path','([A-z]+)?');
+//Route::get('/index/{any}', 'HomeController@front')->where('any', '.*');
 Route::get('/home', 'HomeController@index')->name('home');
+
+

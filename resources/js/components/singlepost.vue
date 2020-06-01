@@ -70,13 +70,12 @@
         components: {
             carousel
         },
-        props: ['id'],
+        
         data() {
             return {
                 loaded: false,
-
                 post: [],
-
+                id:this.$route.query.id
             }
         },
         created() {
@@ -86,15 +85,14 @@
             forceRerender() {
                 this.componentKey += 1;
             },
-            fetchpost() {
-                axios.get('api/singlepost/' + this.id)
+           fetchpost(){
+                axios.get('api/singlepost/'+this.id)
                     .then(({
                         data
-                    }) => {
-                        this.post = data;
-                        this.loaded = true;
+                    }) =>{ this.post = data;
+                    this.forceRerender();
                     })
-            }
+            },
         }
     }
 </script>

@@ -2841,9 +2841,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['id'],
   data: function data() {
     return {
+      id: this.$route.query.id,
       componentKey: 0,
       types: [],
       files: [],
@@ -3047,6 +3047,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue_owl_carousel__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-owl-carousel */ "./node_modules/vue-owl-carousel/dist/vue-owl-carousel.js");
 /* harmony import */ var vue_owl_carousel__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue_owl_carousel__WEBPACK_IMPORTED_MODULE_0__);
+//
+//
 //
 //
 //
@@ -5437,11 +5439,11 @@ __webpack_require__.r(__webpack_exports__);
   components: {
     carousel: vue_owl_carousel__WEBPACK_IMPORTED_MODULE_0___default.a
   },
-  props: ['id'],
   data: function data() {
     return {
       loaded: false,
-      post: []
+      post: [],
+      id: this.$route.query.id
     };
   },
   created: function created() {
@@ -5457,7 +5459,8 @@ __webpack_require__.r(__webpack_exports__);
       axios.get('api/singlepost/' + this.id).then(function (_ref) {
         var data = _ref.data;
         _this.post = data;
-        _this.loaded = true;
+
+        _this.forceRerender();
       });
     }
   }
@@ -5599,14 +5602,14 @@ __webpack_require__.r(__webpack_exports__);
       editmodal: false,
       form: new Form({
         id: '',
-        bed: 0,
-        bath: 0,
+        bed: '',
+        bath: '',
         state_id: '',
         district_id: '',
         municipality_id: '',
         ward_id: '',
-        porpertytype_id: 0,
-        price: 0
+        type_id: '',
+        price: ''
       })
     };
   },
@@ -7133,12 +7136,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       componentKey: 0,
       posts: [],
-      userid: window.user.user.id
+      userid: window.userinfo.user.id
     };
   },
   created: function created() {
@@ -47938,7 +47943,7 @@ var render = function() {
                               attrs: {
                                 to: {
                                   name: "singlepost",
-                                  params: { id: post.id }
+                                  query: { id: post.id }
                                 }
                               }
                             },
@@ -50044,12 +50049,20 @@ var render = function() {
                                       _c(
                                         "router-link",
                                         {
-                                          staticClass: "boxed-btn3-line",
                                           attrs: {
-                                            to: "/singlepost/" + post.id
+                                            to: {
+                                              name: "singlepost",
+                                              query: { id: post.id }
+                                            }
                                           }
                                         },
-                                        [_vm._v("View Details")]
+                                        [
+                                          _c(
+                                            "div",
+                                            { staticClass: "boxed-btn3-line" },
+                                            [_vm._v("View Details")]
+                                          )
+                                        ]
                                       )
                                     ],
                                     1
@@ -52283,7 +52296,7 @@ var render = function() {
                         "router-link",
                         {
                           attrs: {
-                            to: { name: "singlepost", params: { id: post.id } }
+                            to: { name: "singlepost", query: { id: post.id } }
                           }
                         },
                         [
@@ -52397,7 +52410,7 @@ var render = function() {
                 staticClass: "boxed-btn3-line",
                 on: {
                   click: function($event) {
-                    return _vm.$router.push("allproperty")
+                    return _vm.$router.push({ name: "allproperty" })
                   }
                 }
               },
@@ -54665,12 +54678,12 @@ var render = function() {
                                     {
                                       name: "model",
                                       rawName: "v-model",
-                                      value: _vm.form.propertytype_id,
-                                      expression: "form.propertytype_id"
+                                      value: _vm.form.type_id,
+                                      expression: "form.type_id"
                                     }
                                   ],
                                   staticClass: "form-control input-lg",
-                                  staticStyle: { width: "100%" },
+                                  staticStyle: { width: "110%" },
                                   on: {
                                     change: function($event) {
                                       var $$selectedVal = Array.prototype.filter
@@ -54686,7 +54699,7 @@ var render = function() {
                                         })
                                       _vm.$set(
                                         _vm.form,
-                                        "propertytype_id",
+                                        "type_id",
                                         $event.target.multiple
                                           ? $$selectedVal
                                           : $$selectedVal[0]
@@ -54767,22 +54780,28 @@ var render = function() {
                                     ]
                                   }
                                 },
-                                _vm._l(_vm.states, function(state) {
-                                  return _c(
-                                    "option",
-                                    {
-                                      key: state.id,
-                                      domProps: { value: state.id }
-                                    },
-                                    [
-                                      _vm._v(
-                                        "\n                                                        " +
-                                          _vm._s(state.name)
-                                      )
-                                    ]
-                                  )
-                                }),
-                                0
+                                [
+                                  _c("option", { attrs: { value: "" } }, [
+                                    _vm._v("Select State")
+                                  ]),
+                                  _vm._v(" "),
+                                  _vm._l(_vm.states, function(state) {
+                                    return _c(
+                                      "option",
+                                      {
+                                        key: state.id,
+                                        domProps: { value: state.id }
+                                      },
+                                      [
+                                        _vm._v(
+                                          "\n                                                        " +
+                                            _vm._s(state.name)
+                                        )
+                                      ]
+                                    )
+                                  })
+                                ],
+                                2
                               )
                             ]
                           ),
@@ -54811,7 +54830,11 @@ var render = function() {
                                       "is-invalid": _vm.form.errors.has("price")
                                     },
                                     staticStyle: { width: "100%" },
-                                    attrs: { type: "text", name: "price" },
+                                    attrs: {
+                                      type: "text",
+                                      name: "price",
+                                      placeholder: "Price"
+                                    },
                                     domProps: { value: _vm.form.price },
                                     on: {
                                       input: function($event) {
@@ -54838,10 +54861,10 @@ var render = function() {
                           _vm._v(" "),
                           _c(
                             "div",
-                            { staticClass: "single-field max_width " },
+                            { staticClass: "single-field min_width " },
                             [
                               _c("label", { attrs: { for: "#" } }, [
-                                _vm._v("Bed")
+                                _vm._v("Bedroom")
                               ]),
                               _vm._v(" "),
                               _c(
@@ -54856,7 +54879,7 @@ var render = function() {
                                     }
                                   ],
                                   staticClass: "form-control input-lg",
-                                  staticStyle: { width: "100%" },
+                                  staticStyle: { width: "125%" },
                                   on: {
                                     change: function($event) {
                                       var $$selectedVal = Array.prototype.filter
@@ -54881,33 +54904,23 @@ var render = function() {
                                   }
                                 },
                                 [
-                                  _c("option", { attrs: { value: "1" } }, [
-                                    _vm._v("01")
+                                  _c("option", { attrs: { value: "" } }, [
+                                    _vm._v("0")
                                   ]),
                                   _vm._v(" "),
-                                  _c("option", { attrs: { value: "2" } }, [
-                                    _vm._v("02")
-                                  ]),
+                                  _c("option", [_vm._v("1")]),
                                   _vm._v(" "),
-                                  _c("option", { attrs: { value: "3" } }, [
-                                    _vm._v("03")
-                                  ]),
+                                  _c("option", [_vm._v("2")]),
                                   _vm._v(" "),
-                                  _c("option", { attrs: { value: "4" } }, [
-                                    _vm._v("04")
-                                  ]),
+                                  _c("option", [_vm._v("3")]),
                                   _vm._v(" "),
-                                  _c("option", { attrs: { value: "5" } }, [
-                                    _vm._v("05")
-                                  ]),
+                                  _c("option", [_vm._v("4")]),
                                   _vm._v(" "),
-                                  _c("option", { attrs: { value: "6" } }, [
-                                    _vm._v("06")
-                                  ]),
+                                  _c("option", [_vm._v("5")]),
                                   _vm._v(" "),
-                                  _c("option", { attrs: { value: "7" } }, [
-                                    _vm._v("07")
-                                  ])
+                                  _c("option", [_vm._v("6")]),
+                                  _vm._v(" "),
+                                  _c("option", [_vm._v("7")])
                                 ]
                               )
                             ]
@@ -54915,10 +54928,10 @@ var render = function() {
                           _vm._v(" "),
                           _c(
                             "div",
-                            { staticClass: "single-field max_width " },
+                            { staticClass: "single-field min_width " },
                             [
                               _c("label", { attrs: { for: "#" } }, [
-                                _vm._v("Bath ")
+                                _vm._v("Bathroom ")
                               ]),
                               _vm._v(" "),
                               _c(
@@ -54933,7 +54946,7 @@ var render = function() {
                                     }
                                   ],
                                   staticClass: "form-control input-lg",
-                                  staticStyle: { width: "100%" },
+                                  staticStyle: { width: "125%" },
                                   on: {
                                     change: function($event) {
                                       var $$selectedVal = Array.prototype.filter
@@ -54958,33 +54971,23 @@ var render = function() {
                                   }
                                 },
                                 [
-                                  _c("option", { attrs: { value: "1" } }, [
-                                    _vm._v("01")
+                                  _c("option", { attrs: { value: "" } }, [
+                                    _vm._v("0")
                                   ]),
                                   _vm._v(" "),
-                                  _c("option", { attrs: { value: "2" } }, [
-                                    _vm._v("02")
-                                  ]),
+                                  _c("option", [_vm._v("1")]),
                                   _vm._v(" "),
-                                  _c("option", { attrs: { value: "3" } }, [
-                                    _vm._v("03")
-                                  ]),
+                                  _c("option", [_vm._v("2")]),
                                   _vm._v(" "),
-                                  _c("option", { attrs: { value: "4" } }, [
-                                    _vm._v("04")
-                                  ]),
+                                  _c("option", [_vm._v("3")]),
                                   _vm._v(" "),
-                                  _c("option", { attrs: { value: "5" } }, [
-                                    _vm._v("05")
-                                  ]),
+                                  _c("option", [_vm._v("4")]),
                                   _vm._v(" "),
-                                  _c("option", { attrs: { value: "6" } }, [
-                                    _vm._v("06")
-                                  ]),
+                                  _c("option", [_vm._v("5")]),
                                   _vm._v(" "),
-                                  _c("option", { attrs: { value: "7" } }, [
-                                    _vm._v("07")
-                                  ])
+                                  _c("option", [_vm._v("6")]),
+                                  _vm._v(" "),
+                                  _c("option", [_vm._v("7")])
                                 ]
                               )
                             ]
@@ -54998,15 +55001,15 @@ var render = function() {
                                 "router-link",
                                 {
                                   attrs: {
-                                    to:
-                                      "/search/" +
-                                      this.form.propertytype_id +
-                                      "/" +
-                                      this.form.bed +
-                                      "/" +
-                                      this.form.bath +
-                                      "/" +
-                                      this.form.price
+                                    to: {
+                                      name: "search",
+                                      query: {
+                                        type: this.form.type_id,
+                                        bed: +this.form.bed,
+                                        bathroom: this.form.bath,
+                                        price: this.form.price
+                                      }
+                                    }
                                   }
                                 },
                                 [_c("i", { staticClass: "ti-search" })]
@@ -57713,7 +57716,14 @@ var render = function() {
                           _vm._v(" "),
                           _c(
                             "router-link",
-                            { attrs: { to: "/singlepost/" + post.id } },
+                            {
+                              attrs: {
+                                to: {
+                                  name: "singlepost",
+                                  query: { id: post.id }
+                                }
+                              }
+                            },
                             [
                               _c("img", {
                                 staticClass: "img-fluid",
@@ -57860,7 +57870,14 @@ var render = function() {
                                 _vm._v(" "),
                                 _c(
                                   "router-link",
-                                  { attrs: { to: "/editpost/" + post.id } },
+                                  {
+                                    attrs: {
+                                      to: {
+                                        name: "editpost",
+                                        query: { id: post.id }
+                                      }
+                                    }
+                                  },
                                   [
                                     _c("i", {
                                       staticClass: "fa fa-edit text-red"
@@ -74300,7 +74317,8 @@ var routes = [{
   component: __webpack_require__(/*! ./components/index.vue */ "./resources/js/components/index.vue")["default"]
 }, {
   path: '/allproperty',
-  component: __webpack_require__(/*! ./components/allproperty.vue */ "./resources/js/components/allproperty.vue")["default"]
+  component: __webpack_require__(/*! ./components/allproperty.vue */ "./resources/js/components/allproperty.vue")["default"],
+  name: 'allproperty'
 }, {
   path: '/about',
   component: __webpack_require__(/*! ./components/about.vue */ "./resources/js/components/about.vue")["default"]
@@ -74321,7 +74339,7 @@ var routes = [{
 }, {
   path: '/editpost/:id',
   component: __webpack_require__(/*! ./components/editpost.vue */ "./resources/js/components/editpost.vue")["default"],
-  name: 'singlepost',
+  name: '',
   props: true
 }, {
   path: '/search/:type/:bed/:bath/:price',

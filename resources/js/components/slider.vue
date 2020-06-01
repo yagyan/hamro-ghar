@@ -15,13 +15,13 @@
 
                                         <div class="container-fluid">
                                             <div class="form_wrap d-flex">
-                                                <div class="single-field max_width ">
+                                               <div class="single-field max_width ">
                                                     <label for="#">Property Type</label>
-
-                                                    <select class="form-control input-lg" style="width: 100%;"
-                                                        v-model="form.propertytype_id">
+                                                    <select class="form-control input-lg" style="width:110%;"
+                                                        v-model="form.type_id">
                                                         <option value="">Select Type</option>
-                                                        <option v-for="type in types" :key="type.id" :value="type.id">
+                                                        <option v-for="type in types" :key="type.id"
+                                                            :value="type.id">
                                                             {{ type.name }}</option>
 
                                                     </select>
@@ -30,7 +30,7 @@
                                                     <label for="#">State</label>
                                                     <select class="form-control input-lg" style="width:100%;"
                                                         v-model="form.state_id" @change="fetchdistrict">
-
+                                                        <option value="">Select State</option>
                                                         <option v-for="state in states" :key="state.id"
                                                             :value="state.id">
                                                             {{ state.name }}</option>
@@ -54,45 +54,45 @@
                                                         <label>Price</label>
                                                         <input v-model="form.price" type="text" name="price"
                                                             class="form-control" style="width: 100%;"
-                                                            :class="{ 'is-invalid': form.errors.has('price') }">
+                                                            :class="{ 'is-invalid': form.errors.has('price') }" placeholder="Price">
                                                         <has-error :form="form" field="price"></has-error>
                                                     </div>
                                                 </div>
 
 
-                                                <div class="single-field max_width ">
-                                                    <label for="#">Bed</label>
-                                                    <select class="form-control input-lg" style="width: 100%;"
+                                                <div class="single-field min_width ">
+                                                    <label for="#">Bedroom</label>
+                                                    <select class="form-control input-lg" style="width: 125%;"
                                                         v-model="form.bed">
-                                                        <option value="1">01</option>
-                                                        <option value="2">02</option>
-                                                        <option value="3">03</option>
-                                                        <option value="4">04</option>
-                                                        <option value="5">05</option>
-                                                        <option value="6">06</option>
-                                                        <option value="7">07</option>
+                                                         <option value="">0</option>
+                                                        <option>1</option>
+                                                        <option>2</option>
+                                                        <option>3</option>
+                                                        <option>4</option>
+                                                        <option>5</option>
+                                                        <option>6</option>
+                                                        <option>7</option>
 
                                                     </select>
                                                 </div>
-                                                <div class="single-field max_width ">
-                                                    <label for="#">Bath </label>
-                                                    <select class="form-control input-lg" style="width: 100%;"
+                                                <div class="single-field min_width ">
+                                                    <label for="#">Bathroom </label>
+                                                    <select class="form-control input-lg" style="width: 125%;"
                                                         v-model="form.bath">
-                                                        <option value="1">01</option>
-                                                        <option value="2">02</option>
-                                                        <option value="3">03</option>
-                                                        <option value="4">04</option>
-                                                        <option value="5">05</option>
-                                                        <option value="6">06</option>
-                                                        <option value="7">07</option>
-
+                                                         <option value="">0</option>
+                                                        <option>1</option>
+                                                        <option>2</option>
+                                                        <option>3</option>
+                                                        <option>4</option>
+                                                        <option>5</option>
+                                                        <option>6</option>
+                                                        <option>7</option>
                                                     </select>
                                                 </div>
 
                                                 <div class="serach_icon">
-                                                    
-                                                   <router-link
-                                                        :to="'/search/'+this.form.propertytype_id+'/'+this.form.bed+'/'+this.form.bath+'/'+this.form.price"> 
+                                                   <router-link :to="{ name: 'search', query: {type:this.form.type_id, bed:+this.form.bed, bathroom:this.form.bath, price:this.form.price}}"> 
+                                                   
                                                       <i class="ti-search" ></i>
                                                    </router-link>
                                                 </div>
@@ -125,14 +125,14 @@
                 editmodal: false,
                 form: new Form({
                     id: '',
-                    bed: 0,
-                    bath: 0,
+                    bed:'',
+                    bath:'',
                     state_id: '',
                     district_id: '',
                     municipality_id: '',
                     ward_id: '',
-                    porpertytype_id: 0,
-                    price:0,
+                    type_id:'',
+                    price:'',
                 })
             }
         },
@@ -153,7 +153,7 @@
                 axios.get('api/propertytype')
                     .then(({
                         data
-                    }) => (this.types = data))
+                    }) =>(this.types = data))
             },
             fetchstate() {
                 axios.get('api/state')

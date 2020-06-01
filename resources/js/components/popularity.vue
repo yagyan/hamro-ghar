@@ -17,7 +17,7 @@
                                 <div class="property_tag">
                                     For {{post.characteristics}}
                                 </div>
-                                <router-link :to="{ name: 'singlepost', params: { id: post.id }}">
+                                <router-link :to="{ name: 'singlepost', query: { id: post.id }}">
                                 <img class="img-fluid" v-bind:src="post.front_view"
                                     onerror="if (this.src != 'error.jpg') this.src = 'img/property/6.png';">
                                 </router-link>
@@ -75,7 +75,7 @@
             <div class="row">
                 <div class="col-xl-12">
                     <div class="more_property_btn text-center">
-                        <div class="boxed-btn3-line" @click="$router.push('allproperty')">More Properties</div>
+                        <div class="boxed-btn3-line" @click="$router.push({name:'allproperty'})">More Properties</div>
                     </div>
                 </div>
             </div>

@@ -45,7 +45,9 @@
                                                     <div
                                                         class="prise_view_details d-flex justify-content-between align-items-center">
                                                         <span>$:{{post.price}}</span>
-                                                        <router-link v-bind:to="'/singlepost/'+ post.id" class="boxed-btn3-line">View Details</router-link>
+                                                        <router-link :to="{ name: 'singlepost', query: { id: post.id }}">
+                                                        <div class="boxed-btn3-line">View Details</div>
+                                                        </router-link>
                                                     </div>
                                                 </div>
                                             </div>

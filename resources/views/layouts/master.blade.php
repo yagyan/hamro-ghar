@@ -100,18 +100,28 @@ scratch. This page gets rid of all links and provides the needed markup only.
                        <p>User profile</p>
                      </router-link>
                    </li>
+                   @can('isAdmin')
                    <li class="nav-item">
                      <router-link to="/usertype" class="nav-link">
                       <i class="fas fa-users"></i>
                        <p>User Type</p>
                      </router-link>
                    </li>
+                   @endcan
+                   @can('isAdmin')
+                   <li class="nav-item">
+                     <router-link to="/usermanagement" class="nav-link">
+                      <i class="fas fa-users"></i>
+                       <p>User Management</p>
+                     </router-link>
+                   </li>
+                   @endcan
 
 
          </ul>
        </li>
 
-
+          @can('isAdmin')
           <li class="nav-item has-treeview menu-close">
                  <a href="#" class="nav-link">
                    <i class="fas fa-globe-asia"></i>
@@ -147,20 +157,23 @@ scratch. This page gets rid of all links and provides the needed markup only.
            </li>
          </ul>
        </li>
-
+       @endcan
+          
        <li class="nav-item" >
          <router-link to="/post" class="nav-link">
           <i class="fas fa-landmark"></i>
            <p>Post</p>
          </router-link>
        </li>
-
+          @can('isAdmin')
        <li class="nav-item" >
          <router-link to="/propertytype" class="nav-link">
           <i class="fas fa-landmark"></i>
            <p>Property Type</p>
          </router-link>
        </li>
+       @endcan
+      
        <li class="nav-item" >
            <a class="nav-link" href="{{ route('logout') }}"style="padding-left:20px"
    onclick="event.preventDefault();document.getElementById('logout-form').submit();">
@@ -211,6 +224,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
     </footer>
   </div>
   <!-- ./wrapper -->
+
+  @auth
+  <script>
+    window.user = @json(auth()->user())
+  </script>
+    
+   @endauth
+
   <!-- REQUIRED SCRIPTS -->
   <script src="/js/app.js"></script>
   </body>

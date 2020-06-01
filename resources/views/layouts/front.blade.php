@@ -105,7 +105,9 @@
                                                         </li>
                                                         <li>
                                                         @auth
+                                                        @can('isAgent')
                                                             <router-link to="/yourpost">Your Post</router-link>
+                                                            @endcan
                                                             @endauth
                                                         </li>
                                                         <li>
@@ -129,11 +131,11 @@
                                         @if (Route::has('login'))
                                         <div class="top-right links">
                                             @auth
-
+                                            @can('isAgent')
                                             <div class="genric-btn primary circle arrow">
                                                 <router-link to="/newpost" style="color:blanchedalmond">Add</router-link>
                                             </div>
-
+                                            @endcan
                                             <div class="genric-btn primary circle arrow">
                                                 <a href="{{ url('/home') }}" style="color:blanchedalmond">Home</a>
                                             </div>
@@ -315,6 +317,7 @@
 
         <!-- link that opens popup -->
     </div>
+    
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script

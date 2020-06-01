@@ -40,6 +40,25 @@
                         </div>
 
                         <!--dropdown for user type-->
+                        <div class="form-group row">
+                            <label for="usertype" class="col-md-4 col-form-label text-md-right">{{ __('usertype') }}</label>
+
+                            <div class="col-md-6">
+                            <select id="usertype"  class="form-control @error('usertype') is-invalid @enderror" name="usertype" required autocomplete="new-password">
+                               <option value=''>Select User type</option>
+                                <option>Customer</option>
+                                <option>Admin</option>
+                                <option>Agent</option>
+                                @error('usertype')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                                
+                                </select>
+                            </div>
+                        </div>
                       
 
                         <div class="form-group row">

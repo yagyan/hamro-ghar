@@ -83,10 +83,10 @@ export default {
     data(){
         return{
             yagyan:2,
-            type_id:this.$route.params.type,
-            bed:this.$route.params.bed,
-            bath:this.$route.params.bath,
-            price:this.$route.params.price,
+            type_id:this.$route.query.type,
+            bed:this.$route.query.bed,
+            bath:this.$route.query.bathroom,
+            price:this.$route.query.price,
             posts:[],
         }
     },

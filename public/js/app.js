@@ -5321,7 +5321,7 @@ __webpack_require__.r(__webpack_exports__);
     adduser: function adduser() {
       var _this = this;
 
-      this.form.post('api/user').then(function (_ref) {
+      this.form.post('api/register').then(function (_ref) {
         var data = _ref.data;
         $('#Modal').modal('hide');
 
@@ -5447,10 +5447,10 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       yagyan: 2,
-      type_id: this.$route.params.type,
-      bed: this.$route.params.bed,
-      bath: this.$route.params.bath,
-      price: this.$route.params.price,
+      type_id: this.$route.query.type,
+      bed: this.$route.query.bed,
+      bath: this.$route.query.bathroom,
+      price: this.$route.query.price,
       posts: []
     };
   },
@@ -5926,7 +5926,7 @@ __webpack_require__.r(__webpack_exports__);
     addstate: function addstate() {
       var _this2 = this;
 
-      this.form.post('api/state').then(function (_ref2) {
+      axios.post('api/state').then(function (_ref2) {
         var data = _ref2.data;
         $('#Modal').modal('hide');
 
@@ -6192,6 +6192,7 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       users: [],
+      types: [],
       editmodal: false,
       avatar: '',
       form: new Form({
@@ -6206,6 +6207,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   created: function created() {
     this.loaduser();
+    this.loadtypes();
   },
   methods: {
     loaduser: function loaduser() {
@@ -6218,19 +6220,27 @@ __webpack_require__.r(__webpack_exports__);
         });
       }
     },
+    loadtypes: function loadtypes() {
+      var _this2 = this;
+
+      axios.get('api/usertype').then(function (_ref2) {
+        var data = _ref2.data;
+        return _this2.types = data;
+      });
+    },
     openmodal: function openmodal() {
       this.editmodal = false;
       this.form.reset();
       $('#Modal').modal('show');
     },
     addUser: function addUser() {
-      var _this2 = this;
+      var _this3 = this;
 
-      this.form.post('api/user').then(function (_ref2) {
-        var data = _ref2.data;
+      this.form.post('api/user').then(function (_ref3) {
+        var data = _ref3.data;
         $('#Modal').modal('hide');
 
-        _this2.$Progress.start();
+        _this3.$Progress.start();
 
         Swal.fire({
           icon: 'success',
@@ -6239,13 +6249,13 @@ __webpack_require__.r(__webpack_exports__);
           timer: 3000
         });
 
-        _this2.loaduser();
+        _this3.loaduser();
 
-        _this2.$Progress.finish();
+        _this3.$Progress.finish();
       });
     },
     deleteuser: function deleteuser(id) {
-      var _this3 = this;
+      var _this4 = this;
 
       Swal.fire({
         title: 'Are you sure?',
@@ -6257,10 +6267,10 @@ __webpack_require__.r(__webpack_exports__);
         confirmButtonText: 'Yes, delete it!'
       }).then(function (result) {
         if (result.value) {
-          _this3.form["delete"]('api/user/' + id).then(function () {
+          _this4.form["delete"]('api/user/' + id).then(function () {
             Swal.fire('Deleted!', 'Your File Has Been Deleted.', 'Success');
 
-            _this3.loaduser();
+            _this4.loaduser();
           })["catch"](function () {
             Swal.fire({
               icon: 'error',
@@ -6278,10 +6288,10 @@ __webpack_require__.r(__webpack_exports__);
       this.form.fill(user);
     },
     edituser: function edituser() {
-      var _this4 = this;
+      var _this5 = this;
 
       this.form.put('/api/user/' + this.form.id).then(function () {
-        _this4.$Progress.start();
+        _this5.$Progress.start();
 
         $('#Modal').modal('hide');
         Swal.fire({
@@ -6291,17 +6301,17 @@ __webpack_require__.r(__webpack_exports__);
           timer: 3000
         });
 
-        _this4.line(_this4.form.id);
+        _this5.line(_this5.form.id);
 
-        _this4.$Progress.finish();
+        _this5.$Progress.finish();
       });
     },
     line: function line(id) {
-      var _this5 = this;
+      var _this6 = this;
 
-      this.form.get('/api/user/' + id).then(function (_ref3) {
-        var data = _ref3.data;
-        return _this5.users = data.data;
+      this.form.get('/api/user/' + id).then(function (_ref4) {
+        var data = _ref4.data;
+        return _this6.users = data.data;
       });
     }
   }
@@ -6825,7 +6835,7 @@ __webpack_require__.r(__webpack_exports__);
     addusertype: function addusertype() {
       var _this2 = this;
 
-      this.form.post('api/usertype').then(function (_ref2) {
+      axios.post('api/usertype').then(function (_ref2) {
         var data = _ref2.data;
         $('#Modal').modal('hide');
 
@@ -6879,7 +6889,7 @@ __webpack_require__.r(__webpack_exports__);
     editusertype: function editusertype() {
       var _this4 = this;
 
-      this.form.put('/api/usertype/' + this.form.id).then(function () {
+      axios.put('/api/usertype/' + this.form.id).then(function () {
         _this4.$Progress.start();
 
         $('#Modal').modal('hide');
@@ -48064,7 +48074,7 @@ var render = function() {
                             {
                               attrs: {
                                 to: {
-                                  name: "singlepost",
+                                  path: "singlepost",
                                   query: { id: post.id }
                                 }
                               }
@@ -50173,7 +50183,7 @@ var render = function() {
                                         {
                                           attrs: {
                                             to: {
-                                              name: "singlepost",
+                                              path: "singlepost",
                                               query: { id: post.id }
                                             }
                                           }
@@ -52418,7 +52428,7 @@ var render = function() {
                         "router-link",
                         {
                           attrs: {
-                            to: { name: "singlepost", query: { id: post.id } }
+                            to: { path: "singlepost", query: { id: post.id } }
                           }
                         },
                         [
@@ -55418,7 +55428,7 @@ var render = function() {
                                 {
                                   attrs: {
                                     to: {
-                                      name: "search",
+                                      path: "search",
                                       query: {
                                         type: this.form.type_id,
                                         bed: +this.form.bed,
@@ -58143,7 +58153,7 @@ var render = function() {
                             {
                               attrs: {
                                 to: {
-                                  name: "singlepost",
+                                  path: "singlepost",
                                   query: { id: post.id }
                                 }
                               }
@@ -58297,7 +58307,7 @@ var render = function() {
                                   {
                                     attrs: {
                                       to: {
-                                        name: "editpost",
+                                        path: "editpost",
                                         query: { id: post.id }
                                       }
                                     }
@@ -74726,7 +74736,8 @@ var routes = [{
   component: __webpack_require__(/*! ./components/userprofile.vue */ "./resources/js/components/userprofile.vue")["default"]
 }, {
   path: '/usertype',
-  component: __webpack_require__(/*! ./components/usertype.vue */ "./resources/js/components/usertype.vue")["default"]
+  component: __webpack_require__(/*! ./components/usertype.vue */ "./resources/js/components/usertype.vue")["default"],
+  name: 'usertype'
 }, {
   path: '/usermanagement',
   component: __webpack_require__(/*! ./components/usermanagement.vue */ "./resources/js/components/usermanagement.vue")["default"]
@@ -74759,17 +74770,17 @@ var routes = [{
   path: '/yourpost',
   component: __webpack_require__(/*! ./components/yourpost.vue */ "./resources/js/components/yourpost.vue")["default"]
 }, {
-  path: '/singlepost/:id',
+  path: '/singlepost',
   component: __webpack_require__(/*! ./components/singlepost.vue */ "./resources/js/components/singlepost.vue")["default"],
   name: 'singlepost',
   props: true
 }, {
-  path: '/editpost/:id',
+  path: '/editpost',
   component: __webpack_require__(/*! ./components/editpost.vue */ "./resources/js/components/editpost.vue")["default"],
   name: '',
   props: true
 }, {
-  path: '/search/:type/:bed/:bath/:price',
+  path: '/search',
   component: __webpack_require__(/*! ./components/search.vue */ "./resources/js/components/search.vue")["default"],
   name: 'search',
   props: true

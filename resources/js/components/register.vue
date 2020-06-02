@@ -79,7 +79,7 @@
         },
         methods: {
             adduser() {
-                this.form.post('api/user')
+                this.form.post('api/register')
                     .then(({
                         data
                     }) => {

@@ -45,7 +45,7 @@
                                                     <div
                                                         class="prise_view_details d-flex justify-content-between align-items-center">
                                                         <span>$:{{post.price}}</span>
-                                                        <router-link :to="{ name: 'singlepost', query: { id: post.id }}">
+                                                        <router-link :to="{ path: 'singlepost', query: { id: post.id }}">
                                                         <div class="boxed-btn3-line">View Details</div>
                                                         </router-link>
                                                     </div>

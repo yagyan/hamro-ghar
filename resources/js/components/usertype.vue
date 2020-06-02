@@ -116,7 +116,7 @@
       },
       addusertype(){
 
-        this.form.post('api/usertype')
+        axios.post('api/usertype')
               .then(({data})=>{
           $('#Modal').modal('hide');
           this.$Progress.start()
@@ -172,7 +172,7 @@
       },
 
       editusertype(){
-        this.form.put('/api/usertype/'+this.form.id)
+        axios.put('/api/usertype/'+this.form.id)
         .then(()=>{
           this.$Progress.start()
           $('#Modal').modal('hide');

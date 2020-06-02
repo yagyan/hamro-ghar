@@ -6,6 +6,7 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>Hamro Ghar: @yield('title')</title>
     <meta name="description" content="">
+    <meta name="csrf_token"content="{{csrf_token()}}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- <link rel="manifest" href="site.webmanifest"> -->
@@ -35,13 +36,14 @@
             'api_token' => (Auth::user()) ? Auth::user()->api_token : null
         ]) !!};
     </script>
+
 </head>
 
 <body>
     <div id="app">
-        <!--[if lte IE 9]>
+        <!--[if lte IE 9]
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
-        <![endif]-->
+        [endif]-->
 
         <!-- header-start -->
         <header>
@@ -157,7 +159,7 @@
                                     
                                             @else
                                             <div class="genric-btn primary circle arrow">
-                                                <a href="{{ route('login') }}" style="color:blanchedalmond">Login</a>
+                                                <a href="{{ route('login') }}" style="color:black">Login</a>
                                             </div>
                                            <!-- @if (Route::has('register'))
                                             <div class="genric-btn primary circle arrow">
@@ -165,7 +167,7 @@
                                                     style="color:blanchedalmond">Register</a>
                                             </div>
                                             @endif -->
-                                            <div class="genric-btn primary circle arrow" style="color:blanchedalmond">
+                                            <div class="genric-btn primary circle arrow" style="color:black">
                                                 <router-link to='/registerform'>Register</router-link>
                                             </div>
                                             @endauth

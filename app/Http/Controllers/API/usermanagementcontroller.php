@@ -16,13 +16,13 @@ class usermanagementcontroller extends Controller
      */
     public function __construct()
     {
-      // $this->middleware('auth:api');
+       $this->middleware('auth:api');
        
     }
 
     public function index()
     {  
-      $this->middleware('auth:api'); 
+      
       $users = User::orderBy('id','asc')->get();
 
           return $users;
@@ -65,7 +65,7 @@ class usermanagementcontroller extends Controller
     public function show($id)
     {
         //
-        $this->middleware('auth:api');
+        
           $u=User::where('id',$id)->paginate(2);
           return $u;
     }
@@ -80,7 +80,7 @@ class usermanagementcontroller extends Controller
     public function update(Request $request, $id)
     {
         //
-          $this->middleware('auth:api');
+          
           $u=User::findOrFail($id);
           $this->validate($request,[
           'name'=>'required|min:6|string|max:256',

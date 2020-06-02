@@ -118,7 +118,7 @@
       },
       addstate(){
 
-        this.form.post('api/state')
+        axios.post('api/state')
               .then(({data})=>{
           $('#Modal').modal('hide');
           this.$Progress.start()

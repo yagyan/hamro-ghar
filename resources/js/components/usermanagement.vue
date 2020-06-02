@@ -112,6 +112,7 @@
       data(){
         return{
           users:[],
+          types:[],
           editmodal:false,
           avatar:'',
 
@@ -127,6 +128,7 @@
       },
       created(){
         this.loaduser();
+        this.loadtypes();
       },
       methods:{
       loaduser(){
@@ -135,6 +137,13 @@
         .then(({data})=>(this.users=data))
         }
       },
+       loadtypes() {
+                axios.get('api/usertype')
+                    .then(({
+                        data
+                    }) => (this.types = data))
+            },
+
       openmodal(){
         this.editmodal=false;
         this.form.reset();

@@ -19,7 +19,7 @@
                                     For {{post.characteristics}}
                                 </div>
                               
-                               <router-link :to="{ name: 'singlepost', query: { id: post.id }}">
+                               <router-link :to="{ path: 'singlepost', query: { id: post.id }}">
                                 
                                 <img class="img-fluid" v-bind:src="post.front_view"
                                     onerror="if (this.src != 'error.jpg') this.src = 'img/property/6.png';">
@@ -75,7 +75,7 @@
                                         <div class="single_info_doc">
                                             <a href="#" @click="deletepost(post)"> <i
                                                 class="fa fa-trash text-red"></i></a>
-                                                <router-link :to="{ name: 'editpost', query: { id: post.id }}">
+                                                <router-link :to="{ path: 'editpost', query: { id: post.id }}">
                                                 
                                                 <i class="fa fa-edit text-red"></i></router-link>
                                         </div>

@@ -26,6 +26,7 @@ Route::apiResources(['address'=>'API\addresscontroller']);
 Route::apiResources(['propertytype'=>'API\propertytypecontroller']);
 Route::apiResources(['usertype'=>'API\usertypecontroller']);
 Route::apiResources(['user'=>'API\usermanagementcontroller']);
+Route::post('/register','API\register@store');
 Route::apiResources(['userinfo'=>'API\UserController']);
 Route::apiResources(['post'=>'API\postcontroller']);
 Route::get('/getdistrict/{id}','API\districtcontroller@getdistrict');

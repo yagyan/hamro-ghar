@@ -50,7 +50,7 @@ let routes=[
 {path:'/ward', component:require('./components/ward.vue').default},
 {path:'/propertytype', component:require('./components/propertytype.vue').default},
 {path:'/userprofile', component:require('./components/userprofile.vue').default},
-{path:'/usertype', component:require('./components/usertype.vue').default},
+{path:'/usertype', component:require('./components/usertype.vue').default,name:'usertype'},
 {path:'/usermanagement', component:require('./components/usermanagement.vue').default},
 {path:'/paddress', component:require('./components/paddress.vue').default},
 {path:'/post', component:require('./components/post.vue').default},
@@ -61,9 +61,9 @@ let routes=[
 { path: '/contact',component: require('./components/contact.vue').default},
 { path: '/newpost',component: require('./components/newpost.vue').default},
 { path: '/yourpost',component: require('./components/yourpost.vue').default},
-{ path: '/singlepost/:id',component: require('./components/singlepost.vue').default, name:'singlepost',props: true},
-{ path: '/editpost/:id',component: require('./components/editpost.vue').default, name:'',props: true},
-{path: '/search/:type/:bed/:bath/:price',component: require('./components/search.vue').default, name:'search',props: true},
+{ path: '/singlepost',component: require('./components/singlepost.vue').default, name:'singlepost',props: true},
+{ path: '/editpost',component: require('./components/editpost.vue').default, name:'',props: true},
+{path: '/search',component: require('./components/search.vue').default, name:'search',props: true},
 
 
 

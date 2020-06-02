@@ -23,7 +23,7 @@ Auth::routes();
 
 //Route::redirect('/', '/index');
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('{path}', 'HomeController@front')->where('path','([A-z]+)?');
+Route::get('{path}', 'API\register@front')->where('path','([A-z]+)?');
 Route::get('dashboard/{path}', 'HomeController@index')->where('path','([A-z]+)?');
 //Route::get('{path}', 'HomeController@front')->where('path','([A-z]+)?');
 

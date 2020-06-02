@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use App\post;
-use App\User;
+//use App\User;
 
 class postcontroller extends Controller
 {
@@ -231,4 +231,5 @@ class postcontroller extends Controller
         $u->delete();
         return ['message'=>'Deleted Successfully'];
     }
+    
 }

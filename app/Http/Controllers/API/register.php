@@ -79,4 +79,10 @@ class register extends Controller
     {
         //
     }
+
+    public function front()
+    {
+        return view('pages.index');
+    }
+
 }

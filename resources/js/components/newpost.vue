@@ -2,7 +2,7 @@
     <component-to-re-render :key="componentKey">
         <div class="container" style="padding-top:200px">
 
-            <div class="card">
+            <div class="card" v-if="$gate.isAdminOrAgent()">
                 <div class="card-header">
                     <h3 class="card-title">New Post</h3>
                 </div>
@@ -418,10 +418,12 @@
 
 
             loadtypes() {
+                if(this.$gate.isAdminOrAgent()){
                 axios.get('api/propertytype')
                     .then(({
                         data
                     }) => (this.types = data))
+                }
             },
             
             addpost() {
@@ -464,6 +466,7 @@
                     })
             },
             fetchstate() {
+                if(this.$gate.isAdminOrAgent()){
                 axios.get('api/state')
                     .then(({
                         data
@@ -472,6 +475,7 @@
                         this.forceRerender();
                         }
                         )
+                }
             },
             fetchdistrict() {
                 axios.get('api/getdistrict/' + this.form2.state_id)

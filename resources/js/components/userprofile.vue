@@ -1,115 +1,115 @@
 <template>
+    <component-to-re-render :key="componentKey">
+        <div class="container">
+            <div v-for="user in userinfo" :key="user.userid">
+                <div class="row justify-content-center">
+                    <div class="col-md-12 mt-5">
+                    </div>
+                    <div class="col-md-12 mt 8">
+                        <div class="card">
+                            <div class="card-header p-2">
+                                <ul class="nav nav-pills">
 
-    <div class="container">
-        <div v-for="user in userinfo" :key="user.userid">
-            <div class="row justify-content-center">
-                <div class="col-md-12 mt-5">
-                </div>
-                <div class="col-md-12 mt 8">
-                    <div class="card">
-                        <div class="card-header p-2">
-                            <ul class="nav nav-pills">
-                                
-                                <li class="nav-item"><a class="nav-link active" href="#settings"
-                                        data-toggle="tab">Settings</a></li>
-                            </ul>
-                        </div><!-- /.card-header -->
-                        <div class="card-body">
-                            <div class="tab-content">
-                              
-                                <!-- /.tab-pane -->
-                                <!-- /.tab-pane -->
-                                <div class="tab-pane active" id="settings">
-                                    <div class="col-md-12">
-                                        <!-- Profile Image -->
-                                        <!-- About Me Box -->
-                                        <div class="card card-primary">
-                                            <div class="card-header">
-                                                <h3 class="card-title">Details</h3>
-                                            </div>
-                                            <!-- /.card-header -->
-                                            <div class="card-body">
-                                                <strong><i class=""></i>User Name</strong>
-                                                <p class="text-muted">
-                                                    {{user.username}}
-                                                </p>
-                                                <hr>
-                                                <strong><i class=""></i> Name</strong>
-                                                <p class="text-muted">
-                                                    {{user.name}}
-                                                </p>
-                                                <hr>
-                                                <strong><i class=""></i> Email</strong>
-                                                <p class="text-muted">
-                                                    {{user.useremail}}
-                                                </p>
-                                                <hr>
-                                                <strong><i class=""></i>Date Of Birth</strong>
-                                                <p class="text-muted">
-                                                    2068/12/12
-                                                </p>
-                                                <hr>
-                                                <strong><i class=""></i> Permanent Address</strong>
-                                                <a href="#" @click.prevent="openaddress"> <i
-                                                        class="fa fa-edit blue"></i></a>
-                                                <table class="table table-hover text-nowrap">
-                                                    <thead>
-                                                        <tr>
-                                                            
-                                                            <th>
-                                                                State Name
-                                                            </th>
-                                                            <th>
-                                                                District Name
-                                                            </th>
-                                                            <th>
-                                                                Municipality Name
-                                                            </th>
-                                                            <th>
-                                                                Ward Name
-                                                            </th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <tr v-for="add in address" :key="add.id">
-                                                            
-                                                            <td>{{add.sname}}</td>
-                                                            <td>{{add.disname}}</td>
-                                                            <td>{{add.municname}}</td>
-                                                            <td>{{add.wname}}</td>
-                                                            
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                                <hr>
-                                                <strong><i class=""></i> Temporary Address</strong>
-                                                <p class="text-muted">sdasda</p>
-                                                <hr>
-                                                <strong><i class=""></i> Phone</strong>
-                                                <p class="text-muted">{{user.phone}}</p>
-                                                <hr>
-                                                <strong><i class=""></i> Mobile</strong>
-                                                <p class="text-muted">{{user.mobile}}</p>
-                                                <hr>
-                                                <strong><i class=""></i>Citizenship No</strong>
-                                                <p class="text-muted">{{user.citizen_no}}</p>
-                                                <div class="modal-footer">
-                                                    <button type="submit" class="btn btn-primary"
-                                                        @click="updatedetail(user)">Edit Detials</button>
+                                    <li class="nav-item"><a class="nav-link active" href="#settings"
+                                            data-toggle="tab">Settings</a></li>
+                                </ul>
+                            </div><!-- /.card-header -->
+                            <div class="card-body">
+                                <div class="tab-content">
+
+                                    <!-- /.tab-pane -->
+                                    <!-- /.tab-pane -->
+                                    <div class="tab-pane active" id="settings">
+                                        <div class="col-md-12">
+                                            <!-- Profile Image -->
+                                            <!-- About Me Box -->
+                                            <div class="card card-primary">
+                                                <div class="card-header">
+                                                    <h3 class="card-title">Details</h3>
                                                 </div>
+                                                <!-- /.card-header -->
+                                                <div class="card-body">
+                                                    <strong><i class=""></i>User Name</strong>
+                                                    <p class="text-muted">
+                                                        {{user.username}}
+                                                    </p>
+                                                    <hr>
+                                                    <strong><i class=""></i> Name</strong>
+                                                    <p class="text-muted">
+                                                        {{user.name}}
+                                                    </p>
+                                                    <hr>
+                                                    <strong><i class=""></i> Email</strong>
+                                                    <p class="text-muted">
+                                                        {{user.useremail}}
+                                                    </p>
+                                                    <hr>
+                                                    <strong><i class=""></i>Date Of Birth</strong>
+                                                    <p class="text-muted">
+                                                        2068/12/12
+                                                    </p>
+                                                    <hr>
+                                                    <strong><i class=""></i> Permanent Address</strong>
+                                                    <a href="#" @click.prevent="openaddress"> <i
+                                                            class="fa fa-edit blue"></i></a>
+                                                    <table class="table table-hover text-nowrap">
+                                                        <thead>
+                                                            <tr>
+
+                                                                <th>
+                                                                    State Name
+                                                                </th>
+                                                                <th>
+                                                                    District Name
+                                                                </th>
+                                                                <th>
+                                                                    Municipality Name
+                                                                </th>
+                                                                <th>
+                                                                    Ward Name
+                                                                </th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr v-for="add in address" :key="add.id">
+
+                                                                <td>{{add.sname}}</td>
+                                                                <td>{{add.disname}}</td>
+                                                                <td>{{add.municname}}</td>
+                                                                <td>{{add.wname}}</td>
+
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                    <hr>
+                                                    <strong><i class=""></i> Temporary Address</strong>
+                                                    <p class="text-muted">sdasda</p>
+                                                    <hr>
+                                                    <strong><i class=""></i> Phone</strong>
+                                                    <p class="text-muted">{{user.phone}}</p>
+                                                    <hr>
+                                                    <strong><i class=""></i> Mobile</strong>
+                                                    <p class="text-muted">{{user.mobile}}</p>
+                                                    <hr>
+                                                    <strong><i class=""></i>Citizenship No</strong>
+                                                    <p class="text-muted">{{user.citizen_no}}</p>
+                                                    <div class="modal-footer">
+                                                        <button type="submit" class="btn btn-primary"
+                                                            @click="updatedetail(user)">Edit Detials</button>
+                                                    </div>
+                                                </div>
+                                                <!-- /.card-body -->
                                             </div>
-                                            <!-- /.card-body -->
+                                            <!-- /.card -->
                                         </div>
-                                        <!-- /.card -->
                                     </div>
+                                    <!-- /.tab-pane -->
+                                    <!-- Modal -->
+
+
                                 </div>
-                                <!-- /.tab-pane -->
-                                <!-- Modal -->
-                                
-                                
-                            </div>
-                          
-                            <div class="modal fade" id="modal" tabindex="-1" role="dialog"
+
+                                <div class="modal fade" id="modal" tabindex="-1" role="dialog"
                                     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered" role="document">
                                         <div class="modal-content">
@@ -232,21 +232,21 @@
                                         </div>
                                     </div>
                                 </div>
-                            <!-- /.tab-content -->
-                        </div><!-- /.card-body -->
+                                <!-- /.tab-content -->
+                            </div><!-- /.card-body -->
+                        </div>
+                        <!-- /.nav-tabs-custom -->
                     </div>
-                    <!-- /.nav-tabs-custom -->
                 </div>
             </div>
         </div>
-    </div>
-
+    </component-to-re-render>
 </template>
 <script>
     export default {
         data() {
             return {
-               
+                componentKey: 0,
                 userid: window.userinfo.user.id,
                 userinfo: [],
                 states: [],
@@ -280,11 +280,17 @@
             this.loadaddress();
         },
         methods: {
+            forcererender(){
+                this.componentKey+=1;
+            },
             loaduser() {
                 this.form.get('api/userinfo/' + this.userid)
                     .then(({
                         data
-                    }) => (this.userinfo = data))
+                    }) => {
+                        this.userinfo = data;
+                        this.forcererender();
+                    })
             },
             loadaddress() {
                 this.form.get('api/address/' + this.userid)

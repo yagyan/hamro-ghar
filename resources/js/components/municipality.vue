@@ -42,7 +42,7 @@
                                     <td>
                                         <a href="#" @click.prevent="updatemunicipality(municipality)"> <i
                                                 class="fa fa-edit blue"></i></a>
-                                        <a href="#" @click="deletemunicipality(municipality.id)"> <i
+                                        <a href="#" @click.prevent="deletemunicipality(municipality.id)"> <i
                                                 class="fa fa-trash text-red"></i></a>
                                     </td>
                                 </tr>

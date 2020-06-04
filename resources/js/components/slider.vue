@@ -60,10 +60,10 @@
                                                 </div>
 
 
-                                                <div class="single-field min_width ">
-                                                    <label for="#">Bedroom</label>
+                                               <div class="single-field min_width ">
+                                                    <label for="#">BedRoom </label>
                                                     <select class="form-control input-lg" style="width: 125%;"
-                                                        v-model="form.bed">
+                                                        v-model="form.bedroom">
                                                          <option value="">0</option>
                                                         <option>1</option>
                                                         <option>2</option>
@@ -72,7 +72,6 @@
                                                         <option>5</option>
                                                         <option>6</option>
                                                         <option>7</option>
-
                                                     </select>
                                                 </div>
                                                 <div class="single-field min_width ">
@@ -91,7 +90,7 @@
                                                 </div>
 
                                                 <div class="serach_icon">
-                                                   <router-link :to="{ path: 'search', query: {type:this.form.type_id, bed:+this.form.bed, bathroom:this.form.bath, price:this.form.price}}"> 
+                                                   <router-link :to="{ path: 'search', query: {type:this.form.type_id,bathroom:this.form.bath,bed:+this.form.bedroom, price:this.form.price}}"> 
                                                    
                                                       <i class="ti-search" ></i>
                                                    </router-link>
@@ -125,8 +124,8 @@
                 editmodal: false,
                 form: new Form({
                     id: '',
-                    bed:'',
                     bath:'',
+                    bedroom:'',
                     state_id: '',
                     district_id: '',
                     municipality_id: '',

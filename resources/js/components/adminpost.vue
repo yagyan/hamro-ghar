@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <div class="row justify-content-center mt-5" v-if='$gate.isAgent()'>
+        <div class="row justify-content-center mt-5" v-if='$gate.isAdmin()'>
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
@@ -61,10 +61,8 @@
                                     <td>{{post.front_view}}</td>
                                     <td>{{post.description}}</td>
                                     <td>
-                                        <a href="#" @click.prevent="updatepost(post)"> <i
-                                                class="fa fa-edit blue"></i></a>
                                         <a href="#" @click.prevent="deletepost(post.id)"> <i
-                                                class="fa fa-trash text-red"></i></a>
+                                                class="fa fa-trash red"></i></a>
                                     </td>
                                 </tr>
                             </tbody>
@@ -81,13 +79,12 @@
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalCenterTitle" v-show='!editmodal'>Add Post</h5>
-                        <h5 class="modal-title" id="exampleModalCenterTitle" v-show='editmodal'>Edit Post</h5>
+                        <h5 class="modal-title" id="exampleModalCenterTitle">Add Post</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <form @submit.prevent="editmodal?editpost():addpost()" enctype="multipart/form-data">
+                    <form @submit.prevent="addpost()" enctype="multipart/form-data">
                         <div class="modal-body">
                             <!--form -->
                             <div class="form-group">
@@ -361,8 +358,8 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-primary" v-show="!editmodal">Save Changes</button>
-                            <button type="submit" class="btn btn-success" v-show="editmodal">Update Post</button>
+                            <button type="submit" class="btn btn-primary" >Save Changes</button>
+                            
                         </div>
                     </form>
                 </div>
@@ -375,9 +372,7 @@
         data() {
             return {
                 posts: [],
-                editmodal: false,
                 types: [],
-                files: [],
                 states: [],
                 districts: [],
                 municipalities: [],
@@ -488,8 +483,8 @@
 
             loadpost() {
 
-                if(this.$gate.isAgent()){
-                axios.get('api/yourpost/' + this.form.user_id)
+                if(this.$gate.isAdmin()){
+                axios.get('api/post')
                     .then(({
                         data
                     }) => (this.posts = data))
@@ -504,7 +499,7 @@
                   }
             },
             openmodal() {
-                this.editmodal = false;
+                
                 $('#Modal').modal('show');
                 this.form.reset();
             },
@@ -564,23 +559,7 @@
                     }
                 })
             },
-            updatepost(post) {
-                this.editmodal = true;
-                $('#Modal').modal('show');
-                this.form.fill(post);
-            },
-            editpost() {
-                this.form.put('api/post/' + this.form.id)
-                    .then(() => {
-                            $('#Modal').modal('hide');
-                            this.form.get('api/post/' + this.form.id)
-                                .then(({
-                                    data
-                                }) => (this.posts = data.data))
-                        }
-
-                    )
-            },
+            
             addaddress() {
                 this.form2.post('api/address')
                     .then(({

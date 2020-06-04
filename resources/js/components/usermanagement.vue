@@ -29,7 +29,7 @@
                         <td>{{user.usertype}}</td>
                         <td>
                               <a href="#" @click.prevent="updateuser(user)"> <i class="fa fa-edit blue"></i></a>
-                              <a href="#" @click="deleteuser(user.id)"> <i class="fa fa-trash text-red"></i></a>
+                              <a href="#" @click.prevent="deleteuser(user.id)"> <i class="fa fa-trash text-red"></i></a>
                         </td>
                       </tr>
                     </tbody>
@@ -179,7 +179,7 @@
           confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
           if (result.value) {
-            this.form.delete('api/user/'+id)
+            axios.delete('api/user/'+id)
             .then(()=>{
             Swal.fire(
               'Deleted!',
@@ -187,7 +187,7 @@
               'Success'
 
             )
-            this.loaduser();
+           this.loaduser(); 
           })
           .catch(()=>{
           Swal.fire({

@@ -1,4 +1,5 @@
 <template>
+<component-to-re-render :key="componentKey">
     <div class="text-center" style="padding-top:200px">
         <div class="card mx-auto" style="width: 30rem;">
             <div class="card-header">
@@ -54,7 +55,7 @@
             </div>
         </div>
     </div>
-
+</component-to-re-render>
 
 </template>
 
@@ -62,6 +63,7 @@
     export default {
         data() {
             return {
+                componentKey:0,
                 types: [],
                 form: new Form({
                     name: '',
@@ -101,8 +103,14 @@
                 axios.get('api/usertype')
                     .then(({
                         data
-                    }) => (this.types = data))
+                    }) => {this.types = data
+                    this.forcererender();
+                    })
             },
+            forcererender()
+            {
+                this.componentKey+=1;
+            }
 
         }
 

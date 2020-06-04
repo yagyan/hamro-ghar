@@ -1,6 +1,6 @@
 <template>
 <component-to-re-render :key="componentKey">
-    <div class="popular_property">
+    <div class="popular_property" v-if='$gate.isAgent()'>
         <div class="container" style="padding-top:50px">
             <div class="row">
                 <div class="col-xl-12">
@@ -73,7 +73,7 @@
                                     </li>
                                      <li>
                                         <div class="single_info_doc">
-                                            <a href="#" @click="deletepost(post)"> <i
+                                            <a href="#" @click.prevent="deletepost(post)"> <i
                                                 class="fa fa-trash text-red"></i></a>
                                                 <router-link :to="{ path: 'editpost', query: { id: post.id }}">
                                                 
@@ -122,12 +122,14 @@
                 this.componentKey += 1;
             },
             fetchyourpost(){
+                
                 axios.get('api/yourpost/'+this.userid)
                     .then(({
                         data
                     }) =>{ this.posts = data;
                     this.forceRerender();
                     })
+                    
             },
 
         

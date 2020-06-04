@@ -1,4 +1,5 @@
 <template>
+<component-to-re-render :key="componentKey">
      <div class="popular_property">
         <div class="container" style="padding-top:50px">
             <div class="row">
@@ -10,7 +11,7 @@
             </div>
             <div class="row">
 
-                <div v-for="post in filteredpost" :key="post.id" v-show="!post.sold">
+                <div v-for="post in filteredposts" :key="post.id">
                     <div class="col-xl-14 col-md-16 col-lg-14" style="padding: 5px">
                         <div class="single_property">
                             <div class="property_thumb" style="height:240px; width:362px ">
@@ -75,14 +76,14 @@
            
         </div>
     </div>
-  
+  </component-to-re-render>
 </template>
 
 <script>
 export default {
     data(){
         return{
-            yagyan:2,
+           componentKey:0,
             type_id:this.$route.query.type,
             bed:this.$route.query.bed,
             bath:this.$route.query.bathroom,
@@ -96,21 +97,74 @@ export default {
             
             
         },
-        computed:
-{
+        
+        computed: {
     filteredposts:function()
-    {
+    {   let type=this.type_id;
+        let bed_no=this.bed;
+        let bathroom=this.bath;
+        let price=this.price;
         return this.posts
-            .filter(function(posts,yagyan)
+            .filter(function(posts)
+            {   
+                if(type!=0)
+                {
+                
+                return posts.propertytype_id ==type;
+                }
+                 
+                else
+                {
+                return posts;
+                }
+
+               
+            })
+            .filter(function(posts)
             {
-                return posts.propertytype_id ==yagyan;
+                 if(bed_no!=0)
+                {
+                return posts.bed ==bed_no;
+                }
+                else
+                {
+                return posts;
+                }
+
+            })
+            .filter(function(posts)
+            {
+                 if(bathroom!=0)
+                {
+                return posts.bathroom ==bathroom;
+                }
+                else
+                {
+                return posts;
+                }
+                
+            })
+            .filter(function(posts)
+            {
+                 if(price!=0)
+                {
+                return posts.price ==price;
+                }
+                else
+                {
+                return posts;
+                }
             })
             
+      
             
-    }
+            
+    },
+    
 },
 
         methods:{
+           
             fetchsearch(){
                 axios.get('api/post')
                     .then(({

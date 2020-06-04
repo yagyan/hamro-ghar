@@ -33,7 +33,7 @@
                         </td>
                         <td>
                               <a href="#" @click.prevent="updatedistrict(district)"> <i class="fa fa-edit blue"></i></a>
-                              <a href="#" @click="deletedistrict(district.id)"> <i class="fa fa-trash text-red"></i></a>
+                              <a href="#" @click.prevent="deletedistrict(district.id)"> <i class="fa fa-trash text-red"></i></a>
                         </td>
                       </tr>
                     </tbody>

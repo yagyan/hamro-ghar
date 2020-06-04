@@ -85,14 +85,14 @@
                     <div class="col-xl-12" >
                         <div class="header_bottom_border">
                             <div class="row align-items-center">
-                                <div class="col-xl-3 col-lg-2">
+                                <div class="col-xl-4 col-lg-2">
                                     <div class="logo" style="padding-left:50px;">
                                         <a href="">
                                             <img src="img/logo.png" alt="">
                                         </a>
                                     </div>
                                 </div>
-                                <div class="col-xl-5 col-lg-7">
+                                <div class="col-xl-4 col-lg-7">
                                     <div class="main-menu  d-none d-lg-block">
                                         <nav>
                                             <ul id="navigation">
@@ -133,11 +133,11 @@
                                         @if (Route::has('login'))
                                         <div class="top-right links">
                                             @auth
-                                            @can('isAgent')
+                                            @canany(['isAdmin','isAgent'])
                                             <div class="genric-btn primary circle arrow">
                                                 <router-link to="/newpost" style="color:blanchedalmond">Add</router-link>
                                             </div>
-                                            @endcan
+                                            @endcanany
                                             <div class="genric-btn primary circle arrow">
                                                 <a href="{{ url('/home') }}" style="color:blanchedalmond">Home</a>
                                             </div>
@@ -361,7 +361,10 @@
     <script src="js/mail-script.js"></script>
     <script src="js/main.js"></script>
 
-
+    <script>
+    window.user = @json(auth()->user())
+    </script>
+    
 
     <script>
         function collision($div1, $div2) {

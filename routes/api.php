@@ -37,5 +37,5 @@ Route::get('/yourpost/{id}/','API\postcontroller@yourpost');
 Route::get('/singlepost/{id}','API\postcontroller@singlepost');
 Route::get('/search/{type}/{bed}/{bath}/{price}','API\postcontroller@searchpost');
 
-Route::put('/updateprofile/{id}/','API\addresscontroller@updateprofile');
+Route::put('/updateprofile/{id}/','API\UserController@updateprofile');
 

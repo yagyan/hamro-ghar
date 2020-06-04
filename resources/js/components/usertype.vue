@@ -28,7 +28,7 @@
 
                         <td>
                               <a href="#" @click.prevent="updateusertype(usertype)"> <i class="fa fa-edit blue"></i></a>
-                              <a href="#" @click="deleteusertype(usertype.id)"> <i class="fa fa-trash text-red"></i></a>
+                              <a href="#" @click.prevent="deleteusertype(usertype.id)"> <i class="fa fa-trash text-red"></i></a>
                         </td>
                       </tr>
                     </tbody>

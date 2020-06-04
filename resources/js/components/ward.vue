@@ -39,7 +39,7 @@
                         <td>{{ward.municname}}</td>
                         <td>
                               <a href="#" @click.prevent="updateward(ward)"> <i class="fa fa-edit blue"></i></a>
-                              <a href="#" @click="deleteward(ward.id)"> <i class="fa fa-trash text-red"></i></a>
+                              <a href="#" @click.prevent="deleteward(ward.id)"> <i class="fa fa-trash text-red"></i></a>
                         </td>
                       </tr>
                     </tbody>

@@ -28,7 +28,7 @@
 
                         <td>
                               <a href="#" @click.prevent="updatetype(type)"> <i class="fa fa-edit blue"></i></a>
-                              <a href="#" @click="deletetype(type.id)"> <i class="fa fa-trash text-red"></i></a>
+                              <a href="#" @click.prevent="deletetype(type.id)"> <i class="fa fa-trash text-red"></i></a>
                         </td>
                       </tr>
                     </tbody>

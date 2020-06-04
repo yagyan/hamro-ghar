@@ -10,7 +10,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <meta name="csrf_token"content="{{csrf_token()}}">
-  <base href="http://localhost:8000/dashboard">
+  <base href="http://localhost:8000/dashboard" >
   <title>@yield('title')</title>
   <link rel="stylesheet" href="/css/app.css">
   <link rel="icon" href="img/icon.png"
@@ -73,7 +73,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <img src="img/icon.png" class="img-responsive" alt="User Image">
         </div>
         <div class="info">
-          <a href="#/userprofile" class="d-block"> {{Auth::user()->name}}</a>
+          <a href="/dashboard/userprofile" class="d-block"> {{Auth::user()->name}}</a>
         </div>
       </div>
 
@@ -165,6 +165,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
          <router-link to="/post" class="nav-link">
           <i class="fas fa-landmark"></i>
            <p>Post</p>
+         </router-link>
+       </li>
+       @endcan
+       @can('isAdmin')
+       <li class="nav-item" >
+         <router-link to="/adminpost" class="nav-link">
+          <i class="fas fa-landmark"></i>
+           <p>All Post</p>
          </router-link>
        </li>
        @endcan

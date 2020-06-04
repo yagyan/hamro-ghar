@@ -19,6 +19,14 @@ class UserController extends Controller
        
     }
 
+    public function updateprofile(Request $request, $id)
+    {
+     $u=userinfo::findOrFail($id);
+     $u->pward_id=$request->input('ward_id');
+     $u->update($request->only('ward_id'));
+
+  }
+
     
      public function adduser($id)
      {

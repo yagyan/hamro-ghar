@@ -17,7 +17,11 @@ export default class Gate{
         return this.user.usertype === 'Customer';
     }
     
-    
+    isAdminOrAgent(){
+        if(this.user.usertype === 'Admin' || this.user.usertype === 'Agent'){
+            return true;
+        }
+    }
 
 
 

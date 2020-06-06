@@ -4483,7 +4483,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.componentKey += 1;
     },
     route: function route() {
-      this.$router.push('yourpost');
+      this.$router.push({
+        name: 'yourpost'
+      });
     },
     updateTview: function updateTview(e) {
       var _this = this;
@@ -76895,11 +76897,11 @@ var routes = [{
   component: __webpack_require__(/*! ./components/contact.vue */ "./resources/js/components/contact.vue")["default"]
 }, {
   path: '/newpost',
-  component: __webpack_require__(/*! ./components/newpost.vue */ "./resources/js/components/newpost.vue")["default"],
-  name: 'yourpost'
+  component: __webpack_require__(/*! ./components/newpost.vue */ "./resources/js/components/newpost.vue")["default"]
 }, {
   path: '/yourpost',
-  component: __webpack_require__(/*! ./components/yourpost.vue */ "./resources/js/components/yourpost.vue")["default"]
+  component: __webpack_require__(/*! ./components/yourpost.vue */ "./resources/js/components/yourpost.vue")["default"],
+  name: 'yourpost'
 }, {
   path: '/singlepost',
   component: __webpack_require__(/*! ./components/singlepost.vue */ "./resources/js/components/singlepost.vue")["default"],

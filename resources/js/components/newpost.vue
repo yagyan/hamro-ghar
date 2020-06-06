@@ -354,7 +354,8 @@
             },
             route(){
                
-                this.$router.push('yourpost')
+               
+                this.$router.push({name:'yourpost'})
             },
 
             updateTview(e) {

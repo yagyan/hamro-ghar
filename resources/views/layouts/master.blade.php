@@ -15,14 +15,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <link rel="stylesheet" href="/css/app.css">
   <link rel="icon" href="img/icon.png"
   type="image/icon type">
-  <script>
-        window.userinfo = {!! json_encode([
-            'csrfToken' => csrf_token(),
-            'user' => Auth::user(),
-            'api_token' => (Auth::user()) ? Auth::user()->api_token : null
-        ]) !!};
-    </script>
-
+ 
 
 </head>
 <body class="hold-transition sidebar-mini">
@@ -241,7 +234,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <script>
     window.user = @json(auth()->user())
   </script>
-    
    @endauth
 
   <!-- REQUIRED SCRIPTS -->

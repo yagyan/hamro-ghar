@@ -252,7 +252,7 @@
         data() {
             return {
                 componentKey: 0,
-                userid: window.userinfo.user.id,
+                userid: window.user.id,
                 userinfo: [],
                 states: [],
                 districts: [],

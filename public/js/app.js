@@ -2386,7 +2386,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       form: new Form(_defineProperty({
         id: '',
         title: '',
-        user_id: window.userinfo.user.id,
+        user_id: window.user.id,
         status: true,
         propertytype_id: '',
         area: '',
@@ -3470,7 +3470,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       form: new Form(_defineProperty({
         id: '',
         title: '',
-        user_id: window.userinfo.user.id,
+        user_id: window.user.id,
         status: true,
         propertytype_id: '',
         area: '',
@@ -4446,7 +4446,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       form: new Form(_defineProperty({
         id: '',
         title: '',
-        user_id: window.userinfo.user.id,
+        user_id: window.user.id,
         status: true,
         propertytype_id: '',
         area: '',
@@ -5415,7 +5415,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       form: new Form(_defineProperty({
         id: '',
         title: '',
-        user_id: window.userinfo.user.id,
+        user_id: window.user.id,
         status: true,
         propertytype_id: '',
         area: '',
@@ -7233,7 +7233,7 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       componentKey: 0,
-      userid: window.userinfo.user.id,
+      userid: window.user.id,
       userinfo: [],
       states: [],
       districts: [],
@@ -7939,7 +7939,7 @@ __webpack_require__.r(__webpack_exports__);
     return {
       componentKey: 0,
       posts: [],
-      userid: window.userinfo.user.id
+      userid: window.user.id
     };
   },
   created: function created() {
@@ -56869,8 +56869,8 @@ var render = function() {
                             {
                               attrs: {
                                 to: {
-                                  name: "singlepost",
-                                  params: { id: post.id }
+                                  path: "singlepost",
+                                  query: { id: post.id }
                                 }
                               }
                             },
@@ -57069,7 +57069,7 @@ var render = function() {
             _c("div", { staticClass: "prise_quantity" }, [
               _c("h4", [_vm._v("$:" + _vm._s(_vm.post[0].price))]),
               _vm._v(" "),
-              _c("a", { attrs: { href: "#" } }, [_vm._v("+10 367 457 735")])
+              _c("a", [_vm._v(_vm._s(_vm.post[0].mobile))])
             ])
           ])
         ])

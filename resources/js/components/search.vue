@@ -18,7 +18,7 @@
                                 <div class="property_tag">
                                     For {{post.characteristics}}
                                 </div>
-                                <router-link :to="{ name: 'singlepost', params: { id: post.id }}">
+                                <router-link :to="{ path: 'singlepost', query: { id: post.id }}">
                                 <img class="img-fluid" v-bind:src="post.front_view"
                                     onerror="if (this.src != 'error.jpg') this.src = 'img/property/6.png';">
                                 </router-link>

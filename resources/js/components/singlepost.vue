@@ -27,7 +27,7 @@
                             <div class="col-xl-6 col-md-4 col-lg-6">
                                 <div class="prise_quantity">
                                     <h4>$:{{post[0].price}}</h4>
-                                    <a href="#">+10 367 457 735</a>
+                                    <a >{{post[0].mobile}}</a>
                                 </div>
                             </div>
                         </div>

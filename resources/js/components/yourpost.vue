@@ -107,7 +107,7 @@
             return {
                 componentKey:0,
                 posts: [],
-                userid:window.userinfo.user.id,
+                userid:window.user.id,
 
             }
         },

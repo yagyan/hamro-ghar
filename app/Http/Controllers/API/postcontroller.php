@@ -32,7 +32,8 @@ class postcontroller extends Controller
     {   
         $post=DB::table('posts')
         ->join('propertytypes','posts.propertytype_id','=','propertytypes.id')
-        ->select('posts.*','propertytypes.name as pname')
+        ->join('userinfos','posts.user_id','=','userinfos.user_id')
+        ->select('posts.*','propertytypes.name as pname','userinfos.mobile as mobile')
         ->where('posts.id',$id)->get();
         return $post;    
     }
@@ -47,7 +48,8 @@ class postcontroller extends Controller
         $status=1;
         $post=DB::table('posts')
         ->join('propertytypes','posts.propertytype_id','=','propertytypes.id')
-        ->select('posts.*','propertytypes.name as pname')
+        ->join('userinfos','posts.user_id','=','userinfos.user_id')
+        ->select('posts.*','propertytypes.name as pname','userinfos.mobile as mobile')
         ->where('sold',$s)->where('status',$status)->get();
         return $post;
     }

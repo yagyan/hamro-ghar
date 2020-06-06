@@ -22,9 +22,15 @@
                                                    
                                                     <div class="popular_pro d-flex">
                                                         <img src="img/svg_icon/location.svg" alt="">
+                                                        <span>State:{{post.sname}}</span>
+                                                        
+                                                    </div>
+                                                    <div class="popular_pro d-flex">
+                                                        <img src="img/svg_icon/location.svg" alt="">
                                                         <span>Longitide: {{post.longitude}}°</span>
                                                         
                                                     </div>
+                                                                                                       
                                                     <div class="popular_pro d-flex">
                                                         <img src="img/svg_icon/location.svg" alt="">
                                                         <span>Latitude: {{post.latitude}}°</span>

@@ -26,7 +26,7 @@
                                 <div class="main_pro">
                                     <h3><a href="#">{{post.title}}</a></h3>
                                     <div class="mark_pro">
-                                        <span>Popular Property</span>
+                                        <span>State:{{post.sname}}</span>
                                     </div>
                                     <div class="mark_pro">
                                         <img src="img/svg_icon/location.svg" alt="">

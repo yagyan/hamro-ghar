@@ -38,17 +38,7 @@
                                                     </select>
                                                 </div>
 
-                                                <!--<div class="single-field max_width ">
-                                                    <label for="#">disrict</label>
-                                                    <select class="form-control input-lg" style="width: 90%;"
-                                                        v-model="form.district_id" @change="fetchmunicipality">
-                                                        <option>select district</option>
-                                                        <option v-for="district in districts" :key="district.id"
-                                                            :value="district.id">
-                                                            {{ district.name }}</option>
-
-                                                    </select>
-                                                </div> -->
+                                               
                                                 <div class="single-field min_width ">
                                                     <div class="form-group">
                                                         <label>Price</label>

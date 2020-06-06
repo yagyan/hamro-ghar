@@ -236,14 +236,14 @@
                 </div>
           </div>
         </div>-->
-                            <form2>
+                            
                                 <div class="container-fluid">
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>State</label>
                                                 <select class="form-control input-lg" style="width: 100%;"
-                                                    v-model="form2.state_id" @change="fetchdistrict">
+                                                    v-model="form.state_id" @change="fetchdistrict">
                                                     <option value="">Select State</option>
                                                     <option v-for="state in states" :key="state.id" :value="state.id">
                                                         {{ state.name }}
@@ -255,7 +255,7 @@
                                             <div class="form-group">
                                                 <label>District</label>
                                                 <select class="form-control input-lg" style="width: 100%;"
-                                                    v-model="form2.district_id" @change="fetchmunicipality">
+                                                    v-model="form.district_id" @change="fetchmunicipality">
                                                     <option value="">Select District</option>
                                                     <option v-for="district in districts" :key="district.id"
                                                         :value="district.id">
@@ -270,7 +270,7 @@
                                             <div class="form-group">
                                                 <label>Municipality</label>
                                                 <select class="form-control input-lg" style="width: 100%;"
-                                                    v-model="form2.municipality_id" @change="fetchward">
+                                                    v-model="form.municipality_id" @change="fetchward">
                                                     <option value="">Select Municipality</option>
                                                     <option v-for="municipality in municipalities"
                                                         :key="municipality.id" :value="municipality.id">
@@ -282,7 +282,7 @@
                                             <div class="form-group">
                                                 <label>Ward</label>
                                                 <select class="form-control input-lg" style="width: 100%;"
-                                                    v-model="form2.ward_id">
+                                                    v-model="form.ward_id">
                                                     <option value="">Select Ward</option>
                                                     <option v-for="ward in wards" :key="ward.id" :value="ward.id">
                                                         {{ ward.name }}
@@ -292,10 +292,9 @@
                                         </div>
 
                                     </div>
-                                    <button class="btn btn-primary" @click.prevent="addaddress()">Save Address</button>
+                                   
                                 </div>
-                            </form2>
-
+                            
                             <div class="row">
 
                                 <div class="col-md-12">
@@ -408,15 +407,12 @@
                     description: '',
                     bed: '',
                     bathroom: '',
-                    address_id: '',
-                }),
-                form2: new Form({
-
                     state_id: '',
                     district_id: '',
                     municipality_id: '',
                     ward_id: ''
-                })
+                }),
+               
             }
         },
         created() {
@@ -581,14 +577,7 @@
 
                     )
             },
-            addaddress() {
-                this.form2.post('api/address')
-                    .then(({
-                        data
-                    }) => {
-                        (this.form.address_id = data.id)
-                    })
-            },
+           
             fetchstate() {
                   if(this.$gate.isAgent()){
                 axios.get('api/state')
@@ -598,20 +587,20 @@
                   }
             },
             fetchdistrict() {
-                axios.get('api/getdistrict/' + this.form2.state_id)
+                axios.get('api/getdistrict/' + this.form.state_id)
                     .then(({
                         data
                     }) => (this.districts = data))
             },
 
             fetchmunicipality() {
-                axios.get('api/getmunicipality/' + this.form2.district_id)
+                axios.get('api/getmunicipality/' + this.form.district_id)
                     .then(({
                         data
                     }) => (this.municipalities = data))
             },
             fetchward() {
-                axios.get('api/getward/' + this.form2.municipality_id)
+                axios.get('api/getward/' + this.form.municipality_id)
                     .then(({
                         data
                     }) => (this.wards = data))

@@ -24,7 +24,11 @@ class postcontroller extends Controller
     {
         $post=DB::table('posts')
         ->join('propertytypes','posts.propertytype_id','=','propertytypes.id')
-        ->select('posts.*','propertytypes.name as pname')
+        ->join('states', 'posts.state_id', '=', 'states.id')
+        ->join('districts','posts.district_id','=','districts.id')
+        ->join('municipalities','posts.municipality_id','=','municipalities.id')
+        ->join('wards','posts.ward_id','=','wards.id')
+        ->select('posts.*','propertytypes.name as pname','states.name as sname','districts.name as disname','municipalities.name as municname','wards.name as wname')
         ->where('user_id',$id)->orderBy('created_at','asc')->get();
         return $post;    
     }
@@ -33,7 +37,11 @@ class postcontroller extends Controller
         $post=DB::table('posts')
         ->join('propertytypes','posts.propertytype_id','=','propertytypes.id')
         ->join('userinfos','posts.user_id','=','userinfos.user_id')
-        ->select('posts.*','propertytypes.name as pname','userinfos.mobile as mobile')
+        ->join('states', 'posts.state_id', '=', 'states.id')
+        ->join('districts','posts.district_id','=','districts.id')
+        ->join('municipalities','posts.municipality_id','=','municipalities.id')
+        ->join('wards','posts.ward_id','=','wards.id')
+        ->select('posts.*','propertytypes.name as pname','userinfos.mobile as mobile','states.name as sname','districts.name as disname','municipalities.name as municname','wards.name as wname')
         ->where('posts.id',$id)->get();
         return $post;    
     }
@@ -48,8 +56,11 @@ class postcontroller extends Controller
         $status=1;
         $post=DB::table('posts')
         ->join('propertytypes','posts.propertytype_id','=','propertytypes.id')
-        ->join('userinfos','posts.user_id','=','userinfos.user_id')
-        ->select('posts.*','propertytypes.name as pname','userinfos.mobile as mobile')
+        ->join('states', 'posts.state_id', '=', 'states.id')
+        ->join('districts','posts.district_id','=','districts.id')
+        ->join('municipalities','posts.municipality_id','=','municipalities.id')
+        ->join('wards','posts.ward_id','=','wards.id')
+        ->select('posts.*','propertytypes.name as pname','states.name as sname','districts.name as disname','municipalities.name as municname','wards.name as wname')
         ->where('sold',$s)->where('status',$status)->get();
         return $post;
     }
@@ -83,6 +94,10 @@ class postcontroller extends Controller
             'Sview' => 'sometimes',
             'Fview' => 'sometimes',
             'description' => 'sometimes|string',
+            'state_id'=>'required',
+            'district_id'=>'required',
+            'municipality_id'=>'required',
+            'ward_id'=>'required',
         ]);
         $u=new post();
        
@@ -106,6 +121,11 @@ class postcontroller extends Controller
             //$u->side_view= $request->input('Sview');
             //$u->front_view= $request->input('Fview');
             $u->description= $request->input('description');
+            $u->state_id=$request->input('state_id');
+            $u->district_id=$request->input('district_id');
+            $u->municipality_id=$request->input('municipality_id');
+            $u->ward_id=$request->input('ward_id');
+     
 
             if($request->Tview){
             $name = time().'t' . '.' . explode('/', explode(':', substr($request->Tview, 0, strpos($request->Tview, ';')))[1])[1];
@@ -185,6 +205,10 @@ class postcontroller extends Controller
           'Sview' => 'sometimes',
           'Fview' => 'sometimes',
           'description' => 'sometimes|string',
+          'state_id'=>'required',
+          'district_id'=>'required',
+          'municipality_id'=>'required',
+          'ward_id'=>'required',
 
         ]); 
         if($request->Tview){

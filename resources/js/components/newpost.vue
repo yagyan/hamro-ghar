@@ -438,7 +438,7 @@
                             icon: 'success',
                             title: 'Post has been Successfully Added',
                             showConfirmButton: false,
-                            timer: 1000
+                            timer: 3000
                         })
                         this.$Progress.finish();
                         this.route();
@@ -450,6 +450,8 @@
                         this.$Progress.fail();
                     })
             },
+
+            //address field function
             addaddress() {
                 this.form2.post('api/address')
                     .then(({

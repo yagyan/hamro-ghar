@@ -90,7 +90,7 @@
                                                 </div>
 
                                                 <div class="serach_icon">
-                                                   <router-link :to="{ path: 'search', query: {type:this.form.type_id,bathroom:this.form.bath,bed:+this.form.bedroom, price:this.form.price}}"> 
+                                                   <router-link :to="{ path: 'search', query: {type:this.form.type_id,bathroom:this.form.bath,bed:this.form.bedroom, price:this.form.price}}"> 
                                                    
                                                       <i class="ti-search" ></i>
                                                    </router-link>

@@ -44,6 +44,11 @@
                                                         {{user.useremail}}
                                                     </p>
                                                     <hr>
+                                                    <strong><i class=""></i>User Type</strong>
+                                                    <p class="text-muted">
+                                                        {{user.usertype}}
+                                                    </p>
+                                                    <hr>
                                                     <strong><i class=""></i>Date Of Birth</strong>
                                                     <p class="text-muted">
                                                         2068/12/12
@@ -283,6 +288,8 @@
             forcererender(){
                 this.componentKey+=1;
             },
+
+            //user functions
             loaduser() {
                 this.form.get('api/userinfo/' + this.userid)
                     .then(({
@@ -292,12 +299,7 @@
                         this.forcererender();
                     })
             },
-            loadaddress() {
-                this.form.get('api/address/' + this.userid)
-                    .then(({
-                        data
-                    }) => (this.address = data))
-            },
+
             add() {
                 this.form.get("api/adduser/" + this.userid)
 
@@ -323,6 +325,14 @@
                     })
             },
             //Address functions
+
+             loadaddress() {
+                this.form.get('api/address/' + this.userid)
+                    .then(({
+                        data
+                    }) => (this.address = data))
+            },
+
             openaddress() {
                 this.editmodal = false;
                 this.form.reset();

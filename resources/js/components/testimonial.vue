@@ -50,9 +50,9 @@
                 post:[],
             }
         },
-        created() {
+        mounted() {
             console.log('Component mounted.')
-            this.forceRerender();
+            //this.forceRerender();
         },
         methods: {
              forceRerender() {

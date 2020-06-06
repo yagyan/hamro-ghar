@@ -131,7 +131,7 @@
 
             }
         },
-        mounted() {
+        created() {
             console.log('Component mounted.');
             this.fetchpost();
 

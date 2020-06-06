@@ -60,7 +60,7 @@ let routes=[
 { path: '/allproperty',component: require('./components/allproperty.vue').default,name:'allproperty'},
 { path: '/about',component: require('./components/about.vue').default},
 { path: '/contact',component: require('./components/contact.vue').default},
-{ path: '/newpost',component: require('./components/newpost.vue').default},
+{ path: '/newpost',component: require('./components/newpost.vue').default, name:'yourpost'},
 { path: '/yourpost',component: require('./components/yourpost.vue').default},
 { path: '/singlepost',component: require('./components/singlepost.vue').default, name:'singlepost',props: true},
 { path: '/editpost',component: require('./components/editpost.vue').default, name:'',props: true},

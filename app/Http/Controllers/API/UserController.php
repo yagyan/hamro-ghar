@@ -40,7 +40,7 @@ class UserController extends Controller
       ]);
 
      }
-     return back();
+     return ['user already added'];
    }
     public function index()
     {
@@ -67,7 +67,7 @@ class UserController extends Controller
       $u =DB::table('userinfos')
       ->join('users', 'userinfos.user_id', '=', 'users.id')
       
-      ->select('userinfos.*','users.name as username','users.email as useremail')
+      ->select('userinfos.*','users.name as username','users.email as useremail','users.usertype as usertype')
       ->where('user_id',$id)->get();
       return $u;
     }

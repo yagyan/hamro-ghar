@@ -3783,7 +3783,7 @@ __webpack_require__.r(__webpack_exports__);
       }]
     };
   },
-  mounted: function mounted() {
+  created: function created() {
     console.log('Component mounted.');
     this.fetchpost();
   },
@@ -4573,7 +4573,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           icon: 'success',
           title: 'Post has been Successfully Added',
           showConfirmButton: false,
-          timer: 1000
+          timer: 3000
         });
 
         _this5.$Progress.finish();
@@ -4585,6 +4585,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         _this5.$Progress.fail();
       });
     },
+    //address field function
     addaddress: function addaddress() {
       var _this6 = this;
 
@@ -6709,9 +6710,8 @@ __webpack_require__.r(__webpack_exports__);
       post: []
     };
   },
-  created: function created() {
-    console.log('Component mounted.');
-    this.forceRerender();
+  mounted: function mounted() {
+    console.log('Component mounted.'); //this.forceRerender();
   },
   methods: {
     forceRerender: function forceRerender() {
@@ -7224,6 +7224,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -7264,6 +7269,7 @@ __webpack_require__.r(__webpack_exports__);
     forcererender: function forcererender() {
       this.componentKey += 1;
     },
+    //user functions
     loaduser: function loaduser() {
       var _this = this;
 
@@ -7274,14 +7280,6 @@ __webpack_require__.r(__webpack_exports__);
         _this.forcererender();
       });
     },
-    loadaddress: function loadaddress() {
-      var _this2 = this;
-
-      this.form.get('api/address/' + this.userid).then(function (_ref2) {
-        var data = _ref2.data;
-        return _this2.address = data;
-      });
-    },
     add: function add() {
       this.form.get("api/adduser/" + this.userid);
     },
@@ -7290,10 +7288,10 @@ __webpack_require__.r(__webpack_exports__);
       this.form.fill(userinfo);
     },
     editdetail: function editdetail() {
-      var _this3 = this;
+      var _this2 = this;
 
       this.form.put('/api/userinfo/' + this.form.id).then(function () {
-        _this3.$Progress.start();
+        _this2.$Progress.start();
 
         $('#modal').modal('hide');
         Swal.fire({
@@ -7303,10 +7301,18 @@ __webpack_require__.r(__webpack_exports__);
           timer: 3000
         });
 
-        _this3.$Progress.finish();
+        _this2.$Progress.finish();
       });
     },
     //Address functions
+    loadaddress: function loadaddress() {
+      var _this3 = this;
+
+      this.form.get('api/address/' + this.userid).then(function (_ref2) {
+        var data = _ref2.data;
+        return _this3.address = data;
+      });
+    },
     openaddress: function openaddress() {
       this.editmodal = false;
       this.form.reset();
@@ -57543,7 +57549,7 @@ var render = function() {
                                       query: {
                                         type: this.form.type_id,
                                         bathroom: this.form.bath,
-                                        bed: +this.form.bedroom,
+                                        bed: this.form.bedroom,
                                         price: this.form.price
                                       }
                                     }
@@ -58520,6 +58526,18 @@ var render = function() {
                                 _vm._v(
                                   "\n                                                    " +
                                     _vm._s(user.useremail) +
+                                    "\n                                                "
+                                )
+                              ]),
+                              _vm._v(" "),
+                              _c("hr"),
+                              _vm._v(" "),
+                              _c("strong", [_c("i", {}), _vm._v("User Type")]),
+                              _vm._v(" "),
+                              _c("p", { staticClass: "text-muted" }, [
+                                _vm._v(
+                                  "\n                                                    " +
+                                    _vm._s(user.usertype) +
                                     "\n                                                "
                                 )
                               ]),
@@ -76877,7 +76895,8 @@ var routes = [{
   component: __webpack_require__(/*! ./components/contact.vue */ "./resources/js/components/contact.vue")["default"]
 }, {
   path: '/newpost',
-  component: __webpack_require__(/*! ./components/newpost.vue */ "./resources/js/components/newpost.vue")["default"]
+  component: __webpack_require__(/*! ./components/newpost.vue */ "./resources/js/components/newpost.vue")["default"],
+  name: 'yourpost'
 }, {
   path: '/yourpost',
   component: __webpack_require__(/*! ./components/yourpost.vue */ "./resources/js/components/yourpost.vue")["default"]

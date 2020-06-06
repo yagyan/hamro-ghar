@@ -87,7 +87,7 @@
                             <div class="row align-items-center">
                                 <div class="col-xl-4 col-lg-2">
                                     <div class="logo" style="padding-left:50px;">
-                                        <a href="">
+                                        <a href="/">
                                             <img src="img/logo.png" alt="">
                                         </a>
                                     </div>
@@ -99,7 +99,7 @@
                                                 <li>
                                                     <router-link to="/" style="color:blanchedalmond">Main</router-link>
                                                 </li>
-                                                <li><a href="#" style="color:blanchedalmond">Pages <i
+                                                <li><a style="color:blanchedalmond">Pages <i
                                                             class="ti-angle-down"></i></a>
                                                     <ul class="submenu">
                                                         <li>

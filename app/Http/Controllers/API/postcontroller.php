@@ -36,19 +36,9 @@ class postcontroller extends Controller
         ->where('posts.id',$id)->get();
         return $post;    
     }
-    public function single($id)
-    {
-        return ['message'];
-    }
+   
 
-    public function searchpost($type, $bed, $bath, $price)
-    {   
-        $post=DB::table('posts')
-        ->join('propertytypes','posts.propertytype_id','=','propertytypes.id')
-        ->select('posts.*','propertytypes.name as pname')
-        ->where('posts.price',$price)->where('propertytypes.id',$type)->where('posts.bed',$bed)->where('posts.bathroom',$bath)->get();
-        return $post;    
-    }
+   
 
     public function index()
     {

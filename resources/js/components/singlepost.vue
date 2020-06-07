@@ -6,8 +6,11 @@
                     <div class="col-xl-6 col-md-8 col-lg-6">
                         <div class="comfortable_apartment">
                             <h4>{{post[0].title}}</h4>
-                            <p> <img src="img/svg_icon/location.svg" alt="">Longitude:{{post[0].longitude}}°</p>
-                            <p> <img src="img/svg_icon/location.svg" alt="">Latitude:{{post[0].latitude}}°</p>
+                            <p> <img src="img/svg_icon/location.svg" alt="">Longitude : {{post[0].longitude}}°,Latitude : {{post[0].latitude}}°</p>
+                            <p> <img src="img/svg_icon/location.svg" alt=""> State : {{post[0].sname}}, District : {{post[0].disname}}</p>
+                             <p> <img src="img/svg_icon/location.svg" alt=""> Municipality : {{post[0].municname}}, Ward : {{post[0].wname}}</p>
+                              
+                              
                             <div class="quality_quantity d-flex">
                                 <div class="single_quantity">
                                     <img src="img/svg_icon/color_box.svg" alt="">
@@ -60,16 +63,7 @@
                         </div>
 
                     </div>
-                    <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1 border " style="margin-top:25px; border:1px">
-                        <div class="details_info">
-                            <p style="color:Black"><strong> State:</strong>{{post[0].sname}}
-                                <br><strong>District::</strong> {{post[0].disname}}
-                                <br><strong>Municipality::</strong> {{post[0].municname}}
-                                <br><strong>Ward::</strong> {{post[0].wname}}
-                            </p>
-
-                        </div>
-                    </div>
+                   
                 </div>
             </div>
         </div>

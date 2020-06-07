@@ -6033,6 +6033,7 @@ __webpack_require__.r(__webpack_exports__);
     return {
       componentKey: 0,
       type_id: this.$route.query.type,
+      state_id: this.$route.query.state,
       bed: this.$route.query.bed,
       bath: this.$route.query.bathroom,
       price: this.$route.query.price,
@@ -6049,9 +6050,16 @@ __webpack_require__.r(__webpack_exports__);
       var bed_no = this.bed;
       var bathroom = this.bath;
       var price = this.price;
+      var state = this.state_id;
       return this.posts.filter(function (posts) {
         if (type != 0) {
           return posts.propertytype_id == type;
+        } else {
+          return posts;
+        }
+      }).filter(function (posts) {
+        if (state != 0) {
+          return posts.state_id == state;
         } else {
           return posts;
         }
@@ -6101,12 +6109,6 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue_owl_carousel__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-owl-carousel */ "./node_modules/vue-owl-carousel/dist/vue-owl-carousel.js");
 /* harmony import */ var vue_owl_carousel__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue_owl_carousel__WEBPACK_IMPORTED_MODULE_0__);
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -56908,14 +56910,37 @@ var render = function() {
                 _c("img", {
                   attrs: { src: "img/svg_icon/location.svg", alt: "" }
                 }),
-                _vm._v("Longitude:" + _vm._s(_vm.post[0].longitude) + "°")
+                _vm._v(
+                  "Longitude : " +
+                    _vm._s(_vm.post[0].longitude) +
+                    "°,Latitude : " +
+                    _vm._s(_vm.post[0].latitude) +
+                    "°"
+                )
               ]),
               _vm._v(" "),
               _c("p", [
                 _c("img", {
                   attrs: { src: "img/svg_icon/location.svg", alt: "" }
                 }),
-                _vm._v("Latitude:" + _vm._s(_vm.post[0].latitude) + "°")
+                _vm._v(
+                  " State : " +
+                    _vm._s(_vm.post[0].sname) +
+                    ", District : " +
+                    _vm._s(_vm.post[0].disname)
+                )
+              ]),
+              _vm._v(" "),
+              _c("p", [
+                _c("img", {
+                  attrs: { src: "img/svg_icon/location.svg", alt: "" }
+                }),
+                _vm._v(
+                  " Municipality : " +
+                    _vm._s(_vm.post[0].municname) +
+                    ", Ward : " +
+                    _vm._s(_vm.post[0].wname)
+                )
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "quality_quantity d-flex" }, [
@@ -57030,45 +57055,6 @@ var render = function() {
                     _vm._s(_vm.post[0].description) +
                     "\n\n                    "
                 )
-              ])
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass: "col-xl-8 offset-xl-2 col-lg-10 offset-lg-1 border ",
-              staticStyle: { "margin-top": "25px", border: "1px" }
-            },
-            [
-              _c("div", { staticClass: "details_info" }, [
-                _c("p", { staticStyle: { color: "Black" } }, [
-                  _c("strong", [_vm._v(" State:")]),
-                  _vm._v(
-                    _vm._s(_vm.post[0].sname) + "\n                            "
-                  ),
-                  _c("br"),
-                  _c("strong", [_vm._v("District::")]),
-                  _vm._v(
-                    " " +
-                      _vm._s(_vm.post[0].disname) +
-                      "\n                            "
-                  ),
-                  _c("br"),
-                  _c("strong", [_vm._v("Municipality::")]),
-                  _vm._v(
-                    " " +
-                      _vm._s(_vm.post[0].municname) +
-                      "\n                            "
-                  ),
-                  _c("br"),
-                  _c("strong", [_vm._v("Ward::")]),
-                  _vm._v(
-                    " " +
-                      _vm._s(_vm.post[0].wname) +
-                      "\n                        "
-                  )
-                ])
               ])
             ]
           )
@@ -57218,29 +57204,26 @@ var render = function() {
                                   staticClass: "form-control input-lg",
                                   staticStyle: { width: "100%" },
                                   on: {
-                                    change: [
-                                      function($event) {
-                                        var $$selectedVal = Array.prototype.filter
-                                          .call($event.target.options, function(
-                                            o
-                                          ) {
-                                            return o.selected
-                                          })
-                                          .map(function(o) {
-                                            var val =
-                                              "_value" in o ? o._value : o.value
-                                            return val
-                                          })
-                                        _vm.$set(
-                                          _vm.form,
-                                          "state_id",
-                                          $event.target.multiple
-                                            ? $$selectedVal
-                                            : $$selectedVal[0]
-                                        )
-                                      },
-                                      _vm.fetchdistrict
-                                    ]
+                                    change: function($event) {
+                                      var $$selectedVal = Array.prototype.filter
+                                        .call($event.target.options, function(
+                                          o
+                                        ) {
+                                          return o.selected
+                                        })
+                                        .map(function(o) {
+                                          var val =
+                                            "_value" in o ? o._value : o.value
+                                          return val
+                                        })
+                                      _vm.$set(
+                                        _vm.form,
+                                        "state_id",
+                                        $event.target.multiple
+                                          ? $$selectedVal
+                                          : $$selectedVal[0]
+                                      )
+                                    }
                                   }
                                 },
                                 [
@@ -57470,7 +57453,8 @@ var render = function() {
                                         type: this.form.type_id,
                                         bathroom: this.form.bath,
                                         bed: this.form.bedroom,
-                                        price: this.form.price
+                                        price: this.form.price,
+                                        state: this.form.state_id
                                       }
                                     }
                                   }

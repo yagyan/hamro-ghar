@@ -85,6 +85,7 @@
             return {
                 componentKey: 0,
                 type_id: this.$route.query.type,
+                state_id: this.$route.query.state,
                 bed: this.$route.query.bed,
                 bath: this.$route.query.bathroom,
                 price: this.$route.query.price,
@@ -104,11 +105,22 @@
                 let bed_no = this.bed;
                 let bathroom = this.bath;
                 let price = this.price;
+                let state = this.state_id;
                 return this.posts
                     .filter(function (posts) {
                         if (type != 0) {
 
                             return posts.propertytype_id == type;
+                        } else {
+                            return posts;
+                        }
+
+
+                    })
+                     .filter(function (posts) {
+                        if (state != 0) {
+
+                            return posts.state_id == state;
                         } else {
                             return posts;
                         }

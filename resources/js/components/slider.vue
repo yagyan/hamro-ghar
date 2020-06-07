@@ -29,7 +29,7 @@
                                                 <div class="single-field max_width ">
                                                     <label for="#">State</label>
                                                     <select class="form-control input-lg" style="width:100%;"
-                                                        v-model="form.state_id" @change="fetchdistrict">
+                                                        v-model="form.state_id">
                                                         <option value="">Select State</option>
                                                         <option v-for="state in states" :key="state.id"
                                                             :value="state.id">
@@ -80,7 +80,7 @@
                                                 </div>
 
                                                 <div class="serach_icon">
-                                                   <router-link :to="{ path: 'search', query: {type:this.form.type_id,bathroom:this.form.bath,bed:this.form.bedroom, price:this.form.price}}"> 
+                                                   <router-link :to="{ path: 'search', query: {type:this.form.type_id,bathroom:this.form.bath,bed:this.form.bedroom, price:this.form.price, state:this.form.state_id}}"> 
                                                    
                                                       <i class="ti-search" ></i>
                                                    </router-link>

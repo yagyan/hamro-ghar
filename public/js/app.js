@@ -6077,7 +6077,7 @@ __webpack_require__.r(__webpack_exports__);
         }
       }).filter(function (posts) {
         if (price != 0) {
-          return posts.price == price;
+          return posts.price < price;
         } else {
           return posts;
         }
@@ -57256,52 +57256,40 @@ var render = function() {
                             "div",
                             { staticClass: "single-field min_width " },
                             [
-                              _c(
-                                "div",
-                                { staticClass: "form-group" },
-                                [
-                                  _c("label", [_vm._v("Price")]),
-                                  _vm._v(" "),
-                                  _c("input", {
-                                    directives: [
-                                      {
-                                        name: "model",
-                                        rawName: "v-model",
-                                        value: _vm.form.price,
-                                        expression: "form.price"
-                                      }
-                                    ],
-                                    staticClass: "form-control",
-                                    class: {
-                                      "is-invalid": _vm.form.errors.has("price")
-                                    },
-                                    staticStyle: { width: "100%" },
-                                    attrs: {
-                                      type: "text",
-                                      name: "price",
-                                      placeholder: "Price"
-                                    },
-                                    domProps: { value: _vm.form.price },
-                                    on: {
-                                      input: function($event) {
-                                        if ($event.target.composing) {
-                                          return
-                                        }
-                                        _vm.$set(
-                                          _vm.form,
-                                          "price",
-                                          $event.target.value
-                                        )
-                                      }
+                              _c("div", { staticClass: "form-group" }, [
+                                _c("label", [_vm._v("Max Price")]),
+                                _vm._v(" "),
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.form.price,
+                                      expression: "form.price"
                                     }
-                                  }),
-                                  _vm._v(" "),
-                                  _c("has-error", {
-                                    attrs: { form: _vm.form, field: "price" }
-                                  })
-                                ],
-                                1
-                              )
+                                  ],
+                                  staticClass: "form-control",
+                                  staticStyle: { width: "100%" },
+                                  attrs: {
+                                    type: "text",
+                                    name: "price",
+                                    placeholder: "Price"
+                                  },
+                                  domProps: { value: _vm.form.price },
+                                  on: {
+                                    input: function($event) {
+                                      if ($event.target.composing) {
+                                        return
+                                      }
+                                      _vm.$set(
+                                        _vm.form,
+                                        "price",
+                                        $event.target.value
+                                      )
+                                    }
+                                  }
+                                })
+                              ])
                             ]
                           ),
                           _vm._v(" "),

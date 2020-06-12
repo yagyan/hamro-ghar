@@ -23,7 +23,7 @@ class CreatePostsTable extends Migration
             $table->unsignedBigInteger('propertytype_id');
             $table->string('area');
             $table->string('characteristics');
-            $table->double('price')
+            $table->double('price');
             $table->boolean('negotiation')->default('0');
             //$table->foreign('address_id')->references('id')->on('addresses')->onDelete('cascade');
             //$table->unsignedBigInteger('address_id');

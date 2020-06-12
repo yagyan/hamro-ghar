@@ -41,11 +41,11 @@
                                                
                                                 <div class="single-field min_width ">
                                                     <div class="form-group">
-                                                        <label>Price</label>
+                                                        <label>Max Price</label>
                                                         <input v-model="form.price" type="text" name="price"
                                                             class="form-control" style="width: 100%;"
-                                                            :class="{ 'is-invalid': form.errors.has('price') }" placeholder="Price">
-                                                        <has-error :form="form" field="price"></has-error>
+                                                             placeholder="Price">
+                                                        
                                                     </div>
                                                 </div>
 

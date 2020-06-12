@@ -145,7 +145,7 @@
                     })
                     .filter(function (posts) {
                         if (price != 0) {
-                            return posts.price == price;
+                            return posts.price < price;
                         } else {
                             return posts;
                         }

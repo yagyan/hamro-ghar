@@ -17,5 +17,6 @@ import agents from "../components/agents.vue"
         mounted() {
             console.log('Component mounted.')
         }
+        //hello
     }
 </script>

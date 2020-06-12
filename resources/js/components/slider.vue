@@ -42,7 +42,7 @@
                                                 <div class="single-field min_width ">
                                                     <div class="form-group">
                                                         <label>Max Price</label>
-                                                        <input v-model="form.price" type="text" name="price"
+                                                        <input v-model="form.price" type="number" name="price"
                                                             class="form-control" style="width: 100%;"
                                                              placeholder="Price">
                                                         
@@ -131,10 +131,7 @@
 
         },
         methods: {
-            search(){
-                this.$router.push({ path: '/search', params: { type:this.form.propertytype_id, bed:this.form.bed, bath:this.form.bath, price:this.form.price} })
-                
-            },
+            
             forceRerender() {
                 this.componentKey += 1;
             },

@@ -1989,7 +1989,8 @@ __webpack_require__.r(__webpack_exports__);
   },
   mounted: function mounted() {
     console.log('Component mounted.');
-  }
+  } //hello
+
 });
 
 /***/ }),
@@ -6077,7 +6078,7 @@ __webpack_require__.r(__webpack_exports__);
         }
       }).filter(function (posts) {
         if (price != 0) {
-          return posts.price < price;
+          return posts.price <= price;
         } else {
           return posts;
         }
@@ -6354,17 +6355,6 @@ __webpack_require__.r(__webpack_exports__);
     this.fetchstate();
   },
   methods: {
-    search: function search() {
-      this.$router.push({
-        path: '/search',
-        params: {
-          type: this.form.propertytype_id,
-          bed: this.form.bed,
-          bath: this.form.bath,
-          price: this.form.price
-        }
-      });
-    },
     forceRerender: function forceRerender() {
       this.componentKey += 1;
     },
@@ -57271,7 +57261,7 @@ var render = function() {
                                   staticClass: "form-control",
                                   staticStyle: { width: "100%" },
                                   attrs: {
-                                    type: "text",
+                                    type: "number",
                                     name: "price",
                                     placeholder: "Price"
                                   },

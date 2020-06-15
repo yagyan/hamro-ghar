@@ -70,9 +70,7 @@ let routes=[
 
 
 ];
-/*let routes2=[
 
-]*/
 //Vue Router Register
 const router= new VueRouter({
   mode:'history',

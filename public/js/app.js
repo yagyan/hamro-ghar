@@ -76799,11 +76799,7 @@ var routes = [{
   component: __webpack_require__(/*! ./components/search.vue */ "./resources/js/components/search.vue")["default"],
   name: 'search',
   props: true
-}];
-/*let routes2=[
-
-]*/
-//Vue Router Register
+}]; //Vue Router Register
 
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
   mode: 'history',

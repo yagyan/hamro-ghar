@@ -27,6 +27,14 @@ class UserController extends Controller
 
   }
 
+  public function updatetemp(Request $request, $id)
+    {
+     $u=userinfo::findOrFail($id);
+     $u->tward_id=$request->input('ward_id');
+     $u->update($request->only('ward_id'));
+
+  }
+
     
      public function adduser($id)
      {

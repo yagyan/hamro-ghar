@@ -35,6 +35,8 @@ Route::apiResources(['user'=>'API\usermanagementcontroller']);
 Route::post('/register','API\register@store');
 Route::apiResources(['userinfo'=>'API\UserController']);
 Route::put('/updateprofile/{id}/','API\UserController@updateprofile');
+Route::put('/updatetemp/{id}/','API\UserController@updatetemp');
+Route::get('/temp/{id}/','API\addresscontroller@temp');
 
 //post and property related post
 Route::apiResources(['propertytype'=>'API\propertytypecontroller']);

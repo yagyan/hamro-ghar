@@ -78,6 +78,18 @@ class addresscontroller extends Controller
          ->get();
           return $w->where('user_id',$id);
      }
+     public function temp($id)
+     {
+         //
+         $w =DB::table('wards')
+         ->join('states', 'wards.state_id', '=', 'states.id')
+         ->join('districts','wards.district_id','=','districts.id')
+         ->join('municipalities','wards.municipality_id','=','municipalities.id')
+         ->join('userinfos','wards.id','=','userinfos.tward_id')
+         ->select('wards.name as wname','states.name as sname','districts.name as disname','municipalities.name as municname','userinfos.user_id as user_id' )
+         ->get();
+          return $w->where('user_id',$id);
+     }
 
      /**
       * Update the specified resource in storage.

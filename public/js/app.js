@@ -7180,17 +7180,49 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       componentKey: 0,
       userid: window.user.id,
       userinfo: [],
+      temp: false,
       states: [],
       districts: [],
       municipalities: [],
       wards: [],
       address: [],
+      tempaddress: [],
       form: new Form({
         username: '',
         useremail: '',
@@ -7215,6 +7247,7 @@ __webpack_require__.r(__webpack_exports__);
     this.loaduser();
     this.fetchstate();
     this.loadaddress();
+    this.loadtempaddress();
   },
   methods: {
     forcererender: function forcererender() {
@@ -7253,6 +7286,8 @@ __webpack_require__.r(__webpack_exports__);
         });
 
         _this2.$Progress.finish();
+
+        _this2.loaduser();
       });
     },
     //Address functions
@@ -7264,19 +7299,32 @@ __webpack_require__.r(__webpack_exports__);
         return _this3.address = data;
       });
     },
+    loadtempaddress: function loadtempaddress() {
+      var _this4 = this;
+
+      this.form.get('api/temp/' + this.userid).then(function (_ref3) {
+        var data = _ref3.data;
+        return _this4.tempaddress = data;
+      });
+    },
     openaddress: function openaddress() {
-      this.editmodal = false;
+      this.temp = false;
+      this.form.reset();
+      $('#address').modal('show');
+    },
+    opentemp: function opentemp() {
+      this.temp = true;
       this.form.reset();
       $('#address').modal('show');
     },
     addaddress: function addaddress(user) {
-      var _this4 = this;
+      var _this5 = this;
 
-      this.form.put('api/updateprofile/' + user).then(function (_ref3) {
-        var data = _ref3.data;
+      this.form.put('api/updateprofile/' + user).then(function (_ref4) {
+        var data = _ref4.data;
         $('#address').modal('hide');
 
-        _this4.$Progress.start();
+        _this5.$Progress.start();
 
         Swal.fire({
           icon: 'success',
@@ -7285,41 +7333,62 @@ __webpack_require__.r(__webpack_exports__);
           timer: 3000
         });
 
-        _this4.loadaddress();
+        _this5.loadaddress();
 
-        _this4.$Progress.finish();
+        _this5.$Progress.finish();
+      });
+    },
+    addtemp: function addtemp(user) {
+      var _this6 = this;
+
+      this.form.put('api/updatetemp/' + user).then(function (_ref5) {
+        var data = _ref5.data;
+        $('#address').modal('hide');
+
+        _this6.$Progress.start();
+
+        Swal.fire({
+          icon: 'success',
+          title: 'Update Successful',
+          showConfirmButton: false,
+          timer: 3000
+        });
+
+        _this6.loadaddress();
+
+        _this6.$Progress.finish();
       });
     },
     fetchstate: function fetchstate() {
-      var _this5 = this;
+      var _this7 = this;
 
-      axios.get('api/state').then(function (_ref4) {
-        var data = _ref4.data;
-        return _this5.states = data;
+      axios.get('api/state').then(function (_ref6) {
+        var data = _ref6.data;
+        return _this7.states = data;
       });
     },
     fetchdistrict: function fetchdistrict() {
-      var _this6 = this;
+      var _this8 = this;
 
-      axios.get('api/getdistrict/' + this.form.state_id).then(function (_ref5) {
-        var data = _ref5.data;
-        return _this6.districts = data;
+      axios.get('api/getdistrict/' + this.form.state_id).then(function (_ref7) {
+        var data = _ref7.data;
+        return _this8.districts = data;
       });
     },
     fetchmunicipality: function fetchmunicipality() {
-      var _this7 = this;
+      var _this9 = this;
 
-      axios.get('api/getmunicipality/' + this.form.district_id).then(function (_ref6) {
-        var data = _ref6.data;
-        return _this7.municipalities = data;
+      axios.get('api/getmunicipality/' + this.form.district_id).then(function (_ref8) {
+        var data = _ref8.data;
+        return _this9.municipalities = data;
       });
     },
     fetchward: function fetchward() {
-      var _this8 = this;
+      var _this10 = this;
 
-      axios.get('api/getward/' + this.form.municipality_id).then(function (_ref7) {
-        var data = _ref7.data;
-        return _this8.wards = data;
+      axios.get('api/getward/' + this.form.municipality_id).then(function (_ref9) {
+        var data = _ref9.data;
+        return _this10.wards = data;
       });
     }
   }
@@ -58519,9 +58588,73 @@ var render = function() {
                                 _vm._v(" Temporary Address")
                               ]),
                               _vm._v(" "),
-                              _c("p", { staticClass: "text-muted" }, [
-                                _vm._v("sdasda")
-                              ]),
+                              _c(
+                                "a",
+                                {
+                                  attrs: { href: "#" },
+                                  on: {
+                                    click: function($event) {
+                                      $event.preventDefault()
+                                      return _vm.opentemp($event)
+                                    }
+                                  }
+                                },
+                                [_c("i", { staticClass: "fa fa-edit blue" })]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "table",
+                                {
+                                  staticClass: "table table-hover text-nowrap"
+                                },
+                                [
+                                  _c("thead", [
+                                    _c("tr", [
+                                      _c("th", [
+                                        _vm._v(
+                                          "\n                                                                State Name\n                                                            "
+                                        )
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("th", [
+                                        _vm._v(
+                                          "\n                                                                District Name\n                                                            "
+                                        )
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("th", [
+                                        _vm._v(
+                                          "\n                                                                Municipality Name\n                                                            "
+                                        )
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("th", [
+                                        _vm._v(
+                                          "\n                                                                Ward Name\n                                                            "
+                                        )
+                                      ])
+                                    ])
+                                  ]),
+                                  _vm._v(" "),
+                                  _c(
+                                    "tbody",
+                                    _vm._l(_vm.tempaddress, function(add) {
+                                      return _c("tr", { key: add.id }, [
+                                        _c("td", [_vm._v(_vm._s(add.sname))]),
+                                        _vm._v(" "),
+                                        _c("td", [_vm._v(_vm._s(add.disname))]),
+                                        _vm._v(" "),
+                                        _c("td", [
+                                          _vm._v(_vm._s(add.municname))
+                                        ]),
+                                        _vm._v(" "),
+                                        _c("td", [_vm._v(_vm._s(add.wname))])
+                                      ])
+                                    }),
+                                    0
+                                  )
+                                ]
+                              ),
                               _vm._v(" "),
                               _c("hr"),
                               _vm._v(" "),
@@ -58889,14 +59022,14 @@ var render = function() {
                                     {
                                       name: "show",
                                       rawName: "v-show",
-                                      value: !_vm.editmodal,
-                                      expression: "!editmodal"
+                                      value: !_vm.temp,
+                                      expression: "!temp"
                                     }
                                   ],
                                   staticClass: "modal-title",
                                   attrs: { id: "exampleModalCenterTitle" }
                                 },
-                                [_vm._v("Add Address")]
+                                [_vm._v("Add Permanent Address")]
                               ),
                               _vm._v(" "),
                               _c(
@@ -58906,8 +59039,8 @@ var render = function() {
                                     {
                                       name: "show",
                                       rawName: "v-show",
-                                      value: _vm.editmodal,
-                                      expression: "editmodal"
+                                      value: _vm.temp,
+                                      expression: "temp"
                                     }
                                   ],
                                   staticClass: "modal-title",
@@ -58915,7 +59048,7 @@ var render = function() {
                                 },
                                 [
                                   _vm._v(
-                                    "\n                                                Edit Address"
+                                    "\n                                                Add Temporary Address"
                                   )
                                 ]
                               ),
@@ -58946,7 +59079,9 @@ var render = function() {
                                 on: {
                                   submit: function($event) {
                                     $event.preventDefault()
-                                    return _vm.addaddress(user.id)
+                                    _vm.temp
+                                      ? _vm.addtemp(user.id)
+                                      : _vm.addaddress(user.id)
                                   }
                                 }
                               },

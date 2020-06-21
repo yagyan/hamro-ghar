@@ -88,7 +88,37 @@
                                                     </table>
                                                     <hr>
                                                     <strong><i class=""></i> Temporary Address</strong>
-                                                    <p class="text-muted">sdasda</p>
+                                                    <a href="#" @click.prevent="opentemp"> <i
+                                                            class="fa fa-edit blue"></i></a>
+                                                    <table class="table table-hover text-nowrap">
+                                                        <thead>
+                                                            <tr>
+
+                                                                <th>
+                                                                    State Name
+                                                                </th>
+                                                                <th>
+                                                                    District Name
+                                                                </th>
+                                                                <th>
+                                                                    Municipality Name
+                                                                </th>
+                                                                <th>
+                                                                    Ward Name
+                                                                </th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr v-for="add in tempaddress" :key="add.id">
+
+                                                                <td>{{add.sname}}</td>
+                                                                <td>{{add.disname}}</td>
+                                                                <td>{{add.municname}}</td>
+                                                                <td>{{add.wname}}</td>
+
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
                                                     <hr>
                                                     <strong><i class=""></i> Phone</strong>
                                                     <p class="text-muted">{{user.phone}}</p>
@@ -175,15 +205,15 @@
                                         <div class="modal-content">
                                             <div class="modal-header">
                                                 <h5 class="modal-title" id="exampleModalCenterTitle"
-                                                    v-show='!editmodal'>Add Address</h5>
-                                                <h5 class="modal-title" id="exampleModalCenterTitle" v-show='editmodal'>
-                                                    Edit Address</h5>
+                                                    v-show='!temp'>Add Permanent Address</h5>
+                                                <h5 class="modal-title" id="exampleModalCenterTitle" v-show='temp'>
+                                                    Add Temporary Address</h5>
                                                 <button type="button" class="close" data-dismiss="modal"
                                                     aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>
                                             </div>
-                                            <form @submit.prevent="addaddress(user.id)">
+                                            <form @submit.prevent="temp?addtemp(user.id):addaddress(user.id)">
                                                 <div class="modal-body">
                                                     <!--form -->
                                                     <div class="form-group">
@@ -251,14 +281,16 @@
     export default {
         data() {
             return {
-                componentKey: 0,
+               componentKey: 0,
                 userid: window.user.id,
                 userinfo: [],
+                temp: false,
                 states: [],
                 districts: [],
                 municipalities: [],
                 wards: [],
                 address: [],
+                tempaddress:[],
                 form: new Form({
                     username: '',
                     useremail: '',
@@ -283,10 +315,11 @@
             this.loaduser();
             this.fetchstate();
             this.loadaddress();
+            this.loadtempaddress();
         },
         methods: {
             forcererender(){
-                this.componentKey+=1;
+                this.componentKey +=1;
             },
 
             //user functions
@@ -297,6 +330,7 @@
                     }) => {
                         this.userinfo = data;
                         this.forcererender();
+                       
                     })
             },
 
@@ -320,7 +354,9 @@
                             showConfirmButton: false,
                             timer: 3000
                         })
+                        
                         this.$Progress.finish();
+                        this.loaduser();
 
                     })
             },
@@ -332,13 +368,24 @@
                         data
                     }) => (this.address = data))
             },
+            
+             loadtempaddress() {
+                this.form.get('api/temp/' + this.userid)
+                    .then(({
+                        data
+                    }) => (this.tempaddress = data))
+            },
 
             openaddress() {
-                this.editmodal = false;
+                this.temp = false;
                 this.form.reset();
                 $('#address').modal('show');
             },
-
+            opentemp() {
+                this.temp = true;
+                this.form.reset();
+                $('#address').modal('show');
+            },
             addaddress(user) {
                 this.form.put('api/updateprofile/' + user)
                     .then(({
@@ -356,6 +403,25 @@
                         this.$Progress.finish()
                     })
             },
+
+            addtemp(user) {
+                this.form.put('api/updatetemp/' + user)
+                    .then(({
+                        data
+                    }) => {
+                        $('#address').modal('hide');
+                        this.$Progress.start()
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Update Successful',
+                            showConfirmButton: false,
+                            timer: 3000
+                        })
+                        this.loadaddress();
+                        this.$Progress.finish()
+                    })
+            },
+            
             fetchstate() {
                 axios.get('api/state')
                     .then(({

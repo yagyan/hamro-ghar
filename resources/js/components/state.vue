@@ -28,7 +28,7 @@
 
                         <td>
                               <a href="#" @click.prevent="updatestate(state)"> <i class="fa fa-edit blue"></i></a>
-                              <a href="#" @clic.prevent="deletestate(state.id)"> <i class="fa fa-trash text-red"></i></a>
+                              <a href="#" @click.prevent="deletestate(state.id)"> <i class="fa fa-trash text-red"></i></a>
                         </td>
                       </tr>
                     </tbody>

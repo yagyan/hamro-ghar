@@ -1,5 +1,5 @@
 <template>
-<component-to-re-render :key="componentKey">
+
     <div class="text-center" style="padding-top:200px">
         <div class="card mx-auto" style="width: 30rem;">
             <div class="card-header">
@@ -55,7 +55,6 @@
             </div>
         </div>
     </div>
-</component-to-re-render>
 
 </template>
 

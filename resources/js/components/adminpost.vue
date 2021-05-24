@@ -358,8 +358,8 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-primary" >Save Changes</button>
-                            
+                            <button type="submit" class="btn btn-primary">Save Changes</button>
+
                         </div>
                     </form>
                 </div>
@@ -483,23 +483,23 @@
 
             loadpost() {
 
-                if(this.$gate.isAdmin()){
-                axios.get('api/post')
-                    .then(({
-                        data
-                    }) => (this.posts = data))
+                if (this.$gate.isAdmin()) {
+                    axios.get('api/post')
+                        .then(({
+                            data
+                        }) => (this.posts = data))
                 }
             },
             loadtypes() {
-                  if(this.$gate.isAgent()){
-                axios.get('api/propertytype')
-                    .then(({
-                        data
-                    }) => (this.types = data))
-                  }
+                if (this.$gate.isAgent()) {
+                    axios.get('api/propertytype')
+                        .then(({
+                            data
+                        }) => (this.types = data))
+                }
             },
             openmodal() {
-                
+
                 $('#Modal').modal('show');
                 this.form.reset();
             },
@@ -559,7 +559,7 @@
                     }
                 })
             },
-            
+
             addaddress() {
                 this.form2.post('api/address')
                     .then(({
@@ -569,12 +569,12 @@
                     })
             },
             fetchstate() {
-                  if(this.$gate.isAgent()){
-                axios.get('api/state')
-                    .then(({
-                        data
-                    }) => (this.states = data))
-                  }
+                if (this.$gate.isAgent()) {
+                    axios.get('api/state')
+                        .then(({
+                            data
+                        }) => (this.states = data))
+                }
             },
             fetchdistrict() {
                 axios.get('api/getdistrict/' + this.form2.state_id)
